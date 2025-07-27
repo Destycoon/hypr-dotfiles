@@ -1,0 +1,10 @@
+code
+firefox
+git
+hyprpaper
+hypridle
+hyprlock
+hyprshot
+swaync
+neovim
+waybar
