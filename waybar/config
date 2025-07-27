@@ -17,7 +17,6 @@
         "mpd",
         "idle_inhibitor",
         "pulseaudio",
-        "network",
         "power-profiles-daemon",
         "cpu",
         "memory",
@@ -26,7 +25,6 @@
         "keyboard-state",
         "sway/language",
         "battery",
-        "battery#bat2",
         "clock",
         "tray",
         "custom/power"
