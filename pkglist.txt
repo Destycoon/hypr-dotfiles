@@ -9,3 +9,7 @@ swaync
 neovim
 waybar
 otf-fonts-awesome
+pavucontrol
+pulseaudio
+cava
+brightnessctl
