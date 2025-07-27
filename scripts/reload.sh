@@ -1,5 +1,5 @@
 #!/bin/bash
 
-waybar killall
+killall waybar
 sleep 1
-waybar
+waybar &

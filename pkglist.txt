@@ -8,3 +8,4 @@ hyprshot
 swaync
 neovim
 waybar
+otf-fonts-awesome
