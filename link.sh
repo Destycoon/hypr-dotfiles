@@ -5,7 +5,7 @@ DOTFILES_DIR=~/hypr-dotfiles
 CONFIG_DIR=~/.config
 
 
-FILES=("hypr" "kitty" "waybar")
+FILES=("hypr" "kitty" "waybar" "fastfetch" "wofi")
 
 echo "🔗 Linking dotfiles from $DOTFILES_DIR to $CONFIG_DIR..."
 

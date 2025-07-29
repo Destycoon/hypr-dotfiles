@@ -1,4 +1,12 @@
 {
+  "include": [
+    "$HOME/.config/waybar/Modules.jsonc",
+    "$HOME/.config/waybar/ModulesCustom.jsonc",
+    "$HOME/.config/waybar/ModulesGroups.jsonc"
+
+
+  ],
+
   "height": 30,
   "spacing": 4,
 
@@ -28,147 +36,5 @@
     "clock",
     "tray",
     "custom/power"
-  ],
-
-  "hyprland/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": true,
-    "warp-on-scroll": false,
-    "format": "{name} {icon}",
-    "format-icons": {
-      "1": "", "2": "", "3": "", "4": "", "5": "",
-      "focused": "", "urgent": "", "default": ""
-    }
-  },
-
-  "hyprland/window": {
-    "max-length": 60
-  },
-
-  "keyboard-state": {
-    "numlock": true,
-    "capslock": true,
-    "format": "{name} {icon}",
-    "format-icons": {
-      "locked": "",
-      "unlocked": ""
-    }
-  },
-
-  "sway/mode": {
-    "format": "<span style=\"italic\">{}</span>"
-  },
-
-  "sway/scratchpad": {
-    "format": " {count}",
-    "show-empty": false,
-    "tooltip": true,
-    "tooltip-format": "{app}: {title}"
-  },
-
-  "cpu": {
-    "format": "{usage}% "
-  },
-
-  "memory": {
-    "format": "{}% "
-  },
-
-  "temperature": {
-    "critical-threshold": 80,
-    "format": "{temperatureC}°C {icon}",
-    "format-icons": ["", "", ""]
-  },
-
-  "mpd": {
-    "format": "{stateIcon} {artist} - {title} ",
-    "format-disconnected": "Disconnected ",
-    "format-stopped": "Stopped ",
-    "interval": 5,
-    "state-icons": {
-      "paused": "",
-      "playing": ""
-    }
-  },
-
-  "custom/media": {
-    "format": "{icon} {text}",
-    "return-type": "json",
-    "max-length": 40,
-    "format-icons": {
-      "spotify": "",
-      "default": "🎜"
-    },
-    "escape": true,
-    "exec": "$HOME/.config/waybar/mediaplayer.py 2>/dev/null"
-  },
-
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": ""
-    }
-  },
-
-  "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% {icon}",
-    "format-muted": "",
-    "format-icons": {
-      "default": ["", "", ""]
-    },
-    "on-click": "pavucontrol"
-  },
-
-  "power-profiles-daemon": {
-    "format": "{icon}",
-    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-    "tooltip": true,
-    "format-icons": {
-      "performance": "",
-      "balanced": "",
-      "power-saver": ""
-    }
-  },
-
-  "backlight": {
-    "format": "{percent}% {icon}",
-    "format-icons": ["", "", "", "", "", "", "", "", ""]
-  },
-
-  "battery": {
-    "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
-    "format-icons": ["", "", "", "", ""]
-  },
-
-  "clock": {
-    "format": " {:%H:%M}",
-    "format-alt": "{:%Y-%m-%d}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-  },
-
-  "tray": {},
-
-  "custom/power": {
-  "format": "⏻",
-  "tooltip": false,
-  "on-click": "~/.config/waybar/scripts/power_menu.sh"
-}
-
-,
-  "custom/cava": {
-    "exec": "~/.config/waybar/scripts/cava.sh",
-    "interval": 1,
-    "return-type": "json",
-    "format": "{}",
-    "tooltip": false
-  }
+  ]
 }

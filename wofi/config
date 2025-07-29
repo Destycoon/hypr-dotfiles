@@ -1,0 +1,21 @@
+# Mode d'affichage par défaut
+show=drun
+
+# Prompt affiché en haut de la fenêtre
+prompt= Lancer :
+
+# App terminal (peut être foot, kitty, wezterm...)
+term=kitty
+
+# Affichage insensible à la casse
+insensitive=true
+
+# Permet d’afficher les icônes
+allow_images=true
+
+# Où apparaît la fenêtre (center, top, bottom)
+location=center
+
+# Affiche le nom + description
+hide_scroll=true
+no_actions=true

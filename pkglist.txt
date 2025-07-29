@@ -13,3 +13,8 @@ pavucontrol
 pulseaudio
 cava
 brightnessctl
+blueman
+btop
+fastfetch
+misfortune 
+cowsay

@@ -1,27 +1,29 @@
 * {
   border: none;
-  font-family: JetBrainsMono Nerd Font, monospace;
+  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 7 Free", "Font Awesome 7 Brands", "Font Awesome v4 Compatibility", monospace;
+  font-weight: 900;
   font-size: 14px;
   min-height: 0;
-  color: #ffffff;
+  padding: 2px;
 }
 
 /* BARRE GLOBALE */
 window#waybar {
-  background: transparent;
-  border-radius: 10px;
+  background-color: rgba(6, 7, 41, 0.3);
+  border: 2px solid #10013a;
+  border-radius: 15px;
   margin: 6px 10px;
-  padding: 4px 10px;
+  padding: 5px;
 }
 
 /* MODULES - STYLE ENCADRÉ ARRONDI */
 .modules-left > widget,
 .modules-center > widget,
 .modules-right > widget {
-  background-color: rgba(0, 0, 0, 0.35);
+  background-color: rgba(0, 0, 0, 0.5);
   margin: 2px 4px;
   padding: 4px 8px;
-  border-radius: 8px;
+  
 }
 
 /* ESPACE ENTRE LES ZONES */
@@ -29,6 +31,7 @@ window#waybar {
 .modules-center,
 .modules-right {
   margin: 0 6px;
+  border-radius: 8px;
 }
 
 /* WORKSPACES */
@@ -37,13 +40,13 @@ window#waybar {
   border-radius: 6px;
   margin: 2px 3px;
   background-color: rgba(100, 100, 160, 0.2);
-  color: #ccc;
+  color: #e1e1e1;
   transition: background 0.2s;
 }
 
 #workspaces button.active {
   background-color: #333399;
-  color: #fff;
+  color: #e1e1e1;
 }
 
 #workspaces button:hover {
@@ -70,9 +73,32 @@ tooltip {
 
 #clock {
   font-weight: bold;
+  color: #e1e1e1;
 }
 
 #custom-power {
   color: #ff4444;
   font-weight: bold;
+  padding: 10px;
+}
+
+#battery {
+  background: #111;  /* ou transparent */
+  color: #e1e1e1;
+}
+#tray {
+  background-color: #1e1e2e;  /* fond sombre */
+  color: #e1e1e1;             /* force la couleur du texte */
+}
+
+#tray * {
+  
+  border-radius: 15px;
+  background-color: rgba(30, 30, 46, 0.3);
+  color: #e1e1e1 ;
+  font-size: 14px;
+}
+
+#custom-separator {
+  color: #111;
 }
