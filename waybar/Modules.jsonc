@@ -14,59 +14,21 @@
     "max-length": 60
   },
 
-  "keyboard-state": {
-    "numlock": true,
-    "capslock": true,
-    "format": "{name} {icon}",
-    "format-icons": {
-      "locked": "",
-      "unlocked": ""
-    }
-  },
-
-  "sway/mode": {
-    "format": "<span style=\"italic\">{}</span>"
-  },
-
-  "sway/scratchpad": {
-    "format": " {count}",
-    "show-empty": false,
-    "tooltip": true,
-    "tooltip-format": "{app}: {title}"
-  },
 
   "cpu": {
-    "format": "{usage}% "
+    "format": " {usage}%"
   },
 
   "memory": {
-    "format": "{}% "
+    "format": " {}%"
   },
 
   "temperature": {
     "critical-threshold": 80,
-    "format": "{temperatureC}°C {icon}",
+    "format": " {icon}{temperatureC}°C",
     "format-icons": ["", "", ""]
   },
 
-  "mpd": {
-    "format": "{stateIcon} {artist} - {title} ",
-    "format-disconnected": "Disconnected ",
-    "format-stopped": "Stopped ",
-    "interval": 5,
-    "state-icons": {
-      "paused": "",
-      "playing": ""
-    }
-  },
-
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": ""
-    }
-  },
 
   "pulseaudio": {
     "format": "{volume}% {icon}",
@@ -76,17 +38,6 @@
       "default": ["", "", ""]
     },
     "on-click": "pavucontrol"
-  },
-
-  "power-profiles-daemon": {
-    "format": "{icon}",
-    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-    "tooltip": true,
-    "format-icons": {
-      "performance": "",
-      "balanced": "",
-      "power-saver": ""
-    }
   },
 
   "backlight": {
@@ -112,6 +63,12 @@
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
 
-  "tray": {}
+  "tray": {
+	"icon-size": 21,
+	"spacing": 10,
+  "icons": {
+    "blueman": "bluetooth"
+  }
+}
 
 }

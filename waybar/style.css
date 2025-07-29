@@ -1,6 +1,6 @@
 * {
   border: none;
-  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 7 Free", "Font Awesome 7 Brands", "Font Awesome v4 Compatibility", monospace;
+  font-family: "JetBrain Mono Nerd", monospace;
   font-weight: 900;
   font-size: 14px;
   min-height: 0;
@@ -9,21 +9,9 @@
 
 /* BARRE GLOBALE */
 window#waybar {
-  background-color: rgba(6, 7, 41, 0.3);
-  border: 2px solid #10013a;
+  background-color: transparent;
   border-radius: 15px;
-  margin: 6px 10px;
   padding: 5px;
-}
-
-/* MODULES - STYLE ENCADRÉ ARRONDI */
-.modules-left > widget,
-.modules-center > widget,
-.modules-right > widget {
-  background-color: rgba(0, 0, 0, 0.5);
-  margin: 2px 4px;
-  padding: 4px 8px;
-  
 }
 
 /* ESPACE ENTRE LES ZONES */
@@ -36,26 +24,20 @@ window#waybar {
 
 /* WORKSPACES */
 #workspaces button {
-  padding: 2px 8px;
+  padding: 5px 10px;
   border-radius: 6px;
   margin: 2px 3px;
-  background-color: rgba(100, 100, 160, 0.2);
+  background-color: rgba(30, 30, 46, 0.9);
   color: #e1e1e1;
-  transition: background 0.2s;
+  border: 2px solid #333399;
+
 }
 
-#workspaces button.active {
-  background-color: #333399;
-  color: #e1e1e1;
-}
 
-#workspaces button:hover {
-  background-color: rgba(102, 51, 153, 0.5);
-}
 
 /* TOOLTIP */
 tooltip {
-  background: #1e1e2e;
+  background: #333399;
   color: #cdd6f4;
   border-radius: 5px;
   padding: 6px 10px;
@@ -73,32 +55,47 @@ tooltip {
 
 #clock {
   font-weight: bold;
-  color: #e1e1e1;
 }
 
 #custom-power {
   color: #ff4444;
   font-weight: bold;
-  padding: 10px;
+  padding: 0px 10px;
+  border: 2px solid #333399;
+  border-radius: 8px;
+  font-size: 22px;
+  background-color: rgba(30, 30, 46, 0.9);
 }
 
-#battery {
-  background: #111;  /* ou transparent */
+
+
+#battery , #tray, #backlight,
+#hardware,
+#pulseaudio , #window, #clock {
+  background-color: rgba(30, 30, 46, 0.9);  /* fond sombre */
   color: #e1e1e1;
-}
-#tray {
-  background-color: #1e1e2e;  /* fond sombre */
-  color: #e1e1e1;             /* force la couleur du texte */
+  padding: 0px 10px;
+  border-radius: 8px;
+  border: 2px solid #333399;
 }
 
-#tray * {
+#cpu, #memory, #temperature {
+
+  color :#ff4444;
+}
+
+#tray menu {
   
   border-radius: 15px;
-  background-color: rgba(30, 30, 46, 0.3);
+  background-color: rgba(0, 2, 58, 0.7);
   color: #e1e1e1 ;
   font-size: 14px;
 }
 
-#custom-separator {
-  color: #111;
+#custom-cava {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 14px;
+  color: #88C0D0;
+  padding: 0 8px;
 }
+

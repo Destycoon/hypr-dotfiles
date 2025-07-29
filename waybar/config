@@ -7,15 +7,14 @@
 
   ],
 
-  "height": 30,
+  "height": 20,
   "spacing": 4,
-
+  "margin": "5",
+  
   "modules-left": [
-    "sway/mode",
-    "sway/scratchpad",
-    "cpu",
-    "memory",
-    "temperature"
+    "battery",
+    "group/hardware",
+    "tray"
   ],
 
   "modules-center": [
@@ -24,17 +23,9 @@
   ],
 
   "modules-right": [
-    "custom/cava",
-    "mpd",
-    "custom/media",
-    "idle_inhibitor",
-    "pulseaudio",
-    "power-profiles-daemon",
-    "backlight",
-    "keyboard-state",
-    "battery",
     "clock",
-    "tray",
+    "pulseaudio",
+    "backlight",
     "custom/power"
   ]
 }

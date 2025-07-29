@@ -1,21 +1,35 @@
-# Mode d'affichage par défaut
+# Mode d'affichage par défaut (drun = apps via desktop files, run = commandes)
 show=drun
 
-# Prompt affiché en haut de la fenêtre
-prompt= Lancer :
+# Icône + Prompt (personnalisable à volonté)
+prompt= Launch:
 
-# App terminal (peut être foot, kitty, wezterm...)
+# Terminal utilisé pour lancer des applis CLI
 term=kitty
 
-# Affichage insensible à la casse
+# Ignore la casse lors des recherches
 insensitive=true
 
-# Permet d’afficher les icônes
+# Autorise l’affichage des icônes (nécessite un thème d’icônes compatible)
 allow_images=true
 
-# Où apparaît la fenêtre (center, top, bottom)
+# Supprime la scrollbar (plus propre)
+hide_scroll=true
+
+# Empêche les actions secondaires (genre clic droit)
+no_actions=true
+
+# Position de la fenêtre sur l’écran
 location=center
 
-# Affiche le nom + description
-hide_scroll=true
-no_actions=true
+# Largeur de la fenêtre (en pixels)
+width=500
+
+# Hauteur maximale (utile si tu as beaucoup d’entrées)
+height=400
+
+# Pour désactiver les suggestions de complétion
+allow_markup=false
+
+# Ajoute du flou si tu utilises un compositeur (sous Wayland + wofi stylé)
+blur=true   <-- seulement si tu fais du CSS avec blur supporté

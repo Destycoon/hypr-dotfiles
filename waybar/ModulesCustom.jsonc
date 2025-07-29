@@ -1,28 +1,14 @@
 {
- "custom/cava": {
-    "exec": "~/.config/waybar/scripts/cava.sh",
-    "interval": 1,
-    "return-type": "json",
-    "format": "{}",
-    "tooltip": false
-  },
-
  "custom/power": {
     "format": "⏻",
-    "tooltip": false,
+    "tooltip-format" : "Power",
     "on-click": "~/.config/waybar/scripts/power_menu.sh"
   },
-
- "custom/media": {
-    "format": "{icon} {text}",
-    "return-type": "json",
-    "max-length": 40,
-    "format-icons": {
-      "spotify": "",
-      "default": "🎜"
-    },
-    "escape": true,
-    "exec": "$HOME/.config/waybar/mediaplayer.py 2>/dev/null"
-  },
-
+  "custom/hardware-wrap": {
+	  "format": "Hardware",
+	  "tooltip-format": "Hardware group"
+ },
+ "custom/separator" : {
+  "format":"|"
+ }
 }
