@@ -4,6 +4,7 @@ THEME_DIR="$HOME/hypr-dotfiles/theme"
 HYPRPAPER_CONF="$HOME/.config/hypr/hyprpaper.conf"
 WAYBAR_DEST="$HOME/.config/waybar"
 WOFI_DEST="$HOME/.config/wofi"
+HYPRLAND_DEST="$HOME/.config/hypr"
 
 # Liste des thèmes avec emoji (assure-toi que les noms sont corrects !)
 choice=$(printf "🎨 Blue\n🌙 Black" | \
@@ -46,5 +47,16 @@ if [ -f "$THEME_PATH/wofi/style.css" ]; then
   cp "$THEME_PATH/wofi/style.css" "$WOFI_DEST/style.css"
 fi
 
+if [ -f "$THEME_PATH/hypr/hyprlock.conf" ]; then
+  cp "$THEME_PATH/hypr/hyprlock.conf" "$HYPRLAND_DEST/hyprlock.conf"
+fi
+
+if [ -f "$THEME_PATH/hypr/myColor.conf" ]; then
+  cp "$THEME_PATH/hypr/myColor.conf" "$HYPRLAND_DEST/myColor.conf"
+fi
+
+if [ -f "$THEME_PATH/hypr/hyprland.conf" ]; then
+  cp "$THEME_PATH/hypr/hyprland.conf" "$HYPRLAND_DEST/hyprland.conf"
+fi
 
 bash ~/hypr-dotfiles/scripts/./reload.sh
