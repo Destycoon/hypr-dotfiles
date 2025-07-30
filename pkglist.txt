@@ -1,5 +1,4 @@
-code
-firefox
+﻿code
 git
 hyprpaper
 hypridle
@@ -18,3 +17,11 @@ btop
 fastfetch
 misfortune 
 cowsay
+libreoffice-fresh
+discord
+lf
+kservice
+
+yay
+
+zen-browser-bin
