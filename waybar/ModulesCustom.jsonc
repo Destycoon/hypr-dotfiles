@@ -2,7 +2,7 @@
  "custom/power": {
     "format": "⏻",
     "tooltip-format" : "Power",
-    "on-click": "~/.config/waybar/scripts/power_menu.sh"
+    "on-click": "~/hypr-dotfiles/scripts/power_menu.sh"
   },
   "custom/hardware-wrap": {
 	  "format": "Hardware",

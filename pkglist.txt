@@ -20,7 +20,10 @@ cowsay
 libreoffice-fresh
 discord
 lf
-kservice
+pipewire-pulse
+xdg-desktop-portal
+xdg-desktop-portal-wlr
+
 
 yay
 
