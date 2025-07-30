@@ -3,7 +3,7 @@
 THEME_DIR="$HOME/hypr-dotfiles/theme"
 HYPRPAPER_CONF="$HOME/.config/hypr/hyprpaper.conf"
 WAYBAR_DEST="$HOME/.config/waybar"
-ROFI_DEST="$HOME/.config/wofi"
+WOFI_DEST="$HOME/.config/wofi"
 
 # Liste des thèmes avec emoji (assure-toi que les noms sont corrects !)
 choice=$(printf "🎨 Blue\n🌙 Black" | \
@@ -32,16 +32,19 @@ if [ -f "$WALLPAPER" ]; then
     echo "wallpaper = $MON,$WALLPAPER" >> "$HYPRPAPER_CONF"
   done
 
-  # Redémarre hyprpaper si nécessaire
-  if ! pgrep -x hyprpaper > /dev/null; then
-    hyprpaper &
-    sleep 0.2  # Petite pause pour éviter que le reload échoue
-  fi
-
   notify-send "🎨 Thème appliqué : $THEME"
 else
   notify-send "Erreur" "Aucun wallpaper trouvé dans $THEME_PATH"
   exit 1
 fi
+
+if [ -f "$THEME_PATH/waybar/style.css" ]; then
+  cp "$THEME_PATH/waybar/style.css" "$WAYBAR_DEST/style.css"
+fi
+
+if [ -f "$THEME_PATH/wofi/style.css" ]; then
+  cp "$THEME_PATH/wofi/style.css" "$WOFI_DEST/style.css"
+fi
+
 
 bash ~/hypr-dotfiles/scripts/./reload.sh

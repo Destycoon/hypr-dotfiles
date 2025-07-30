@@ -2,7 +2,8 @@
 
 killall waybar
 killall hyprpaper
-sleep 1
+killall wofi
+sleep 0.2
 waybar &
 hyprpaper &
 
