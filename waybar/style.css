@@ -5,7 +5,6 @@
   font-size: 14px;
   min-height: 0;
   padding: 2px;
-  color: #eaeaea;
 }
 
 /* BARRE GLOBALE */
@@ -28,65 +27,75 @@ window#waybar {
   padding: 5px 10px;
   border-radius: 6px;
   margin: 2px 3px;
-  background-color: rgba(10, 10, 10, 0.85);
-  color: #ffffff;
-  border: 2px solid #333;
+  background-color: rgba(30, 30, 46, 0.9);
+  color: #e1e1e1;
+  border: 2px solid #333399;
+
 }
+
+
 
 /* TOOLTIP */
 tooltip {
-  background: #111;
-  color: #f0f0f0;
+  background: #333399;
+  color: #cdd6f4;
   border-radius: 5px;
   padding: 6px 10px;
 }
 
 /* ICONES SPÉCIALES */
 #pulseaudio.muted {
-  color: #aaaaaa;
+  color: #ff5555;
 }
 
 #battery.critical {
-  background: #111;
-  color: #ffffff;
-  border: 2px solid #444;
+  background: #660000;
+  color: white;
 }
 
-/* CLOCK */
 #clock {
   font-weight: bold;
 }
 
-/* BOUTON POWER */
 #custom-power {
-  color: #ffffff;
+  color: #ff4444;
   font-weight: bold;
   padding: 0px 10px;
-  border: 2px solid #444;
+  border: 2px solid #333399;
   border-radius: 8px;
   font-size: 22px;
-  background-color: rgba(15, 15, 15, 0.85);
+  background-color: rgba(30, 30, 46, 0.9);
 }
 
-/* MODULES CLASSIQUES */
-#battery, #tray, #backlight,
-#hardware, #pulseaudio, #window, #clock {
-  background-color: rgba(15, 15, 15, 0.85);
-  color: #eaeaea;
+
+
+#battery , #tray, #backlight,
+#hardware,
+#pulseaudio , #window, #clock {
+  background-color: rgba(30, 30, 46, 0.9);  /* fond sombre */
+  color: #e1e1e1;
   padding: 0px 10px;
   border-radius: 8px;
-  border: 2px solid #444;
+  border: 2px solid #333399;
 }
 
-/* RESSOURCES SYSTÈME */
 #cpu, #memory, #temperature {
-  color: #cccccc;
+
+  color :#ff4444;
 }
 
-/* TRAY CONTEXT MENU */
 #tray menu {
+  
   border-radius: 15px;
-  background-color: rgba(5, 5, 5, 0.95);
-  color: #eeeeee;
+  background-color: rgba(0, 2, 58, 0.7);
+  color: #e1e1e1 ;
   font-size: 14px;
 }
+
+#custom-cava {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 14px;
+  color: #88C0D0;
+  padding: 0 8px;
+}
+

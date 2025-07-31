@@ -5,6 +5,8 @@ HYPRPAPER_CONF="$HOME/.config/hypr/hyprpaper.conf"
 WAYBAR_DEST="$HOME/.config/waybar"
 WOFI_DEST="$HOME/.config/wofi"
 HYPRLAND_DEST="$HOME/.config/hypr"
+FASTFETCH_DEST="$HOME/.config/fastfetch"
+
 
 # Liste des thèmes avec emoji (assure-toi que les noms sont corrects !)
 choice=$(printf "🎨 Blue\n🌙 Black" | \
@@ -39,13 +41,25 @@ else
   exit 1
 fi
 
+############
+#  WAYBAR  #
+############
+
 if [ -f "$THEME_PATH/waybar/style.css" ]; then
   cp "$THEME_PATH/waybar/style.css" "$WAYBAR_DEST/style.css"
 fi
 
+############
+#   WOFI   #
+############
+
 if [ -f "$THEME_PATH/wofi/style.css" ]; then
   cp "$THEME_PATH/wofi/style.css" "$WOFI_DEST/style.css"
 fi
+
+############
+# HYPRLAND #
+############
 
 if [ -f "$THEME_PATH/hypr/hyprlock.conf" ]; then
   cp "$THEME_PATH/hypr/hyprlock.conf" "$HYPRLAND_DEST/hyprlock.conf"
@@ -57,6 +71,18 @@ fi
 
 if [ -f "$THEME_PATH/hypr/hyprland.conf" ]; then
   cp "$THEME_PATH/hypr/hyprland.conf" "$HYPRLAND_DEST/hyprland.conf"
+fi
+
+#############
+# FASTFETCH #
+#############
+
+if [ -f "$THEME_PATH/fastfetch/config.jsonc" ]; then
+  cp "$THEME_PATH/fastfetch/config.jsonc" "$FASTFETCH_DEST/config.jsonc"
+fi
+
+if [ -f "$THEME_PATH/fastfetch/logo.txt" ]; then
+  cp "$THEME_PATH/fastfetch/logo.txt" "$FASTFETCH_DEST/logo.txt"
 fi
 
 bash ~/hypr-dotfiles/scripts/./reload.sh
