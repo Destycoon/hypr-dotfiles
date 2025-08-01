@@ -10,5 +10,9 @@
  },
  "custom/separator" : {
   "format":"|"
+ },
+ "custom/audio-wrap" : {
+  "format" : "Audio",
+  "tooltip-format" :"Audio group"
  }
 }

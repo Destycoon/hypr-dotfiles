@@ -69,8 +69,10 @@ tooltip {
 }
 
 /* MODULES CLASSIQUES */
-#battery, #tray, #backlight,
-#hardware, #pulseaudio, #window, #clock {
+
+#battery , #backlight,
+#hardware, #audio,
+ #window, #clock {
   background-color: rgba(15, 15, 15, 0.85);
   color: #eaeaea;
   padding: 0px 10px;

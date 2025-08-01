@@ -69,9 +69,9 @@ tooltip {
 
 
 
-#battery , #tray, #backlight,
-#hardware,
-#pulseaudio , #window, #clock {
+#battery , #backlight,
+#hardware, #audio,
+ #window, #clock {
   background-color: rgba(30, 30, 46, 0.9);  /* fond sombre */
   color: #e1e1e1;
   padding: 0px 10px;
