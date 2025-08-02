@@ -6,13 +6,12 @@ WAYBAR_DEST="$HOME/.config/waybar"
 WOFI_DEST="$HOME/.config/wofi"
 HYPRLAND_DEST="$HOME/.config/hypr"
 FASTFETCH_DEST="$HOME/.config/fastfetch"
+KITTY_DEST="$HOME/.config/kitty"
 
 
-# Liste des thèmes avec emoji (assure-toi que les noms sont corrects !)
 choice=$(printf "🎨 Blue\n🌙 Black" | \
   wofi --dmenu --cache-file /dev/null --width 300 --height 250 --hide-scroll --prompt "Choisir un thème")
 
-# Convertir le choix en nom de dossier (⚠️ attention aux noms exacts)
 case "$choice" in
   "🎨 Blue") THEME="blue" ;;
   "🌙 Black") THEME="black" ;;
@@ -22,15 +21,11 @@ esac
 THEME_PATH="$THEME_DIR/$THEME"
 WALLPAPER=$(find "$THEME_PATH" -maxdepth 1 -iname "wallpaper.*" | head -n1)
 
-# Vérifie que le fond d'écran existe
 if [ -f "$WALLPAPER" ]; then
-  # Vide le fichier de config
   > "$HYPRPAPER_CONF"
 
-  # Ajoute preload
   echo "preload = $WALLPAPER" >> "$HYPRPAPER_CONF"
 
-  # Ajoute pour chaque moniteur détecté
   hyprctl monitors | grep "Monitor" | awk '{print $2}' | while read -r MON; do
     echo "wallpaper = $MON,$WALLPAPER" >> "$HYPRPAPER_CONF"
   done
@@ -84,5 +79,14 @@ fi
 if [ -f "$THEME_PATH/fastfetch/logo.txt" ]; then
   cp "$THEME_PATH/fastfetch/logo.txt" "$FASTFETCH_DEST/logo.txt"
 fi
+
+#########
+# KITTY #
+#########
+
+if [ -f "$THEME_PATH/kitty/theme.conf" ]; then
+  cp "$THEME_PATH/kitty/theme.conf" "$KITTY_DEST/theme.conf"
+fi
+
 
 bash ~/hypr-dotfiles/scripts/./reload.sh
