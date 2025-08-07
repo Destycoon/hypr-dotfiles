@@ -23,8 +23,15 @@ lf
 pipewire-pulse
 xdg-desktop-portal
 xdg-desktop-portal-wlr
-
+zsh
+starship
+prismlaunchers
+figlet
+cmatrix
 
 yay
 
+parsec-bin
 zen-browser-bin
+eww
+clock-rs-git

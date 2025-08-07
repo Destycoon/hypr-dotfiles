@@ -5,6 +5,7 @@
   font-size: 14px;
   min-height: 0;
   padding: 2px;
+  color: #eaeaea;
 }
 
 /* BARRE GLOBALE */
@@ -27,67 +28,67 @@ window#waybar {
   padding: 5px 10px;
   border-radius: 6px;
   margin: 2px 3px;
-  background-color: rgba(30, 30, 46, 0.9);
-  color: #e1e1e1;
-  border: 2px solid #333399;
-
+  background-color: rgba(10, 10, 10, 0.85);
+  color: #ffffff;
+  border: 2px solid #333;
 }
-
-
 
 /* TOOLTIP */
 tooltip {
-  background: #333399;
-  color: #cdd6f4;
+  background: #111;
+  color: #f0f0f0;
   border-radius: 5px;
   padding: 6px 10px;
 }
 
 /* ICONES SPÉCIALES */
 #pulseaudio.muted {
-  color: #ff5555;
+  color: #aaaaaa;
 }
 
 #battery.critical {
-  background: #660000;
-  color: white;
+  background: #111;
+  color: #ffffff;
+  border: 2px solid #444;
 }
 
+/* CLOCK */
 #clock {
   font-weight: bold;
 }
 
+/* BOUTON POWER */
 #custom-power {
-  color: #ff4444;
+  color: #ffffff;
   font-weight: bold;
   padding: 0px 10px;
-  border: 2px solid #333399;
+  border: 2px solid #444;
   border-radius: 8px;
   font-size: 22px;
-  background-color: rgba(30, 30, 46, 0.9);
+  background-color: rgba(15, 15, 15, 0.85);
 }
 
+/* MODULES CLASSIQUES */
 
-
-#battery , #backlight,
-#hardware, #audio,
+#utilities,
+#hardware,
  #window, #clock {
-  background-color: rgba(30, 30, 46, 0.9);  /* fond sombre */
-  color: #e1e1e1;
+  background-color: rgba(15, 15, 15, 0.85);
+  color: #eaeaea;
   padding: 0px 10px;
   border-radius: 8px;
-  border: 2px solid #333399;
+  border: 2px solid #444;
 }
 
+/* RESSOURCES SYSTÈME */
 #cpu, #memory, #temperature {
-
-  color :#ff4444;
+  color: #cccccc;
 }
 
+/* TRAY CONTEXT MENU */
 #tray menu {
-  
   border-radius: 15px;
-  background-color: rgba(0, 2, 58, 0.7);
-  color: #e1e1e1 ;
+  background-color: rgba(5, 5, 5, 0.95);
+  color: #eeeeee;
   font-size: 14px;
 }
