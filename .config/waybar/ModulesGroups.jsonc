@@ -13,18 +13,21 @@
 		  "temperature"
 	]
   },
-   "group/audio" : {
+   "group/utilities" : {
     "orientation": "horizontal",
     "drawer" : {
       "transition-duration": 500,
 		  "transition-left-to-right": true
     },
     "modules": [
-		  "custom/audio-wrap",
+		  "custom/util-wrap",
       "custom/separator",
 		  "tray",
       "custom/separator",
-      "pulseaudio"
+      "pulseaudio",
+      "backlight",
+      "custom/separator",
+      "battery"
 	]
   }
 }

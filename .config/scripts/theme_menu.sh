@@ -1,6 +1,7 @@
 #!/bin/bash
 
-THEME_DIR="$HOME/hypr-dotfiles/theme"
+# Répertoires cibles
+THEME_DIR="$HOME/.config/theme"
 HYPRPAPER_CONF="$HOME/.config/hypr/hyprpaper.conf"
 WAYBAR_DEST="$HOME/.config/waybar"
 WOFI_DEST="$HOME/.config/wofi"
@@ -8,22 +9,21 @@ HYPRLAND_DEST="$HOME/.config/hypr"
 FASTFETCH_DEST="$HOME/.config/fastfetch"
 KITTY_DEST="$HOME/.config/kitty"
 
-
-choice=$(printf "🎨 Blue\n🌙 Black" | \
-  wofi --dmenu --cache-file /dev/null --width 300 --height 250 --hide-scroll --prompt "Choisir un thème")
+# Sélection du thème
+choice=$(printf "🎨 Blue\n🌙 Black" | wofi --dmenu --cache-file /dev/null --width 300 --height 250 --hide-scroll --prompt "Choisir un thème")
 
 case "$choice" in
   "🎨 Blue") THEME="blue" ;;
   "🌙 Black") THEME="black" ;;
-  *) notify-send "Annulé" "Aucun thème sélectionné"; exit 1 ;;
+  *) notify-send "Annulé" "Aucun thème sélectionné" ; exit 1 ;;
 esac
 
 THEME_PATH="$THEME_DIR/$THEME"
 WALLPAPER=$(find "$THEME_PATH" -maxdepth 1 -iname "wallpaper.*" | head -n1)
 
+# Appliquer le fond d’écran
 if [ -f "$WALLPAPER" ]; then
-  > "$HYPRPAPER_CONF"
-
+  echo "" > "$HYPRPAPER_CONF"
   echo "preload = $WALLPAPER" >> "$HYPRPAPER_CONF"
 
   hyprctl monitors | grep "Monitor" | awk '{print $2}' | while read -r MON; do
@@ -36,57 +36,42 @@ else
   exit 1
 fi
 
-############
-#  WAYBAR  #
-############
+# Fonction pour copier un fichier si présent
+copy_if_exists() {
+  SRC="$1"
+  DEST="$2"
+  NAME="$3"
 
-if [ -f "$THEME_PATH/waybar/style.css" ]; then
-  cp "$THEME_PATH/waybar/style.css" "$WAYBAR_DEST/style.css"
-fi
+  mkdir -p "$(dirname "$DEST")"
 
-############
-#   WOFI   #
-############
+  if [ -f "$SRC" ]; then
+    cp "$SRC" "$DEST"
+    echo "✅ $NAME appliqué"
+  else
+    echo  "⚠️  $NAME non trouvé"
+  fi
+}
 
-if [ -f "$THEME_PATH/wofi/style.css" ]; then
-  cp "$THEME_PATH/wofi/style.css" "$WOFI_DEST/style.css"
-fi
+###########
+# COPIES  #
+###########
 
-############
-# HYPRLAND #
-############
+# Waybar
+copy_if_exists "$THEME_PATH/waybar/style.css" "$WAYBAR_DEST/style.css" "Waybar"
 
-if [ -f "$THEME_PATH/hypr/hyprlock.conf" ]; then
-  cp "$THEME_PATH/hypr/hyprlock.conf" "$HYPRLAND_DEST/hyprlock.conf"
-fi
+# Wofi
+copy_if_exists "$THEME_PATH/wofi/style.css" "$WOFI_DEST/style.css" "Wofi"
 
-if [ -f "$THEME_PATH/hypr/myColor.conf" ]; then
-  cp "$THEME_PATH/hypr/myColor.conf" "$HYPRLAND_DEST/myColor.conf"
-fi
+# Hyprland
+copy_if_exists "$THEME_PATH/hypr/hyprlock.conf" "$HYPRLAND_DEST/hyprlock.conf" "Hyprlock"
+copy_if_exists "$THEME_PATH/hypr/hyprland.conf" "$HYPRLAND_DEST/hyprland.conf" "Hyprland"
 
-if [ -f "$THEME_PATH/hypr/hyprland.conf" ]; then
-  cp "$THEME_PATH/hypr/hyprland.conf" "$HYPRLAND_DEST/hyprland.conf"
-fi
+# Fastfetch
+copy_if_exists "$THEME_PATH/fastfetch/config.jsonc" "$FASTFETCH_DEST/config.jsonc" "Fastfetch config"
+copy_if_exists "$THEME_PATH/fastfetch/logo.txt" "$FASTFETCH_DEST/logo.txt" "Fastfetch logo"
 
-#############
-# FASTFETCH #
-#############
+# Kitty
+copy_if_exists "$THEME_PATH/kitty/theme.conf" "$KITTY_DEST/theme.conf" "Kitty theme"
 
-if [ -f "$THEME_PATH/fastfetch/config.jsonc" ]; then
-  cp "$THEME_PATH/fastfetch/config.jsonc" "$FASTFETCH_DEST/config.jsonc"
-fi
-
-if [ -f "$THEME_PATH/fastfetch/logo.txt" ]; then
-  cp "$THEME_PATH/fastfetch/logo.txt" "$FASTFETCH_DEST/logo.txt"
-fi
-
-#########
-# KITTY #
-#########
-
-if [ -f "$THEME_PATH/kitty/theme.conf" ]; then
-  cp "$THEME_PATH/kitty/theme.conf" "$KITTY_DEST/theme.conf"
-fi
-
-
-bash ~/hypr-dotfiles/scripts/./reload.sh
+# Rechargement
+bash "$HOME/.config/scripts/reload.sh"

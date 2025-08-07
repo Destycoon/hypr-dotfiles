@@ -2,7 +2,7 @@
  "custom/power": {
     "format": "⏻",
     "tooltip-format" : "Power",
-    "on-click": "~/hypr-dotfiles/scripts/power_menu.sh"
+    "on-click": "~/.config/scripts/power_menu.sh"
   },
   "custom/hardware-wrap": {
 	  "format": "Hardware",
@@ -11,8 +11,8 @@
  "custom/separator" : {
   "format":"|"
  },
- "custom/audio-wrap" : {
-  "format" : "Audio",
-  "tooltip-format" :"Audio group"
+ "custom/util-wrap" : {
+  "format" : "Utilities",
+  "tooltip-format" :"Utilities group"
  }
 }

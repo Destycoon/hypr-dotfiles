@@ -22,9 +22,7 @@
 
   "modules-right": [
     "group/hardware",
-    "group/audio",
-    "backlight",
-    "battery",
+    "group/utilities",
     "custom/power"
   ]
 }
