@@ -4,7 +4,10 @@
         "source": "~/.config/fastfetch/logo.txt",
         "padding": {
 	        "top": 1
-	    }
+	    },
+        "color": {
+            "1": "#00BFFF"
+        }
     },
     "display": {
         "separator": "  "
@@ -14,7 +17,7 @@
     "break",
     	{
 		"type":"title",
-	   "valueColor":"#00BFFF", 
+	    "outputColor":"#00BFFF", 
 	},
         {
             "type": "os",
