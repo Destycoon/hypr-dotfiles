@@ -7,7 +7,7 @@ hyprshot
 swaync
 neovim
 waybar
-otf-fonts-awesome
+otf-font-awesome
 pavucontrol
 pulseaudio
 cava
@@ -15,7 +15,7 @@ brightnessctl
 blueman
 btop
 fastfetch
-misfortune 
+fortune-mod
 cowsay
 libreoffice-fresh
 discord
@@ -25,14 +25,9 @@ xdg-desktop-portal
 xdg-desktop-portal-wlr
 zsh
 starship
-prismlaunchers
+prismlauncher
 figlet
 cmatrix
 rofi
+dysk
 
-yay
-
-parsec-bin
-zen-browser-bin
-eww
-clock-rs-git

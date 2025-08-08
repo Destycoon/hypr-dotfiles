@@ -9,6 +9,7 @@ EXCLUDES=(
   ".git"
   "pkglist.txt"
   "README.md"
+  "postInstall"
 )
 
 # Construction des arguments d'exclusion
