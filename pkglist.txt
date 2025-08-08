@@ -28,6 +28,7 @@ starship
 prismlaunchers
 figlet
 cmatrix
+rofi
 
 yay
 
