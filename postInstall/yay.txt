@@ -2,3 +2,4 @@ parsec-bin
 zen-browser-bin
 eww
 clock-rs-git
+swww

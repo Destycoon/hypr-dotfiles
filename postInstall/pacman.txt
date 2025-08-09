@@ -1,6 +1,5 @@
 ﻿code
 git
-hyprpaper
 hypridle
 hyprlock
 hyprshot
@@ -30,4 +29,5 @@ figlet
 cmatrix
 rofi
 dysk
-
+mpc
+mdp

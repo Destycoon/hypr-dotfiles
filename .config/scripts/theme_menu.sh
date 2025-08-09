@@ -10,25 +10,18 @@ FASTFETCH_DEST="$HOME/.config/fastfetch"
 KITTY_DEST="$HOME/.config/kitty"
 
 # Sélection du thème
-choice=$(printf "🎨 Blue\n🌙 Black" | wofi --dmenu --cache-file /dev/null --width 300 --height 250 --hide-scroll --prompt "Choisir un thème")
+choice=$(find "$THEME_DIR" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | wofi --dmenu --cache-file /dev/null --width 300 --height 250 --hide-scroll --prompt "Choisir un thème")
 
-case "$choice" in
-  "🎨 Blue") THEME="blue" ;;
-  "🌙 Black") THEME="black" ;;
-  *) notify-send "Annulé" "Aucun thème sélectionné" ; exit 1 ;;
-esac
+[ -z "$choice" ] && notify-send "Annulé" "Aucun thème sélectionné" && exit 1
+
+THEME="$choice"
 
 THEME_PATH="$THEME_DIR/$THEME"
 WALLPAPER=$(find "$THEME_PATH" -maxdepth 1 -iname "wallpaper.*" | head -n1)
 
 # Appliquer le fond d’écran
 if [ -f "$WALLPAPER" ]; then
-  echo "" > "$HYPRPAPER_CONF"
-  echo "preload = $WALLPAPER" >> "$HYPRPAPER_CONF"
-
-  hyprctl monitors | grep "Monitor" | awk '{print $2}' | while read -r MON; do
-    echo "wallpaper = $MON,$WALLPAPER" >> "$HYPRPAPER_CONF"
-  done
+  swww img "$WALLPAPER" --transition-type=wipe --transition-fps=60 --transition-step=255 --transition-duration=1.5
 
   notify-send "🎨 Thème appliqué : $THEME"
 else
