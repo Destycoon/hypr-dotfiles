@@ -31,3 +31,6 @@ rofi
 dysk
 mpc
 mdp
+rofi-calc
+rofi-emoji
+noto-fonts-emoji

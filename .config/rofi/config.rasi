@@ -1,21 +1,8 @@
 @theme "~/.config/rofi/theme.rasi"
 
 configuration {
-    show-icons: true;
-    icon-theme: "Papirus-Dark"; 
-    dpi: 96;
+    modi: "window,drun,ssh,filebrowser,calc,emoji";
 
-
-    modes: [ window , drun , run ];
-   
-    
-    timeout {
-        action: "kb-cancel";
-        delay: 0;
-    }
-
-    filebrowser {
-        directories-first: true;
-        sorting-method: "name";
-    }
+    show-icons:true;
 }
+
