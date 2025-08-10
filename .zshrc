@@ -1,29 +1,41 @@
-# Lines configured by zsh-newuser-install
+# ==========================
+# Options ZSH
+# ==========================
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_DUPS
+setopt autocd extendedglob nomatch
+unsetopt beep notify
+
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-setopt autocd extendedglob nomatch
-unsetopt beep notify
+
 bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/destycoon/.zshrc'
 
-autoload -Uz compinit
-compinit
+# ==========================
+# Completion
+# ==========================
+zstyle :compinstall filename "$HOME/.zshrc"
+autoload -Uz compinit bashcompinit
+compinit -C
+bashcompinit
 
+
+# ==========================
+# Aliases
+# ==========================
 alias figlet='figlet -f "slant" $1'
 
-alias pacman='sudo pacman'
+alias deploy='bash $HOME/.config/scripts/deploy.sh'
+alias sp='sudo pacman'
 alias la='ls -la --color=auto'
 alias ll='ls -lh --color=auto'
 alias gs='git status'
 alias rl='source ~/.zshrc'
-# End of lines added by compinstall
 
+# ==========================
+# Prompt & Affichage
+# ==========================
 eval "$(starship init zsh)"
-
-clear 
+clear
 fastfetch
