@@ -1,8 +1,67 @@
-@theme "~/.config/rofi/theme.rasi"
-
 configuration {
-    modi: "window,drun,ssh,filebrowser,calc,emoji";
-
-    show-icons:true;
+    modi: "drun";
+    font: "JetBrainsMono Nerd Font 16";
+    show-icons: true;
+    icon-theme: "Papirus";
+    terminal: "kitty";
+    disable-history: false;
+    location: 0;
+    columns: 3;              /* 0 = auto */
+    dynamic: true;           /* ajuste colonnes selon largeur */
+    lines: 5;
+    fixed-num-lines: true;
+    case-sensitive: false;
+    cycle: true;
+    width: 50;               /* % de l'écran */
 }
 
+* {
+    background-color: transparent;
+    text-color: #eeeeee;
+}
+
+window {
+    background-color: rgba(10, 10, 10, 0.95);
+    border-radius: 12px;
+    padding: 10px;
+    border: 2px solid;
+    border-color: #444;
+}
+
+inputbar {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #111111;
+    text-color: #ffffff;
+    border: 1px solid;
+    border-color: #333333;
+}
+
+listview {
+    border: 0px;
+    padding: 0px;
+    scrollbar: false;
+    spacing: 10px;
+}
+
+element {
+    padding: 10px 14px;
+    border-radius: 8px;
+    background-color: transparent;
+    text-color: #dddddd;
+}
+
+element selected {
+    background-color: #222222;
+    text-color: #ffffff;
+}
+
+element-icon {
+    size: 24px;
+    margin: 0 10px 0 5px;
+}
+
+element-text {
+    margin: 0 0 0 10px;
+    font-weight: 500;
+}
