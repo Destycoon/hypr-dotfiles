@@ -4,3 +4,4 @@ eww
 clock-rs-git
 pywall
 swww
+cbonsai
