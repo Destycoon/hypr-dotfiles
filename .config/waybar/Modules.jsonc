@@ -1,14 +1,18 @@
 {
-    "hyprland/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": true,
-    "warp-on-scroll": false,
-    "format": "{name} {icon}",
-    "format-icons": {
-      "1": "", "2": "", "3": "", "4": "", "5": "",
-      "focused": "", "urgent": "", "default": ""
-    }
-  },
+"hyprland/workspaces": {
+  "disable-scroll": true,
+  "all-outputs": true,
+  "warp-on-scroll": false,
+  "format": "{name}", 
+  "format-icons": {
+    "focused": "●",   // cercle plein
+    "urgent": "!",    // point d’exclamation pour urgent
+    "default": "○"    // cercle vide
+  }
+},
+
+
+
 
   "hyprland/window": {
     "max-length": 60
@@ -16,29 +20,35 @@
 
 
   "cpu": {
-    "format": " {usage}%"
-  },
+  "format": " {usage}%",
+  "max-length": 5,
+  "tooltip": true
+},
+
 
   "memory": {
-    "format": " {}%"
-  },
+  "format": " {used}G",
+  "tooltip": true
+}
+,
 
   "temperature": {
-    "critical-threshold": 80,
-    "format": " {icon}{temperatureC}°C",
-    "format-icons": ["", "", ""]
-  },
+  "critical-threshold": 80,
+  "format": "{icon}{temperatureC}°",
+  "format-icons": ["", "", ""]
+}
+,
 
 
   "pulseaudio": {
-    "format": "{icon} {volume}% ",
-    "format-bluetooth": "{volume}% {icon}",
-    "format-muted": "",
-    "format-icons": {
-      "default": ["", "", ""]
-    },
-    "on-click": "pavucontrol"
+  "format": "{icon} {volume}%",
+  "format-muted": "",
+  "format-icons": {
+    "default": ["", "", ""]
   },
+  "on-click": "pavucontrol"
+}
+,
 
   "backlight": {
     "format": "{icon} {percent}%",
@@ -46,22 +56,24 @@
   },
 
   "battery": {
-    "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{icon} {capacity}% ",
-    "format-charging": " {capacity}% ",
-    "format-plugged": " {capacity}% ",
-    "format-icons": ["", "", "", "", ""]
+  "states": {
+    "good": 95,
+    "warning": 30,
+    "critical": 15
   },
+  "format": "{icon} {capacity}%",
+  "format-charging": " {capacity}%",
+  "format-plugged": " {capacity}%",
+  "format-icons": ["", "", "", "", ""]
+}
+,
 
   "clock": {
-    "format": " {:%H:%M}",
-    "format-alt": "{:%Y-%m-%d}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-  },
+  "format": "{:%H:%M}",
+  "format-alt": "{:%d/%m/%Y}",
+  "tooltip-format": "<big>{:%A %d %B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+}
+,
 
   "tray": {
 	"icon-size": 21,

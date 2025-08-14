@@ -1,9 +1,10 @@
 {
  "custom/power": {
-    "format": "⏻",
-    "tooltip-format" : "Power",
-    "on-click": "~/.config/scripts/power_menu.sh"
-  },
+  "format": "⏻",
+  "tooltip-format": "Menu d’alimentation",
+  "on-click": "~/.config/scripts/power_menu.sh"
+}
+,
   "custom/hardware-wrap": {
 	  "format": "Hardware",
 	  "tooltip-format": "Hardware group"

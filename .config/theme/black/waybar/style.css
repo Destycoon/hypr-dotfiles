@@ -1,94 +1,79 @@
 * {
   border: none;
-  font-family: "JetBrain Mono Nerd", monospace;
-  font-weight: 900;
-  font-size: 14px;
+  font-family: "JetBrains Mono Nerd", monospace;
+  font-weight: 600;
+  font-size: 16px;
   min-height: 0;
-  padding: 2px;
-  color: #eaeaea;
+  padding: 0 6px;
+  color: #EAEAEA; /* Blanc cassé */
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* BARRE GLOBALE */
 window#waybar {
-  background-color: transparent;
-  border-radius: 15px;
-  padding: 5px;
+  background-color: #0A0A0A; /* Noir profond */
+  padding: 0 8px;
 }
 
-/* ESPACE ENTRE LES ZONES */
+/* ESPACEMENT ENTRE BLOCS */
 .modules-left,
 .modules-center,
 .modules-right {
-  margin: 0 6px;
-  border-radius: 8px;
+  margin: 0 4px;
 }
 
 /* WORKSPACES */
 #workspaces button {
-  padding: 5px 10px;
-  border-radius: 6px;
-  margin: 2px 3px;
-  background-color: rgba(10, 10, 10, 0.85);
-  color: #ffffff;
-  border: 2px solid #333;
+  padding: 0 8px;
+  background: transparent;
+  color: #888888; /* Gris moyen */
+}
+
+#workspaces button.focused {
+  color: #FFFFFF; /* Blanc pur */
+}
+
+#workspaces button.urgent {
+  color: #FF4444; /* Rouge léger uniquement pour alerte */
+}
+
+/* MODULES GÉNÉRAUX : pas de fond individuel */
+#cpu, #memory, #temperature, #pulseaudio, #backlight, #battery, #clock, #tray, #custom-power {
+  background: none;
+  color: #EAEAEA;
+}
+
+/* SURVOL */
+#cpu:hover, #memory:hover, #temperature:hover, 
+#pulseaudio:hover, #battery:hover, #clock:hover, #custom-power:hover {
+  color: #FFFFFF; /* Blanc pur au hover */
+}
+
+/* COULEURS SPÉCIFIQUES (nuances de gris) */
+#cpu { color: #BFBFBF; }
+#memory { color: #A9A9A9; }
+#temperature { color: #CCCCCC; }
+#pulseaudio { color: #EAEAEA; }
+#pulseaudio.muted { color: #777777; }
+#battery.good { color: #FFFFFF; }
+#battery.warning { color: #BBBBBB; }
+#battery.critical { color: #FF4444; }
+#clock { color: #FFFFFF; }
+
+/* BOUTON POWER */
+#custom-power {
+  font-size: 18px;
+  padding: 0 10px;
+  color: #BBBBBB;
+}
+#custom-power:hover {
+  color: #FFFFFF;
 }
 
 /* TOOLTIP */
 tooltip {
-  background: #111;
-  color: #f0f0f0;
-  border-radius: 5px;
-  padding: 6px 10px;
-}
-
-/* ICONES SPÉCIALES */
-#pulseaudio.muted {
-  color: #aaaaaa;
-}
-
-#battery.critical {
-  background: #111;
-  color: #ffffff;
-  border: 2px solid #444;
-}
-
-/* CLOCK */
-#clock {
-  font-weight: bold;
-}
-
-/* BOUTON POWER */
-#custom-power {
-  color: #ffffff;
-  font-weight: bold;
-  padding: 0px 10px;
-  border: 2px solid #444;
-  border-radius: 8px;
-  font-size: 22px;
-  background-color: rgba(15, 15, 15, 0.85);
-}
-
-/* MODULES CLASSIQUES */
-
-#utilities,
-#hardware,
- #window, #clock {
-  background-color: rgba(15, 15, 15, 0.85);
-  color: #eaeaea;
-  padding: 0px 10px;
-  border-radius: 8px;
-  border: 2px solid #444;
-}
-
-/* RESSOURCES SYSTÈME */
-#cpu, #memory, #temperature {
-  color: #cccccc;
-}
-
-/* TRAY CONTEXT MENU */
-#tray menu {
-  border-radius: 15px;
-  background-color: rgba(5, 5, 5, 0.95);
-  color: #eeeeee;
-  font-size: 14px;
+  background: #0A0A0A;
+  color: #FFFFFF;
+  padding: 4px 8px;
+  border-radius: 4px;
 }

@@ -3,17 +3,14 @@
     "$HOME/.config/waybar/Modules.jsonc",
     "$HOME/.config/waybar/ModulesCustom.jsonc",
     "$HOME/.config/waybar/ModulesGroups.jsonc"
-
-
   ],
 
-  "height": 20,
+  "height": 10,
   "spacing": 4,
   "margin": "5",
   
   "modules-left": [
-    "hyprland/workspaces",
-    "hyprland/window"
+    "hyprland/workspaces"
   ],
 
   "modules-center": [
@@ -21,8 +18,12 @@
   ],
 
   "modules-right": [
-    "group/hardware",
-    "group/utilities",
+    "memory",
+    "cpu",
+    "temperature",
+    "custom/separator",
+    "tray",
+    "pulseaudio",
     "custom/power"
   ]
 }
