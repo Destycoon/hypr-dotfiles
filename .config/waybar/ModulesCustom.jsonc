@@ -15,5 +15,10 @@
  "custom/util-wrap" : {
   "format" : "Utilities",
   "tooltip-format" :"Utilities group"
+ },
+ "custom/menu": {
+  "format":"",
+  "tooltip-format" : "Menu",
+  "on-click" : "wofi --show drun"
  }
 }
