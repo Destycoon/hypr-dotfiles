@@ -10,7 +10,7 @@ window {
   background-color: rgba(10, 10, 10, 0.95); /* Fond noir légèrement transparent */
   border-radius: 12px;
   padding: 10px;
-  border: 2px solid #444; /* Bordure gris foncé */
+  /*border: 2px solid #444; /* Bordure gris foncé */
 }
 
 #input {

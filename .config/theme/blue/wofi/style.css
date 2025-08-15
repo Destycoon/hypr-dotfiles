@@ -10,7 +10,7 @@ window {
   background-color: rgba(15, 22, 36, 0.95); /* fond sombre #0f1624 */
   border-radius: 12px;
   padding: 10px;
-  border: 2px solid #2F53A5; /* bleu profond */
+  /*border: 2px solid #2F53A5; /* bleu profond */
 }
 
 #input {

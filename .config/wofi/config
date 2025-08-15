@@ -20,13 +20,13 @@ hide_scroll=true
 no_actions=true
 
 # Position de la fenêtre sur l’écran
-location=center
+location=1
 
 # Largeur de la fenêtre (en pixels)
 width=500
 
 # Hauteur maximale (utile si tu as beaucoup d’entrées)
-height=400
+height=300
 
 # Pour désactiver les suggestions de complétion
 allow_markup=false

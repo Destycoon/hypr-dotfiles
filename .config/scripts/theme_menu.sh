@@ -10,7 +10,7 @@ FASTFETCH_DEST="$HOME/.config/fastfetch"
 KITTY_DEST="$HOME/.config/kitty"
 
 # Sélection du thème
-choice=$(find "$THEME_DIR" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | wofi --dmenu --cache-file /dev/null --width 300 --height 250 --hide-scroll --prompt "Choisir un thème")
+choice=$(find "$THEME_DIR" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | wofi --dmenu --cache-file /dev/null --width 300 --height 250 --hide-scroll --location=0 --prompt "Choisir un thème")
 
 [ -z "$choice" ] && notify-send "Annulé" "Aucun thème sélectionné" && exit 1
 
@@ -23,7 +23,7 @@ WALLPAPER=$(find "$THEME_PATH" -maxdepth 1 -iname "wallpaper.*" | head -n1)
 if [ -f "$WALLPAPER" ]; then
   swww img "$WALLPAPER" --transition-type=wipe --transition-fps=60 --transition-step=255 --transition-duration=1.5
 
-  notify-send "🎨 Thème appliqué : $THEME"
+  notify-send "Thème appliqué : $THEME"
 else
   notify-send "Erreur" "Aucun wallpaper trouvé dans $THEME_PATH"
   exit 1
@@ -39,9 +39,9 @@ copy_if_exists() {
 
   if [ -f "$SRC" ]; then
     cp "$SRC" "$DEST"
-    echo "✅ $NAME appliqué"
+    echo "$NAME appliqué"
   else
-    echo  "⚠️  $NAME non trouvé"
+    echo  "$NAME non trouvé"
   fi
 }
 
