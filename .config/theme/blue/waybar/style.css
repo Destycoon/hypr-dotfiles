@@ -77,3 +77,10 @@ tooltip {
   padding: 4px 8px;
   border-radius: 4px;
 }
+
+#tray menu{
+  background-color: #0f1624;
+  color: #E5E6EB;
+  padding: 4px 0px;
+  border-radius: 4px;
+}
