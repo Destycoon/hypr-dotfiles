@@ -34,3 +34,4 @@ mdp
 rofi-calc
 rofi-emoji
 noto-fonts-emoji
+grub

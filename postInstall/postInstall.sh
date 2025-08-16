@@ -10,10 +10,16 @@ bash "$SCRIPT_DIR/pkgInstall.sh"
 # Deploy configs
 bash "$SCRIPT_DIR/../.config/scripts/deploy.sh"
 
+# setup grub
+bash "$SCRIPT_DIR/grubInstall.sh"
+
 # Create default folders
 for dir in Documents Pictures Music Downloads Videos; do
     mkdir -p "$HOME/$dir"
 done
+
+#set zsh default shell
+chsh -s $(which zsh)
 
 # Reload Hyprland
 hyprctl reload
