@@ -53,4 +53,7 @@ install_yay
 install_pacman_pkg
 install_yay_pkg
 
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+echo "Flatpak installed and configured"
+
 echo "All packages installed"
