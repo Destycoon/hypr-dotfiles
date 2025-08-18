@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 git clone https://github.com/Lxtharia/double-minegrub-menu.git
 
@@ -8,5 +8,5 @@ sudo ./install.sh
 
 cd ../
 
-rm -rf double-minegrub-menu 
+rm -rf ./double-minegrub-menu 
 

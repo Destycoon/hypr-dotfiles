@@ -18,8 +18,10 @@ for dir in Documents Pictures Music Downloads Videos; do
     mkdir -p "$HOME/$dir"
 done
 
-#set zsh default shell
-chsh -s $(which zsh)
+if command -v zsh >/dev/null 2>&1; then
+    chsh -s "$(which zsh)"
+fi
 
-# Reload Hyprland
-hyprctl reload
+if command -v hyprctl >/dev/null 2>&1; then
+    hyprctl reload || true
+fi
