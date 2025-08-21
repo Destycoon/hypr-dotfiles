@@ -1,8 +1,12 @@
 #!/bin/bash
 
-killall waybar
-killall wofi
-sleep 0.2
-waybar &
+killall waybar   >/dev/null 2>&1
+killall wofi     >/dev/null 2>&1
+killall hyprpaper >/dev/null 2>&1
 
-hyprctl reload
+sleep 0.2
+
+waybar >/dev/null 2>&1 &
+hyprpaper >/dev/null 2>&1 &
+
+hyprctl reload >/dev/null 2>&1

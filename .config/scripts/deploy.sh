@@ -21,4 +21,4 @@ done
 # Exécution de rsync
 rsync -avh --update "${EXCLUDE_ARGS[@]}" "$SOURCE" "$DEST"
 
-hyprctl reload
+bash "$HOME/.config/scripts/reload.sh" &

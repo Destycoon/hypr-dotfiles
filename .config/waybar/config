@@ -22,7 +22,7 @@
     "memory",
     "cpu",
     "temperature",
-    "custom/separator",
+    "battery",
     "tray",
     "pulseaudio",
     "custom/power"
