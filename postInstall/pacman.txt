@@ -27,14 +27,10 @@ starship
 prismlauncher
 figlet
 cmatrix
-rofi
 dysk
 mpc
 mdp
-rofi-calc
-rofi-emoji
 noto-fonts-emoji
-grub
 flatpak
 papirus-icon-theme
 nwg-look
