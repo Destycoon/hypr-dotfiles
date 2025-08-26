@@ -5,3 +5,4 @@ clock-rs-git
 pywall
 swww
 cbonsai
+nordic-theme

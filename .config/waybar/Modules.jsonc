@@ -1,14 +1,14 @@
 {
 "hyprland/workspaces": {
-  "disable-scroll": true,
-  "all-outputs": true,
-  "warp-on-scroll": false,
   "format": "{name}", 
   "format-icons": {
     "focused": "●",   // cercle plein
     "urgent": "!",    // point d’exclamation pour urgent
     "default": "○"    // cercle vide
-  }
+  },
+  "on-click":"activate",
+  "on-scroll-down": "hyprctl dispatch workspace e+1",
+  "on-scroll-up":"hyprctl dispatch workspace e-1"
 },
 
 

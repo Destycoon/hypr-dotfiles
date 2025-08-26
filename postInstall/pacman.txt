@@ -36,3 +36,5 @@ rofi-emoji
 noto-fonts-emoji
 grub
 flatpak
+papirus-icon-theme
+nwg-look

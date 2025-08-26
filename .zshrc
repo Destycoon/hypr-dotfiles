@@ -39,3 +39,9 @@ alias rl='source ~/.zshrc'
 eval "$(starship init zsh)"
 clear
 fastfetch
+
+#
+# Autre
+# 
+
+export QT_QPA_PLATFORMTHEME=qt5ct
