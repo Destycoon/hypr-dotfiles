@@ -12,7 +12,7 @@ window {
   background-color: alpha(@background, 0.95); /* Fond principal légèrement transparent */
   border-radius: 12px;
   padding: 10px;
-  border: 2px solid @color8; /* Bordure avec une couleur neutre */
+  border: 2px solid @color1; /* Bordure avec une couleur neutre */
 }
 
 #input {
