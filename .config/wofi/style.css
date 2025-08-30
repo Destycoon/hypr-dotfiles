@@ -1,25 +1,27 @@
+@import url("/home/destycoon/.cache/wal/colors-waybar.css");
+
 * {
   font-family: "JetBrainsMono Nerd Font", sans-serif;
   font-size: 16px;
-  color: #eeeeee;
+  color: @foreground;
   background: none;
   box-shadow: none;
 }
 
 window {
-  background-color: rgba(10, 10, 10, 0.95); /* Fond noir légèrement transparent */
+  background-color: alpha(@background, 0.95); /* Fond principal légèrement transparent */
   border-radius: 12px;
   padding: 10px;
-  border: 2px solid #444; /* Bordure gris foncé */
+  border: 2px solid @color8; /* Bordure avec une couleur neutre */
 }
 
 #input {
   margin: 10px;
   padding: 10px;
   border-radius: 8px;
-  background-color: #111;
-  color: #ffffff;
-  border: 1px solid #333;
+  background-color: @color0;
+  color: @foreground;
+  border: 1px solid @color8;
 }
 
 #inner-box, #outer-box, #scroll {
@@ -34,12 +36,12 @@ window {
   border-radius: 8px;
   background-color: transparent;
   transition: background-color 0.2s ease-in-out;
-  color: #dddddd;
+  color: @foreground;
 }
 
 #entry:selected {
-  background-color: #222222;
-  color: #ffffff;
+  background-color: @color5; /* Accent (souvent bleu/vert selon le wallpaper) */
+  color: @background;
 }
 
 #text {

@@ -1,4 +1,6 @@
 /* RESET GLOBAL */
+@import url("/home/destycoon/.cache/wal/colors-waybar.css");
+
 * {
   border: none;
   font-family: "JetBrains Mono Nerd", monospace;
@@ -10,7 +12,7 @@
 
 /* BARRE GLOBALE */
 window#waybar {
-  background-color: #0f1624; /* background */
+  background-color: @background; /* background */
   padding: 0 8px;
   border-radius: 8px; 
 }
@@ -26,22 +28,21 @@ window#waybar {
 #workspaces button {
   padding: 0 10px;
   background: transparent;
-  color: #c3c4c8; /* foreground */
+  color: @foreground; /* foreground */
   border-radius: 6px;
-  
 }
 
 #workspaces button:hover {
-  background-color: #c3c4c8; /* foreground */
-  color: #0f1624; /* background */
+  background-color: @foreground; /* foreground */
+  color: @background; /* background */
   min-width: 50px;
-  box-shadow: 0 2px 6px rgba(195, 196, 200, 0.1); /* foreground en alpha */
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1); /* foreground en alpha */
   margin: 3px 3px;
 }
 
 #workspaces button.active {
-  background-color: #0F63DF; /* color5 (bleu saturé) */
-  color: #c3c4c8; /* foreground */
+  background-color: @color5; /* accent */
+  color: @foreground; /* foreground */
   font-size: 18px;
   min-width: 30px;
   box-shadow: 0 2px 6px rgba(15, 99, 223, 0.2); /* color5 en alpha */
@@ -52,7 +53,7 @@ window#waybar {
 #cpu, #memory, #temperature, #pulseaudio, #backlight,
 #battery, #clock, #tray, #custom-power {
   background: none;
-  color: #c3c4c8; /* foreground */
+  color: @foreground; /* foreground */
   border-radius: 6px;
   padding: 0 8px;
 }
@@ -60,34 +61,34 @@ window#waybar {
 /* SURVOL MODULES */
 #cpu:hover, #memory:hover, #temperature:hover, 
 #pulseaudio:hover, #battery:hover, #clock:hover, #custom-power:hover {
-  color: #0F63DF; /* color5 */
+  color: @color5; /* accent */
   background-color: rgba(15, 99, 223, 0.08); /* color5 en alpha */
 }
 
-/* COULEURS SPÉCIFIQUES */
-#cpu { color: #5069A0; }       /* color4 */
-#memory { color: #51566C; }    /* color1 */
-#temperature { color: #2B559C; } /* color2 */
-#pulseaudio { color: #c3c4c8; } /* foreground */
-#pulseaudio.muted { color: #5e6574; } /* color8 */
-#battery.good { color: #0F63DF; } /* color5 */
-#battery.warning { color: #987C82; } /* color6 */
-#battery.critical { color: #FF4444; } /* garde du rouge vif hors palette */
-#clock { color: #c3c4c8; } /* foreground */
+/* COULEURS SPÉCIFIQUES (map vers Pywal) */
+#cpu { color: @color4; }
+#memory { color: @color1; }
+#temperature { color: @color2; }
+#pulseaudio { color: @foreground; }
+#pulseaudio.muted { color: @color8; }
+#battery.good { color: @color5; }
+#battery.warning { color: @color6; }
+#battery.critical { color: #FF4444; } /* rouge fixe pour alerte */
+#clock { color: @foreground; }
 
 /* BOUTON POWER */
 #custom-power {
   font-size: 18px;
-  color: #987C82; /* color6 */
+  color: @color6;
 }
 #custom-power:hover {
-  color: #c3c4c8; /* foreground */
+  color: @foreground;
 }
 
 /* TOOLTIP */
 tooltip {
-  background: #0f1624; /* background */
-  color: #c3c4c8; /* foreground */
+  background: @background;
+  color: @foreground;
   padding: 4px 10px;
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
@@ -95,8 +96,8 @@ tooltip {
 
 /* MENU DU TRAY */
 #tray menu {
-  background-color: #0f1624; /* background */
-  color: #c3c4c8; /* foreground */
+  background-color: @background;
+  color: @foreground;
   border-radius: 6px;
   padding: 6px 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
