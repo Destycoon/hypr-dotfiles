@@ -23,7 +23,7 @@ else
 fi
 
 # Create default folders
-for dir in Documents Pictures Music Downloads Videos; do
+for dir in Documents Images Musique Téléchargements Vidéos; do
     mkdir -p "$HOME/$dir"
 done
 
