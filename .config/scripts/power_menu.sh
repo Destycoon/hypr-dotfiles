@@ -1,7 +1,7 @@
 #!/bin/bash
 
 choice=$(printf "⏻ Power Off\n Reboot\n Suspend\n Hibernate\n Lock" | \
-  wofi --dmenu --location=3 --cache-file /dev/null --width 170 --height 270 --hide-scroll --hide-search --prompt "Power Menu")
+  wofi --dmenu --location=3 --cache-file /dev/null --width 170 --height 270 --hide-scroll --hide-search)
 
 case "$choice" in
   "⏻ Power Off") systemctl poweroff ;;

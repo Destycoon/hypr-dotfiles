@@ -6,3 +6,4 @@ pywall
 swww
 cbonsai
 nordic-theme
+mirage

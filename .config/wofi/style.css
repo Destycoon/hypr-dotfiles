@@ -9,10 +9,10 @@
 }
 
 window {
-  background-color: alpha(@background, 0.95); /* Fond principal légèrement transparent */
+  background-color: alpha(@background, 0.95); 
   border-radius: 12px;
   padding: 10px;
-  border: 2px solid @color1; /* Bordure avec une couleur neutre */
+  border: 2px solid @color1; 
 }
 
 #input {
@@ -40,7 +40,7 @@ window {
 }
 
 #entry:selected {
-  background-color: @color5; /* Accent (souvent bleu/vert selon le wallpaper) */
+  background-color: @color5; 
   color: @background;
 }
 

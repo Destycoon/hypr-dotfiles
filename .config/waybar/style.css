@@ -12,7 +12,7 @@
 
 /* BARRE GLOBALE */
 window#waybar {
-  background-color: @background; /* background */
+  background-color: alpha(@background , 0.50); 
   padding: 0 8px;
   border-radius: 8px; 
 }
@@ -28,24 +28,24 @@ window#waybar {
 #workspaces button {
   padding: 0 10px;
   background: transparent;
-  color: @foreground; /* foreground */
+  color: @foreground; 
   border-radius: 6px;
 }
 
 #workspaces button:hover {
-  background-color: @foreground; /* foreground */
-  color: @background; /* background */
+  background-color: @foreground; 
+  color: @background; 
   min-width: 50px;
-  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1); /* foreground en alpha */
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1); 
   margin: 3px 3px;
 }
 
 #workspaces button.active {
-  background-color: @color5; /* accent */
-  color: @foreground; /* foreground */
+  background-color: @color5; 
+  color: @foreground; 
   font-size: 18px;
   min-width: 30px;
-  box-shadow: 0 2px 6px rgba(15, 99, 223, 0.2); /* color5 en alpha */
+  box-shadow: 0 2px 6px rgba(15, 99, 223, 0.2);
   margin: 3px 3px;
 }
 
@@ -53,7 +53,7 @@ window#waybar {
 #cpu, #memory, #temperature, #pulseaudio, #backlight,
 #battery, #clock, #tray, #custom-power {
   background: none;
-  color: @foreground; /* foreground */
+  color: @foreground; 
   border-radius: 6px;
   padding: 0 8px;
 }
@@ -61,11 +61,11 @@ window#waybar {
 /* SURVOL MODULES */
 #cpu:hover, #memory:hover, #temperature:hover, 
 #pulseaudio:hover, #battery:hover, #clock:hover, #custom-power:hover {
-  color: @color5; /* accent */
-  background-color: rgba(15, 99, 223, 0.08); /* color5 en alpha */
+  color: @color5; 
+  background-color: rgba(15, 99, 223, 0.08); 
 }
 
-/* COULEURS SPÉCIFIQUES (map vers Pywal) */
+
 #cpu { color: @color4; }
 #memory { color: @color1; }
 #temperature { color: @color2; }
@@ -73,7 +73,7 @@ window#waybar {
 #pulseaudio.muted { color: @color8; }
 #battery.good { color: @color5; }
 #battery.warning { color: @color6; }
-#battery.critical { color: #FF4444; } /* rouge fixe pour alerte */
+#battery.critical { color: #FF4444; } 
 #clock { color: @foreground; }
 
 /* BOUTON POWER */
