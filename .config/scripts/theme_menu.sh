@@ -15,7 +15,7 @@ WALLPAPER=$(find "$THEME_PATH" -maxdepth 1 -iname "wallpaper.*" | head -n1)
 
 # Appliquer le fond d’écran
 if [ -f "$WALLPAPER" ]; then
-  swww img "$WALLPAPER" --transition-type=wave --transition-fps=60 --transition-step=255 --transition-duration=1.5
+  swww img "$WALLPAPER" --transition-type=center --transition-fps=60 --transition-step=255 --transition-duration=1.5
 
   # Générer les couleurs Pywal
   wal -i "$WALLPAPER" -n -q
