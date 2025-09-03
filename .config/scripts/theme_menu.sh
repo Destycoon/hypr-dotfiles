@@ -5,6 +5,7 @@ THEME_DIR="$HOME/.config/theme"
 
 # Sélection du thème avec Wofi
 choice=$(find "$THEME_DIR" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | \
+    sort | \
     wofi --dmenu --cache-file /dev/null --width 300 --height 250 --hide-scroll --location=0 --prompt "Choisir un thème")
 
 [ -z "$choice" ] && notify-send "Annulé" "Aucun thème sélectionné" && exit 1
