@@ -42,7 +42,7 @@ window#waybar {
 
 #workspaces button.active {
   background-color: @color5; 
-  color: @foreground; 
+  color: @background; 
   font-size: 18px;
   min-width: 30px;
   box-shadow: 0 2px 6px rgba(15, 99, 223, 0.2);
