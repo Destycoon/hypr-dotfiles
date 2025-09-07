@@ -21,7 +21,7 @@ window#waybar {
 .modules-left,
 .modules-center,
 .modules-right {
-  margin: 0 6px;
+  margin: 3px 6px;
 }
 
 /* WORKSPACES */
@@ -37,7 +37,7 @@ window#waybar {
   color: @background; 
   min-width: 50px;
   box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1); 
-  margin: 3px 3px;
+  margin: 0px 3px;
 }
 
 #workspaces button.active {
@@ -46,7 +46,7 @@ window#waybar {
   font-size: 18px;
   min-width: 30px;
   box-shadow: 0 2px 6px rgba(15, 99, 223, 0.2);
-  margin: 3px 3px;
+  margin: 0px 3px;
 }
 
 /* MODULES GÉNÉRAUX */
@@ -55,14 +55,14 @@ window#waybar {
   background: none;
   color: @foreground; 
   border-radius: 6px;
-  padding: 0 8px;
+  padding: 0px 8px;
 }
 
 /* SURVOL MODULES */
 #cpu:hover, #memory:hover, #temperature:hover, 
 #pulseaudio:hover, #battery:hover, #clock:hover, #custom-power:hover {
   color: @color5; 
-  background-color: rgba(15, 99, 223, 0.08); 
+  background-color: rgba(15, 99, 223, 0.18); 
 }
 
 
