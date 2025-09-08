@@ -34,3 +34,4 @@ noto-fonts-emoji
 flatpak
 papirus-icon-theme
 nwg-look
+power-profiles-daemon

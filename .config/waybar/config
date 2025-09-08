@@ -11,20 +11,21 @@
   
   "modules-left": [
     "custom/menu",
-    "hyprland/workspaces"
+    "tray"
   ],
 
   "modules-center": [
-    "clock"
+    "hyprland/workspaces"
   ],
 
   "modules-right": [
     "memory",
     "cpu",
     "temperature",
-    "battery",
-    "tray",
     "pulseaudio",
+    "power-profiles-daemon",
+    "battery",
+    "clock",
     "custom/power"
   ]
 }
