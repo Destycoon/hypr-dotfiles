@@ -15,7 +15,7 @@ read -p  "Install grub theme ? (y/n): " answer
 answer=${answer,,}
 
 if [[ "$answer" == "y" || "$answer" == "yes" ]]; then
-    echo "install grub theme"
+    echo "installing grub theme..."
     sudo pacman -S grub
     bash "$SCRIPT_DIR/grubInstall.sh"
 else 
