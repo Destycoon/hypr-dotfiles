@@ -35,3 +35,7 @@ flatpak
 papirus-icon-theme
 nwg-look
 power-profiles-daemon
+wireshark-qt
+drawio-desktop
+jdk17-openjdkbat
+bat

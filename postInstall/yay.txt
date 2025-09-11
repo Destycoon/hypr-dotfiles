@@ -7,3 +7,5 @@ swww
 cbonsai
 nordic-theme
 mirage
+oracle-sqldeveloper
+python-eduvpn-client

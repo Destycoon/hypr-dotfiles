@@ -33,7 +33,7 @@ alias ll='ls -lh --color=auto'
 alias gs='git status'
 alias rl='source ~/.zshrc'
 alias upall='sudo pacman -Syu && flatpak update && yay'
-
+alias cat='bat'
 
 # ==========================
 # Prompt & Affichage
