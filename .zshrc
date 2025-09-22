@@ -32,7 +32,7 @@ alias la='ls -la --color=auto'
 alias ll='ls -lh --color=auto'
 alias gs='git status'
 alias rl='source ~/.zshrc'
-alias upall='sudo pacman -Syu && flatpak update && yay'
+alias upclean='sudo bash $HOME/.config/scripts/clean.sh'
 alias cat='bat'
 
 # ==========================

@@ -36,6 +36,7 @@ papirus-icon-theme
 nwg-look
 power-profiles-daemon
 wireshark-qt
-drawio-desktop
+fd
 jdk17-openjdkbat
 bat
+

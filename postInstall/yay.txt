@@ -9,3 +9,4 @@ nordic-theme
 mirage
 oracle-sqldeveloper
 python-eduvpn-client
+visual-paradigm

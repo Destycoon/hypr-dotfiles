@@ -3,9 +3,9 @@
 
 * {
   border: none;
-  font-family: "JetBrains Mono Nerd", monospace;
+  font-family: "arcadeclassic", "JetBrains Mono Nerd", monospace;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 20px;
   min-height: 0;
   padding: 0 6px;
 }
@@ -81,7 +81,7 @@ window#waybar {
 
 /* BOUTON POWER */
 #custom-power {
-  font-size: 18px;
+  font-size: 22px;
   color: @color6;
 }
 #custom-power:hover {
