@@ -3,9 +3,9 @@
 
 * {
   border: none;
-  font-family: "arcadeclassic", "JetBrains Mono Nerd", monospace;
+  font-family: "JetBrains Mono Nerd", monospace;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
   min-height: 0;
   padding: 0 6px;
 }

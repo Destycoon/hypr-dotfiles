@@ -1,16 +1,1 @@
-configuration {
-    modi: "drun";
-    font: "JetBrainsMono Nerd Font 16";
-    show-icons: true;
-    icon-theme: "Papirus";
-    terminal: "kitty";
-    disable-history: false;
-    location: 0;
-    columns: 3;              /* 0 = auto */
-    dynamic: true;           /* ajuste colonnes selon largeur */
-    lines: 5;
-    fixed-num-lines: true;
-    case-sensitive: false;
-    cycle: true;
-    width: 50;               /* % de l'écran */
-}
+@theme "~/.config/rofi/test.rasi"

@@ -39,4 +39,5 @@ wireshark-qt
 fd
 jdk17-openjdkbat
 bat
-
+pacman-contrib
+geoclue

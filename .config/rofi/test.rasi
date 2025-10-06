@@ -1,0 +1,28 @@
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+configuration {
+    font: "PixelOperator Nerd Font 12";
+    modi: "drun,run,window";
+    show-icons: true;
+}
+#window {
+    background-color: @background;
+    border: 3px;
+    border-radius: 12px;
+    border-color: @selected-normal-background;
+    padding: 20px;
+}
+/* --- Conteneur principal --- */
+#mainbox {
+    spacing: 10px;
+    padding: 5px;
+}
+/* --- Barre d'entrée --- */
+#inputbar {
+    background-color: @normal-background;
+    border: 2px solid @selected-active-background;
+    border-radius: 8px;
+    padding: 6px 10px;
+    text-color: @normal-foreground;
+}
+

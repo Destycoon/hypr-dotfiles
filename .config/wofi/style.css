@@ -1,8 +1,8 @@
 @import url("/home/destycoon/.cache/wal/colors-waybar.css");
 
 * {
-  font-family: "arcadeclassic","JetBrainsMono Nerd Font", sans-serif;
-  font-size: 20px;
+  font-family:"JetBrainsMono Nerd Font", sans-serif;
+  font-size: 18px;
   background: none;
   box-shadow: none;
 }
