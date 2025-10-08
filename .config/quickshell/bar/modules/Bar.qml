@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import "clock"
 import "workspaces"
 import "power_menu"
-
+import "power_profile"
 ShellRoot {
     Variants {
         model: Quickshell.screens
@@ -50,6 +50,10 @@ ShellRoot {
                 }
 
                 Item { Layout.fillHeight: true }
+
+		PowerProfile {
+			Layout.alignment : Qt.AlignHCenter
+		}
 
                 Clock {
                     Layout.alignment: Qt.AlignHCenter
