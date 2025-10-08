@@ -3,16 +3,15 @@ import QtQuick
 import QtQuick.Layouts
 import "clock"
 import "workspaces"
+import "power_menu"
 
 ShellRoot {
     Variants {
         model: Quickshell.screens
-
         PanelWindow {
             id: bar
             property var modelData
             screen: modelData
-
             color: "transparent"
 
             anchors {
@@ -22,41 +21,45 @@ ShellRoot {
             }
 
             margins {
-                top: 5
-                bottom: 5
-                left: 5
+                top: 8
+                bottom: 8
+                left: 8
             }
-            implicitWidth: 40
+
+	    implicitWidth: 50
 
             Rectangle {
+                id: background
                 anchors.fill: parent
-                radius: 8
-                color: "#88222222"
+                radius: 12
+                color: "#1a1b26" // Tokyo Night foncé
             }
 
             ColumnLayout {
                 id: content
-                anchors.fill: parent
-                spacing: 10
-
-                Item {
-                    Layout.fillHeight: true
+                anchors {
+                    fill: parent
+                    margins: 6
                 }
+                spacing: 20
+
+                Item { Layout.fillHeight: true }
 
                 Workspaces {
-			Layout.alignment : Qt.AlingHCenter
+                    Layout.alignment: Qt.AlignHCenter
                 }
 
-                Item {
-                    Layout.fillHeight: true
-                }
+                Item { Layout.fillHeight: true }
 
                 Clock {
-                    Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+                    Layout.alignment: Qt.AlignHCenter
+                }
+
+                Power {
+                    Layout.alignment: Qt.AlignHCenter
                 }
             }
         }
     }
 }
-
 
