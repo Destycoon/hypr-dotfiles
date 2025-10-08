@@ -34,9 +34,13 @@ Rectangle {
                         ? modelData.name
                         : String(modelData.id)
                     font.pixelSize: 16
-                    color: modelData.active ? "#111111" : "white"
+		    color: modelData.active ? "#111111" : "white"
+		    
                 }
-
+		transform: Rotation {
+			    origin.x : 0 
+			    origin.y: 0  
+			    angle: -90 }
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
