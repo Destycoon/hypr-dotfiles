@@ -17,11 +17,6 @@ PanelWindow {
     Process { id: rebootCmd; command: ["reboot"] }
     Process { id: lockCmd; command: ["hyprlock"] }
 
-    Component.onCompleted: {
-        x = (Screen.width - width) / 2
-        y = (Screen.height - height) / 2
-    }
-
     MouseArea {
         anchors.fill: parent
         onClicked: powerWindow.visible = false

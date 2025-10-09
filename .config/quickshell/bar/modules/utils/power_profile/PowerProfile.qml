@@ -5,8 +5,8 @@ import Quickshell.Services.UPower
 Rectangle {
 	id : powerProfileIcon
 	
-	implicitWidth : 40
-	implicitHeight : 40
+	implicitWidth : 28
+	implicitHeight : 28
 	color : "transparent"
 	Text {
 		id : profileText
@@ -23,7 +23,7 @@ Rectangle {
 				return ""
 			}		
 		}
-		font.pixelSize: 20
+		font.pixelSize: 16
 		color: "#FFF"
 			
 
