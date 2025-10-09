@@ -5,6 +5,7 @@ import "clock"
 import "workspaces"
 import "power_menu"
 import "utils"
+import "battery"
 ShellRoot {
     Variants {
         model: Quickshell.screens
@@ -42,6 +43,11 @@ ShellRoot {
                     margins: 6
                 }
                 spacing: 20
+		
+		Battery {
+                    Layout.alignment: Qt.AlignHCenter
+
+		}
 
                 Item { Layout.fillHeight: true }
 
