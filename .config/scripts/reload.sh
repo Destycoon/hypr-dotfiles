@@ -9,5 +9,5 @@ sleep 0.5
 
 waybar >/dev/null 2>&1 &
 hyprpaper >/dev/null 2>&1 &
-qs -p ~/.config/quickshell/bar
+qs >/dev/null 2>&1 & 
 hyprctl reload >/dev/null 2>&1

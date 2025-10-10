@@ -9,7 +9,6 @@ Rectangle {
     implicitWidth: 30
     implicitHeight: 130
     radius : 30
-
     ColumnLayout {
         id: workspaceCol
         spacing: 5
@@ -44,6 +43,17 @@ Rectangle {
                         }
                     }
                 }
+		Behavior on implicitHeight {
+			NumberAnimation {
+				duration : 150
+			}
+
+		}
+		Behavior on color {
+			ColorAnimation {
+				duration: 250
+			}
+		}
             }
         }
     }
