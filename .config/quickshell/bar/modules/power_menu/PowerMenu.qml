@@ -6,18 +6,19 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland 
 
-PanelWindow {
+Singleton {
+	PanelWindow {
     id: powerWindow
     implicitWidth: 490
     implicitHeight: 170 
-    visible: false
+    visible: true
     color: "transparent"
     
     Process { id: shutdownCmd; command: ["shutdown", "now"] }
     Process { id: rebootCmd; command: ["reboot"] }
     Process { id: lockCmd; command: ["hyprlock"] }
 
-    MouseArea {
+   MouseArea {
         anchors.fill: parent
         onClicked: powerWindow.visible = false
         z: -2
@@ -100,5 +101,8 @@ PanelWindow {
             }
         }
     }
+}
+
+
 }
 

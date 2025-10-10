@@ -1,12 +1,7 @@
 #!/bin/bash
 
-choice=$(printf "⏻ Power Off\n Reboot\n Suspend\n Hibernate\n Lock" | \
-  wofi --dmenu --location=3 --cache-file /dev/null --width 170 --height 270 --hide-scroll --hide-search)
-
-case "$choice" in
-  "⏻ Power Off") systemctl poweroff ;;
-  " Reboot") systemctl reboot ;;
-  " Suspend") systemctl suspend ;;
-  " Hibernate") systemctl hibernate ;;
-  " Lock") loginctl lock-session ;;
-esac
+if pgrep -f "qs.*PowerMenu.qml" > /dev/null; then
+    pkill -f "qs.*PowerMenu.qml"
+else
+    qs -p "/home/destycoon/.config/quickshell/bar/modules/power_menu/PowerMenu.qml"
+fi

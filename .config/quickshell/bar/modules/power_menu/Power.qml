@@ -9,25 +9,24 @@ Rectangle {
     height: 40
     color: "transparent"
 
-    Loader {
-        id: powerPopupLoader
-        source: "PowerMenu.qml"
-    }
-
     Text {
         text: ""
         anchors.centerIn: parent
         font.pixelSize: 20
         color: "white"
 
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                if (powerPopupLoader.item) {
-                    powerPopupLoader.item.visible = !powerPopupLoader.item.visible
-                }
-            }
-        }
-    }
+        
+	}
+Process {
+    id: menu
+    running: false
+    command: ["qs", "-p", "/home/destycoon/hypr-dotfiles/.config/quickshell/bar/modules/power_menu/PowerMenu.qml"]
 }
 
+MouseArea {
+            anchors.fill: parent
+            onClicked: {
+        menu.running = !menu.running
+        }
+}
+}

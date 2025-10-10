@@ -1,6 +1,6 @@
 // shell.qml
 import Quickshell
-import "modules"
+import qs.bar.modules
 Scope {
   Bar {}
 }
