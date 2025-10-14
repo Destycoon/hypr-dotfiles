@@ -1,32 +1,36 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Window
-import QtQuick.Layouts
 import Quickshell
 import Quickshell.Io
-import Quickshell.Wayland 
+import Quickshell.Wayland
 
-Singleton {
-	PanelWindow {
+import qs.utils
+
+PanelWindow {
     id: powerWindow
     implicitWidth: 490
-    implicitHeight: 170 
-    visible: true
+    implicitHeight: 170
     color: "transparent"
-    
-    Process { id: shutdownCmd; command: ["shutdown", "now"] }
-    Process { id: rebootCmd; command: ["reboot"] }
-    Process { id: lockCmd; command: ["hyprlock"] }
-
-   MouseArea {
-        anchors.fill: parent
-        onClicked: powerWindow.visible = false
-        z: -2
+    Component.onCompleted: {
+        this.WlrLayershell.keyboardFocus = WlrKeyboardFocus.Exclusive;
+    }
+    Process {
+        id: shutdownCmd
+        command: ["shutdown", "now"]
+    }
+    Process {
+        id: rebootCmd
+        command: ["reboot"]
+    }
+    Process {
+        id: lockCmd
+        command: ["hyprlock"]
     }
 
     Rectangle {
         anchors.fill: parent
-        color: "#1a1b26"
+        color: Colors.lightbg
         radius: 24
 
         Row {
@@ -38,21 +42,21 @@ Singleton {
                 width: 150
                 height: 150
                 background: Rectangle {
-                    color: "#4cafef"
-                    border.color: "#4cafef"
+                    color: Colors.lightbg
+                    border.color: Colors.border
                     border.width: 4
                     radius: 14
 
                     Text {
                         text: ""
-                        color: "#1a1b26"
+                        color: Colors.text
                         font.pixelSize: 100
                         anchors.centerIn: parent
                     }
                 }
                 onClicked: {
-                    powerWindow.visible = false
-                    shutdownCmd.running = true
+                    powerWindow.visible = false;
+                    shutdownCmd.running = true;
                 }
             }
 
@@ -60,21 +64,21 @@ Singleton {
                 width: 150
                 height: 150
                 background: Rectangle {
-                    color: "#4cafef"
-                    border.color: "#4cafef"
+                    color: Colors.lightbg
+                    border.color: Colors.border
                     border.width: 4
                     radius: 14
 
                     Text {
                         text: ""
-                        color: "#1a1b26"
+                        color: Colors.text
                         font.pixelSize: 100
                         anchors.centerIn: parent
                     }
                 }
                 onClicked: {
-                    powerWindow.visible = false
-                    rebootCmd.running = true
+                    powerWindow.visible = false;
+                    rebootCmd.running = true;
                 }
             }
 
@@ -82,27 +86,23 @@ Singleton {
                 width: 150
                 height: 150
                 background: Rectangle {
-                    color: "#4cafef"
-                    border.color: "#4cafef"
+                    color: Colors.lightbg
+                    border.color: Colors.border
                     border.width: 4
                     radius: 14
 
                     Text {
                         text: ""
-                        color: "#1a1b26"
+                        color: Colors.text
                         font.pixelSize: 100
                         anchors.centerIn: parent
                     }
                 }
                 onClicked: {
-                    powerWindow.visible = false
-                    lockCmd.running = true
+                    powerWindow.visible = false;
+                    lockCmd.running = true;
                 }
             }
         }
     }
 }
-
-
-}
-

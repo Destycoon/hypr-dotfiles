@@ -1,11 +1,9 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import "clock"
-import "workspaces"
-import "power_menu"
-import "utils"
-import "battery"
+import qs.modules.bar.barModules
+import qs.utils
+
 ShellRoot {
     Variants {
         model: Quickshell.screens
@@ -27,13 +25,13 @@ ShellRoot {
                 left: 8
             }
 
-	    implicitWidth: 50
+            implicitWidth: 50
 
             Rectangle {
                 id: background
                 anchors.fill: parent
                 radius: 12
-                color: "#1a1b26" // Tokyo Night foncé
+                color: Colors.bg
             }
 
             ColumnLayout {
@@ -43,23 +41,26 @@ ShellRoot {
                     margins: 6
                 }
                 spacing: 20
-		
-		Battery {
+
+                Battery {
                     Layout.alignment: Qt.AlignHCenter
+                }
 
-		}
-
-                Item { Layout.fillHeight: true }
+                Item {
+                    Layout.fillHeight: true
+                }
 
                 Workspaces {
                     Layout.alignment: Qt.AlignHCenter
                 }
 
-		Item { Layout.fillHeight: true }
+                Item {
+                    Layout.fillHeight: true
+                }
 
-		UtilsContainer {
-			Layout.alignment : Qt.AlignHCenter
-		}
+                UtilsContainer {
+                    Layout.alignment: Qt.AlignHCenter
+                }
                 Clock {
                     Layout.alignment: Qt.AlignHCenter
                 }
@@ -71,4 +72,3 @@ ShellRoot {
         }
     }
 }
-

@@ -1,6 +1,5 @@
-import Quickshell
 import QtQuick
-import Quickshell.Io
+import qs.utils
 
 Item {
     width: 40
@@ -11,7 +10,7 @@ Item {
         anchors.centerIn: parent
         text: Qt.formatTime(new Date(), "hh") + "\n" + Qt.formatTime(new Date(), "mm")
         font.pixelSize: 20
-        color: "white"
+        color: Colors.text
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
     }
@@ -24,4 +23,3 @@ Item {
         onTriggered: root.text = Qt.formatTime(new Date(), "hh") + "\n" + Qt.formatTime(new Date(), "mm")
     }
 }
-
