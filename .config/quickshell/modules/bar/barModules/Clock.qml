@@ -1,25 +1,27 @@
 import QtQuick
 import qs.utils
+import qs.modules.dashBoard
+import qs.services
 
 Item {
     width: 40
     height: 40
 
-    Text {
+    StyledText {
         id: root
         anchors.centerIn: parent
-        text: Qt.formatTime(new Date(), "hh") + "\n" + Qt.formatTime(new Date(), "mm")
+        text: Time.format("hh") + "\n" + Time.format("mm")
         font.pixelSize: 20
-        color: Colors.text
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
+    }
+    DashBoard {
+        id: dash
+        visible: false
     }
 
-    Timer {
-        id: clockTimer
-        repeat: true
-        running: true
-        interval: 1000
-        onTriggered: root.text = Qt.formatTime(new Date(), "hh") + "\n" + Qt.formatTime(new Date(), "mm")
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            dash.visible = !dash.visible;
+        }
     }
 }

@@ -1,3 +1,5 @@
+import qs.utils
+
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Window
@@ -5,16 +7,12 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
 
-import qs.utils
-
 PanelWindow {
     id: powerWindow
     implicitWidth: 490
     implicitHeight: 170
     color: "transparent"
-    Component.onCompleted: {
-        this.WlrLayershell.keyboardFocus = WlrKeyboardFocus.Exclusive;
-    }
+
     Process {
         id: shutdownCmd
         command: ["shutdown", "now"]
@@ -28,9 +26,18 @@ PanelWindow {
         command: ["hyprlock"]
     }
 
+    WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
+
+    IpcHandler {
+        target: "powerWindow"
+
+        function toggle(): void {
+            powerWindow.visible = !powerWindow.visible;
+        }
+    }
     Rectangle {
         anchors.fill: parent
-        color: Colors.lightbg
+        color: Colors.bg
         radius: 24
 
         Row {
@@ -43,15 +50,13 @@ PanelWindow {
                 height: 150
                 background: Rectangle {
                     color: Colors.lightbg
-                    border.color: Colors.border
-                    border.width: 4
                     radius: 14
 
-                    Text {
-                        text: ""
-                        color: Colors.text
+                    StyledText {
+
                         font.pixelSize: 100
-                        anchors.centerIn: parent
+                        text: ""
+			anchors.centerIn : parent
                     }
                 }
                 onClicked: {
@@ -65,15 +70,11 @@ PanelWindow {
                 height: 150
                 background: Rectangle {
                     color: Colors.lightbg
-                    border.color: Colors.border
-                    border.width: 4
                     radius: 14
-
-                    Text {
-                        text: ""
-                        color: Colors.text
+                    StyledText {
                         font.pixelSize: 100
-                        anchors.centerIn: parent
+			text: ""
+			anchors.centerIn : parent
                     }
                 }
                 onClicked: {
@@ -87,15 +88,11 @@ PanelWindow {
                 height: 150
                 background: Rectangle {
                     color: Colors.lightbg
-                    border.color: Colors.border
-                    border.width: 4
                     radius: 14
-
-                    Text {
-                        text: ""
-                        color: Colors.text
+                    StyledText {
                         font.pixelSize: 100
-                        anchors.centerIn: parent
+                        text: ""
+			anchors.centerIn : parent
                     }
                 }
                 onClicked: {

@@ -1,24 +1,20 @@
 #!/bin/bash
 
-# Chemins
-SOURCE="$HOME/hypr-dotfiles/"
-DEST="$HOME/"
+SRC_CONFIG="$HOME/hypr-dotfiles/.config"
+DEST_CONFIG="$HOME/.config"
 
-# Fichiers ou dossiers à exclure
-EXCLUDES=(
-  ".git"
-  "pkglist.txt"
-  "README.md"
-  "postInstall"
-)
+# Create symlinks for each directory in hypr-dotfiles/.config
+for item in "$SRC_CONFIG"/*; do
+  name=$(basename "$item")
+  target="$DEST_CONFIG/$name"
 
-# Construction des arguments d'exclusion
-EXCLUDE_ARGS=()
-for item in "${EXCLUDES[@]}"; do
-  EXCLUDE_ARGS+=("--exclude=$item")
+  # Remove existing file/directory/symlink if present
+  if [ -e "$target" ] || [ -L "$target" ]; then
+    rm -rf "$target"
+  fi
+
+  ln -s "$item" "$target"
 done
 
-# Exécution de rsync
-rsync -avh --update "${EXCLUDE_ARGS[@]}" "$SOURCE" "$DEST"
-
+# Optionally reload config if needed
 bash "$HOME/.config/scripts/reload.sh" &

@@ -3,6 +3,7 @@ pragma Singleton
 import QtQuick
 
 QtObject {
+    id: palette
     //background
     property color bg: "#1a1b26"
     property color darkbg: "#16161e"

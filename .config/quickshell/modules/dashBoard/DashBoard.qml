@@ -1,60 +1,39 @@
 import Quickshell
 import QtQuick
-import Quickshell.Wayland
+import qs.utils
+import QtQuick.Layouts
+import "modules"
+import Quickshell.Io
+
 PanelWindow {
-	id : root
+    id: dashboard
 
-	color : "transparent"
+    color: "transparent"
 
-	implicitWidth : 600
-	implicitHeight: 300
-	
-	WlrLayershell.layer: WlrLayer.Bottom
+    implicitWidth: 600
+    implicitHeight: 300
 
-	Rectangle {
-		width : parent.width
-		height : parent.height
+    IpcHandler {
+        target: "dashboard"
 
-		radius : 18
-		color : "#1a1b26"
+        function toggle(): void {
+            dashboard.visible = !dashboard.visible;
+        }
+    }
+    Rectangle {
+        width: parent.width
+        height: parent.height
+        radius: 28
+        color: Colors.bg
+
+        GridLayout {
+            columnSpacing: 5
+            rowSpacing: 5
+            columns: 4
 		
-		Column {
-			id : mainCol
-			spacing : 10
-
-			anchors.centerIn: parent
-
-			Row {
-				spacing : 10
-				
-				Rectangle {
-					width : 40
-					height : 40
-					radius : 8
-				}
-				Rectangle {
-					width : 40
-					height : 40
-					radius : 8
-				}
-			}
-			Row {
-				spacing : 10
-				
-				Rectangle {
-					width : 40
-					height : 40
-					radius : 8
-				}
-				Rectangle {
-					width : 40
-					height : 40
-					radius : 8
-				}
-			}
-		}
-
-
-
-	}
+	    Player{
+		    
+	    }
+        }
+    }
 }

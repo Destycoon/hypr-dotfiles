@@ -1,5 +1,5 @@
+import Quickshell
 import QtQuick
-import Quickshell.Io
 import qs.utils
 
 Rectangle {
@@ -8,22 +8,23 @@ Rectangle {
     height: 40
     color: "transparent"
 
-    Text {
-        text: ""
+    StyledText {
         anchors.centerIn: parent
         font.pixelSize: 20
-        color: Colors.text
-    }
-    Process {
-        id: menu
-        running: false
-        command: ["bash", "~/.config/scripts/power_meu.sh"]
+        text: ""
     }
 
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            menu.running = !menu.running;
+            loader.item.visible = !loader.item.visible;
         }
+    }
+    Loader {
+        id: loader
+        onLoaded: loader.item.visible = !loader.item.visible
+    }
+    Component.onCompleted: {
+        loader.setSource("PowerMenu.qml");
     }
 }

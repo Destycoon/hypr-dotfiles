@@ -1,4 +1,3 @@
-import Quickshell
 import QtQuick
 import Quickshell.Services.UPower
 import qs.utils
@@ -9,7 +8,8 @@ Rectangle {
     implicitWidth: 28
     implicitHeight: 28
     color: "transparent"
-    Text {
+
+    StyledText {
         id: profileText
         anchors.centerIn: parent
         text: {
@@ -24,8 +24,6 @@ Rectangle {
                 return "";
             }
         }
-        font.pixelSize: 16
-        color: Colors.text
     }
     MouseArea {
         anchors.fill: parent

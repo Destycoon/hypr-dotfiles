@@ -10,11 +10,17 @@ Item {
 
     property BluetoothAdapter adapter: Bluetooth.defaultAdapter
 
-    Text {
+    StyledText {
         id: icon
         anchors.centerIn: parent
-        text: adapter.enabled ? "󰂯" : "󰂲"
-        color: adapter.enabled ? Colors.text : Color.textmuted
+        color: adapter?.enabled ? Colors.text : Colors.textMuted
+        text: adapter?.enabled ? "󰂯" : "󰂲"
         font.pixelSize: 18
+    }
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            adapter.enabled = !adapter.enabled;
+        }
     }
 }
