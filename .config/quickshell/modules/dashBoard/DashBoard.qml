@@ -4,15 +4,17 @@ import qs.utils
 import QtQuick.Layouts
 import "modules"
 import Quickshell.Io
+import QtQuick.Controls
 
 PanelWindow {
     id: dashboard
 
     color: "transparent"
 
-    implicitWidth: 600
-    implicitHeight: 300
+    implicitWidth: child.implicitWidth + 20
+    implicitHeight: child.implicitHeight + 80
 
+    visible: false
     IpcHandler {
         target: "dashboard"
 
@@ -26,14 +28,85 @@ PanelWindow {
         radius: 28
         color: Colors.bg
 
-        GridLayout {
-            columnSpacing: 5
-            rowSpacing: 5
-            columns: 4
-		
-	    Player{
-		    
-	    }
+        ColumnLayout {
+            spacing: 10
+            anchors.fill: parent
+            anchors.margins: 10
+            Rectangle {
+                id: buttonContainer
+                implicitWidth: parent.width
+                Layout.alignment: Qt.AlignHCenter
+
+                radius: 18
+                color: Colors.lightbg
+                implicitHeight: 50
+                RowLayout {
+                    spacing: 3
+                    uniformCellSizes: true
+                    anchors.fill: parent
+                    Button {
+                        implicitWidth: (buttonContainer.implicitWidth / 4)
+                        implicitHeight: buttonContainer.implicitHeight - 10
+
+                        Layout.margins: 5
+                        background: Rectangle {
+
+                            color: Colors.bg
+                            radius: 13
+
+                            StyledText {
+                                text: ""
+                                anchors.centerIn: parent
+                            }
+                            MouseArea {
+                                anchors.centerIn: parent
+                            }
+                        }
+                    }
+
+                    Button {
+                        implicitWidth: (buttonContainer.implicitWidth / 4)
+                        implicitHeight: buttonContainer.implicitHeight - 10
+
+                        Layout.margins: 5
+                        background: Rectangle {
+
+                            color: Colors.bg
+                            radius: 13
+
+                            StyledText {
+                                text: ""
+                                anchors.centerIn: parent
+                            }
+                            MouseArea {
+                                anchors.centerIn: parent
+                            }
+                        }
+                    }
+                    Button {
+                        implicitWidth: (buttonContainer.implicitWidth / 4)
+                        implicitHeight: buttonContainer.implicitHeight - 10
+
+                        Layout.margins: 5
+                        background: Rectangle {
+
+                            color: Colors.bg
+                            radius: 13
+
+                            StyledText {
+                                text: ""
+                                anchors.centerIn: parent
+                            }
+                            MouseArea {
+                                anchors.centerIn: parent
+                            }
+                        }
+                    }
+                }
+            }
+            WallpaperSelector {
+                id: child
+            }
         }
     }
 }

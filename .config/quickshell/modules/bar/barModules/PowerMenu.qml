@@ -31,7 +31,7 @@ PanelWindow {
     IpcHandler {
         target: "powerWindow"
 
-        function toggle(): void {
+        function toggle() {
             powerWindow.visible = !powerWindow.visible;
         }
     }
@@ -56,7 +56,7 @@ PanelWindow {
 
                         font.pixelSize: 100
                         text: ""
-			anchors.centerIn : parent
+                        anchors.centerIn: parent
                     }
                 }
                 onClicked: {
@@ -73,8 +73,8 @@ PanelWindow {
                     radius: 14
                     StyledText {
                         font.pixelSize: 100
-			text: ""
-			anchors.centerIn : parent
+                        text: ""
+                        anchors.centerIn: parent
                     }
                 }
                 onClicked: {
@@ -92,7 +92,7 @@ PanelWindow {
                     StyledText {
                         font.pixelSize: 100
                         text: ""
-			anchors.centerIn : parent
+                        anchors.centerIn: parent
                     }
                 }
                 onClicked: {

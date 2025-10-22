@@ -15,10 +15,8 @@ bindkey -e
 # ==========================
 # Completion
 # ==========================
+source /path/to/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 zstyle :compinstall filename "$HOME/.zshrc"
-autoload -Uz compinit bashcompinit
-compinit -C
-bashcompinit
 
 
 # ==========================

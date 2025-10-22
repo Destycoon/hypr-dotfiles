@@ -5,4 +5,5 @@ import qs.modules.dashBoard
 
 Scope {
     Bar {}
+    DashBoard {}
 }

@@ -79,7 +79,6 @@ Rectangle {
                 Layout.fillHeight: true
             }
 
-            // Playback controls
             RowLayout {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter

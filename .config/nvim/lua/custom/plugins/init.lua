@@ -41,4 +41,8 @@ return {
 		build = ":Cord update",
 		-- opts = {}
 	},
+	{
+		"VPavliashvili/json-nvim",
+		ft = "json", -- only load for json filetype
+	},
 }

@@ -45,21 +45,4 @@ Singleton {
         if (active != null)
             active.stop();
     }
-
-    // --- Info pratiques ---
-    function title() {
-        return active ? active.metadata["xesam:title"] || "Inconnu" : "Aucun lecteur";
-    }
-
-    function artist() {
-        return active ? active.metadata["xesam:artist"]?.[0] || "Artiste inconnu" : "";
-    }
-
-    function album() {
-        return active ? active.metadata["xesam:album"] || "" : "";
-    }
-
-    function coverArt() {
-        return active ? active.metadata["mpris:artUrl"] || "" : "";
-    }
 }
