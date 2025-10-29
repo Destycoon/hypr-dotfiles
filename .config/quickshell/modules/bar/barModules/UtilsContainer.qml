@@ -13,11 +13,6 @@ Rectangle {
     ColumnLayout {
         spacing: 5
 
-        PowerProfile {
-            Layout.alignment: Qt.AlignHCenter
-            Layout.fillWidth: true
-        }
-
         Bluetooth {
             Layout.alignment: Qt.AlignHCenter
         }

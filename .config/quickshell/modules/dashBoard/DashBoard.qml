@@ -32,23 +32,60 @@ PanelWindow {
             spacing: 10
             anchors.fill: parent
             anchors.margins: 10
+
             Rectangle {
                 id: buttonContainer
-                implicitWidth: parent.width
+                implicitWidth: child.implicitWidth
                 Layout.alignment: Qt.AlignHCenter
-
                 radius: 18
                 color: Colors.lightbg
                 implicitHeight: 50
                 RowLayout {
+                    implicitWidth: parent.implicitWidth
+                    implicitHeight: parent.implicitWidth
                     spacing: 3
                     uniformCellSizes: true
-                    anchors.fill: parent
+                    anchors.centerIn: parent
                     Button {
-                        implicitWidth: (buttonContainer.implicitWidth / 4)
+                        implicitWidth: (buttonContainer.implicitWidth / 4) - 5
+                        implicitHeight: buttonContainer.implicitHeight - 10
+                        background: Rectangle {
+
+                            color: Colors.bg
+                            radius: 13
+
+                            StyledText {
+                                text: "󰕮"
+                                anchors.centerIn: parent
+                            }
+                            MouseArea {
+                                anchors.centerIn: parent
+                            }
+                        }
+                    }
+
+                    Button {
+                        implicitWidth: (buttonContainer.implicitWidth / 4) - 5
                         implicitHeight: buttonContainer.implicitHeight - 10
 
-                        Layout.margins: 5
+                        background: Rectangle {
+
+                            color: Colors.bg
+                            radius: 13
+
+                            StyledText {
+                                text: "󰦚"
+                                anchors.centerIn: parent
+                            }
+                            MouseArea {
+                                anchors.centerIn: parent
+                            }
+                        }
+                    }
+                    Button {
+                        implicitWidth: (buttonContainer.implicitWidth / 4) - 5
+                        implicitHeight: buttonContainer.implicitHeight - 10
+
                         background: Rectangle {
 
                             color: Colors.bg
@@ -63,38 +100,17 @@ PanelWindow {
                             }
                         }
                     }
-
                     Button {
-                        implicitWidth: (buttonContainer.implicitWidth / 4)
+                        implicitWidth: (buttonContainer.implicitWidth / 4) - 5
                         implicitHeight: buttonContainer.implicitHeight - 10
 
-                        Layout.margins: 5
                         background: Rectangle {
 
                             color: Colors.bg
                             radius: 13
 
                             StyledText {
-                                text: ""
-                                anchors.centerIn: parent
-                            }
-                            MouseArea {
-                                anchors.centerIn: parent
-                            }
-                        }
-                    }
-                    Button {
-                        implicitWidth: (buttonContainer.implicitWidth / 4)
-                        implicitHeight: buttonContainer.implicitHeight - 10
-
-                        Layout.margins: 5
-                        background: Rectangle {
-
-                            color: Colors.bg
-                            radius: 13
-
-                            StyledText {
-                                text: ""
+                                text: "󰸉"
                                 anchors.centerIn: parent
                             }
                             MouseArea {

@@ -1,43 +1,55 @@
 import QtQuick
 import Quickshell.Services.UPower
 import qs.utils
+import QtQuick.Controls
+import QtQuick.Layouts
 
 Rectangle {
     id: powerProfileIcon
 
-    implicitWidth: 28
-    implicitHeight: 28
-    color: "transparent"
+    radius: 18
+    implicitWidth: 170
+    implicitHeight: 60
+    color: Colors.bg
 
-    StyledText {
-        id: profileText
-        anchors.centerIn: parent
-        text: {
-            switch (PowerProfiles.profile) {
-            case PowerProfiles.Performance:
-                return "󱐋";
-            case PowerProfiles.Balanced:
-                return "";
-            case PowerProfiles.PowerSaver:
-                return "";
-            default:
-                return "";
+    RowLayout {
+        Button {
+            id: performance
+            text: "󱐋"
+            onClicked: {
+                PowerProfiles.profile = PowerProfiles.Performance;
+            }
+            background: Rectangle {
+                radius: 13
+                implicitWidth: 50
+                implicitHeight: 50
+                color: Colors.lightbg
             }
         }
-    }
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            switch (PowerProfiles.profile) {
-            case PowerProfiles.Performance:
+        Button {
+            id: balance
+            text: ""
+            onClicked: {
                 PowerProfiles.profile = PowerProfiles.Balanced;
-                break;
-            case PowerProfiles.Balanced:
+            }
+            background: Rectangle {
+                radius: 13
+                implicitWidth: 50
+                implicitHeight: 50
+                color: Colors.lightbg
+            }
+        }
+        Button {
+            id: low
+            text: ""
+            onClicked: {
                 PowerProfiles.profile = PowerProfiles.PowerSaver;
-                break;
-            case PowerProfiles.PowerSaver:
-                PowerProfiles.profile = PowerProfiles.Performance;
-                break;
+            }
+            background: Rectangle {
+                radius: 13
+                implicitWidth: 50
+                implicitHeight: 50
+                color: Colors.lightbg
             }
         }
     }

@@ -17,15 +17,6 @@ Singleton {
     property string album: active ? (active.metadata["xesam:album"] || "") : ""
     property string coverArt: active ? (active.metadata["mpris:artUrl"] || "") : ""
 
-    Component.onCompleted: {
-        updateActive();
-        if (active != null) {
-            if (active.trackChanged) {
-                updateActive();
-            }
-        }
-    }
-
     function playPause() {
         if (active != null)
             active.togglePlaying();

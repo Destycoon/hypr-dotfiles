@@ -1,21 +1,49 @@
 import QtQuick
-import QtQuick.Controls
 import QtQuick.Layouts
-import QtQuick.Effects
-import Quickshell
-import Quickshell.Io
 import qs.services
 import qs.utils
+import Quickshell.Io
+import QtQuick.Effects
 
 Rectangle {
     id: container
     color: "transparent"
     implicitWidth: 440
-    implicitHeight: 180
+    implicitHeight: 170
 
+    ListModel {
+        id: imageModel
+    }
+
+    Component.onCompleted: find.running = true
+    Process {
+        id: find
+        command: ["find", "/home/destycoon/.config/theme/", "-type", "f", "-name", "wallpaper.png"]
+        stdout: StdioCollector {
+            onStreamFinished: {
+                const lines = this.text.split("\n").filter(l => l.length > 0);
+
+                imageModel.clear();
+                for (let path of lines) {
+                    imageModel.append({
+                        path: "file://" + path
+                    });
+                }
+            }
+        }
+    }
+    Process {
+        id: swww
+        running: false
+        property string path
+        command: ["swww", "img", path, "--transition-type=center", "--transition-fps=60", "--transition-step=255", "--transition-duration=1.5"]
+    }
+    function setWallpaper(path) {
+        swww.path = path;
+        swww.running = true;
+    }
     Rectangle {
         anchors.fill: parent
-        anchors.margins: 12
         radius: 20
         color: Colors.lightbg
         layer.enabled: true
@@ -24,7 +52,7 @@ Rectangle {
         ColumnLayout {
             anchors.fill: parent
             anchors.margins: 16
-            spacing: 12
+            spacing: 8
 
             ListView {
                 id: wallpaperList
@@ -37,48 +65,43 @@ Rectangle {
                 interactive: true
                 snapMode: ListView.SnapToItem
                 highlightFollowsCurrentItem: true
-                model: Wallpaper.imageModel
 
-                delegate: Rectangle {
-                    id: itemRect
-                    width: 150
+                model: imageModel
+                delegate: Item {
+                    width: 180
                     height: 100
-                    radius: 12
-                    color: mouseArea.containsMouse ? "#313244" : "#181825"
-                    smooth: true
-                    border.width: 1
-                    border.color: mouseArea.containsMouse ? "#6ea8ff" : "transparent"
-
-                    //                    Image {
-                    //                      anchors.fill: parent
-                    //                    anchors.margins: 6
-                    //                  source: model.path
-                    //                fillMode: Image.PreserveAspectCrop
-                    //              smooth: true
-                    //            antialiasing: true
-                    //          mipmap: true
-                    //    }
-                    Text {
-                        text: model.path
+                    Layout.alignment: Qt.AlignVCenter
+                    Rectangle {
+                        id: mask
+                        anchors.fill: parent
+                        radius: 12
+                        color: Colors.darkbg
+                        layer.enabled: true
+                        layer.smooth: true
+                    }
+                    Image {
+                        id: image
+                        anchors.fill: parent
+                        source: model.path
+                        fillMode: Image.PreserveAspectCrop
+                        smooth: true
+                        antialiasing: true
+                        mipmap: true
+                        layer.enabled: true
+                        layer.effect: MultiEffect {
+                            maskEnabled: true
+                            maskSource: mask
+                            maskThresholdMin: 0.5
+                            maskSpreadAtMin: 1.0
+                        }
                     }
 
                     MouseArea {
-                        id: mouseArea
                         anchors.fill: parent
-                        hoverEnabled: true
+                        cursorShape: Qt.PointingHandCursor
                         onClicked: {
-                            Wallpaper.setWallpaper(model.path);
-                        }
-                    }
-
-                    Behavior on color {
-                        ColorAnimation {
-                            duration: 120
-                        }
-                    }
-                    Behavior on border.color {
-                        ColorAnimation {
-                            duration: 120
+                            var absolut = model.path.replace("file://", "");
+                            setWallpaper(absolut);
                         }
                     }
                 }
