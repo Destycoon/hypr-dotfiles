@@ -11,10 +11,9 @@ PanelWindow {
 
     color: "transparent"
 
-    implicitWidth: child.implicitWidth + 20
-    implicitHeight: child.implicitHeight + 80
-
+    property string child: "./modules/Player.qml"
     visible: false
+
     IpcHandler {
         target: "dashboard"
 
@@ -23,6 +22,7 @@ PanelWindow {
         }
     }
     Rectangle {
+
         width: parent.width
         height: parent.height
         radius: 28
@@ -35,7 +35,7 @@ PanelWindow {
 
             Rectangle {
                 id: buttonContainer
-                implicitWidth: child.implicitWidth
+                implicitWidth: implicitWidth
                 Layout.alignment: Qt.AlignHCenter
                 radius: 18
                 color: Colors.lightbg
@@ -47,7 +47,7 @@ PanelWindow {
                     uniformCellSizes: true
                     anchors.centerIn: parent
                     Button {
-                        implicitWidth: (buttonContainer.implicitWidth / 4) - 5
+                        implicitWidth: (buttonContainer.implicitWidth / 3) - 5
                         implicitHeight: buttonContainer.implicitHeight - 10
                         background: Rectangle {
 
@@ -55,7 +55,7 @@ PanelWindow {
                             radius: 13
 
                             StyledText {
-                                text: "󰕮"
+                                text: "󰕮  Home"
                                 anchors.centerIn: parent
                             }
                             MouseArea {
@@ -65,8 +65,12 @@ PanelWindow {
                     }
 
                     Button {
-                        implicitWidth: (buttonContainer.implicitWidth / 4) - 5
+                        implicitWidth: (buttonContainer.implicitWidth / 3) - 5
                         implicitHeight: buttonContainer.implicitHeight - 10
+
+                        onClicked: {
+                            dashboard.child = "./modules/Player.qml";
+                        }
 
                         background: Rectangle {
 
@@ -74,54 +78,45 @@ PanelWindow {
                             radius: 13
 
                             StyledText {
-                                text: "󰦚"
-                                anchors.centerIn: parent
-                            }
-                            MouseArea {
+                                text: "󰦚  Player"
                                 anchors.centerIn: parent
                             }
                         }
                     }
+
                     Button {
-                        implicitWidth: (buttonContainer.implicitWidth / 4) - 5
+                        implicitWidth: (buttonContainer.implicitWidth / 3) - 5
                         implicitHeight: buttonContainer.implicitHeight - 10
-
-                        background: Rectangle {
-
-                            color: Colors.bg
-                            radius: 13
-
-                            StyledText {
-                                text: ""
-                                anchors.centerIn: parent
-                            }
-                            MouseArea {
-                                anchors.centerIn: parent
-                            }
+                        onClicked: {
+                            dashboard.child = "./modules/WallpaperSelector.qml";
                         }
-                    }
-                    Button {
-                        implicitWidth: (buttonContainer.implicitWidth / 4) - 5
-                        implicitHeight: buttonContainer.implicitHeight - 10
-
                         background: Rectangle {
 
                             color: Colors.bg
                             radius: 13
 
                             StyledText {
-                                text: "󰸉"
-                                anchors.centerIn: parent
-                            }
-                            MouseArea {
+                                text: "󰸉  Wallpaper"
                                 anchors.centerIn: parent
                             }
                         }
                     }
                 }
             }
-            WallpaperSelector {
-                id: child
+            Loader {
+                id: loader
+                source: dashboard.child
+
+                onLoaded: {
+                    if (!item)
+                        return;
+                    dashboard.implicitWidth = item.implicitWidth + 20;
+                    dashboard.implicitHeight = item.implicitHeight + 80;
+                    buttonContainer.implicitWidth = item.implicitWidth;
+
+                    item.implicitWidthChanged.connect(() => dashboard.implicitWidth = item.implicitWidth + 20);
+                    item.implicitHeightChanged.connect(() => dashboard.implicitHeight = item.implicitHeight + 80);
+                }
             }
         }
     }

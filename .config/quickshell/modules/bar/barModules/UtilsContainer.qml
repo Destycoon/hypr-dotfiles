@@ -16,5 +16,8 @@ Rectangle {
         Bluetooth {
             Layout.alignment: Qt.AlignHCenter
         }
+        DarkLight {
+            Layout.alignment: Qt.AlignHCenter
+        }
     }
 }
