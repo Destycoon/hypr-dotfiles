@@ -33,7 +33,7 @@ Singleton {
 
     Connections {
         target: active
-        function onPlaybackStateChanged() {
+        function onPlaybackStateChanged(): void {
             if (!active || active.playbackState == MprisPlaybackState.Stopped) {
                 root.pos = "--:--";
                 root.progress = 0.0;
@@ -41,7 +41,7 @@ Singleton {
         }
     }
 
-    function formatTime(time: real) {
+    function formatTime(time: real): string {
         let minutes = Math.floor(time / 60);
         let seconds = Math.floor(time % 60);
         return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;

@@ -1,41 +1,57 @@
-import Quickshell.Io
-import Quickshell
+pragma ComponentBehavior: Bound
+
 import QtQuick
+import Quickshell
+import Quickshell.Io
 
-QtObject {
-    id: wallpaperService
+Item {
+    id: selector
 
-    readonly property string folder: "/home/destycoon/.config/theme/"
-
-    property ListModel imageModel: imageModel {}
-    ListModel {
-        id: imageModel
+    property string wallpaperDir: "/home/destycoon/.config/wallpaper/"
+    property string searchQuery: ""
+    property var wallpaperList: []
+    property var filteredWallpaperList: {
+        if (searchQuery === "")
+            return wallpaperList;
+        return wallpaperList.filter(path => {
+            const filename = path.split('/').pop();
+            return filename.toLowerCase().includes(searchQuery.toLowerCase());
+        });
     }
-    Process {
-        id: find
-        command: ["find", folder, "-type", "f", "-name", "wallpaper.png"]
-        stdout: StdioCollector {
-            onStreamFinished: {
-                const lines = this.text.split("\n").filter(l => l.length > 0);
+    property int currentIndex: 0
 
-                imageModel.clear();
-                for (let path of lines) {
-                    imageModel.append({
-                        path: "file://" + path
-                    });
-                }
-            }
+    signal wallpaperChanged(string path)
+
+    function setWallpaper(path) {
+        Quickshell.execDetached({
+            command: ["sh", "-c", `swww img ${path} --transition-type=wipe --transition-fps=60 --transition-step=255 --transition-duration=1`]
+        });
+        wallpaperChanged(path);
+    }
+
+    function applyCurrentWallpaper() {
+        if (filteredWallpaperList.length > 0 && currentIndex >= 0 && currentIndex < filteredWallpaperList.length) {
+            setWallpaper(filteredWallpaperList[currentIndex]);
         }
     }
 
-    function refreshWallpapers() {
-        find.running = true;
+    Component.onCompleted: {
+        loadWallpapers();
     }
 
-    function setWallpaper(path) {
-        swww.path = path;
-        swww.running = true;
+    function loadWallpapers() {
+        wallpaperScanner.running = true;
     }
 
-    Component.onCompleted: refreshWallpapers()
+    Process {
+        id: wallpaperScanner
+        command: ["sh", "-c", `find -L ${selector.wallpaperDir} -type f -print`]
+        running: false
+        stdout: StdioCollector {
+            onStreamFinished: {
+                const wallList = text.trim().split('\n').filter(path => path.length > 0);
+                selector.wallpaperList = wallList;
+            }
+        }
+    }
 }

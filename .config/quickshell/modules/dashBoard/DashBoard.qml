@@ -2,15 +2,11 @@ import Quickshell
 import QtQuick
 import qs.utils
 import QtQuick.Layouts
-import "modules"
 import Quickshell.Io
 import QtQuick.Controls
-import Quickshell.Wayland
 
 PanelWindow {
     id: dashboard
-
-    WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
 
     color: "transparent"
     property string child: "./modules/Home.qml"
