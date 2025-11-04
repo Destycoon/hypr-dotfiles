@@ -15,8 +15,8 @@ Rectangle {
         anchors.margins: 16
         spacing: 16
         Item {
-            Layout.preferredWidth: 120
-            Layout.preferredHeight: 120
+            Layout.preferredWidth: 140
+            Layout.preferredHeight: 140
             Layout.alignment: Qt.AlignVCenter
 
             Rectangle {
@@ -56,7 +56,7 @@ Rectangle {
                 StyledText {
                     text: Player.title || "Aucun titre"
                     font.bold: true
-                    font.pixelSize: 15
+                    font.pixelSize: 16
                     elide: Text.ElideRight
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignLeft
@@ -64,7 +64,7 @@ Rectangle {
 
                 StyledText {
                     text: Player.artist || "Artiste inconnu"
-                    font.pixelSize: 13
+                    font.pixelSize: 14
                     color: Colors.text
                     opacity: 0.7
                     elide: Text.ElideRight
@@ -72,15 +72,12 @@ Rectangle {
                     Layout.alignment: Qt.AlignLeft
                 }
                 StyledText {
-                    text: Player.len + "/" + Player.pos
-                    font.pixelSize: 18
+                    text: Player.pos + "/" + Player.len
+                    font.pixelSize: 15
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignLeft
+                    opacity: 0.6
                 }
-            }
-
-            Item {
-                Layout.fillHeight: true
             }
 
             RowLayout {

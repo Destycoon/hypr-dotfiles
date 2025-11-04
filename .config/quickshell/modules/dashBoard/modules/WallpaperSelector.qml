@@ -26,6 +26,7 @@ Rectangle {
 
     onActiveFocusChanged: {
         if (activeFocus) {
+            wallpaperSelector.loadWallpapers();
             pathView.forceActiveFocus();
         }
     }
