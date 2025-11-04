@@ -26,8 +26,6 @@ PanelWindow {
         command: ["hyprlock"]
     }
 
-    WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
-
     IpcHandler {
         target: "powerWindow"
 

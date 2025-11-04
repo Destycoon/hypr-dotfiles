@@ -1,5 +1,4 @@
 pragma Singleton
-
 import QtQuick
 import Quickshell
 import Quickshell.Io
@@ -9,13 +8,44 @@ Singleton {
     id: root
 
     property MprisPlayer active: Mpris.players.values[0]
-
     property bool running: active ? active.isPlaying : false
-
     property string title: active ? (active.metadata["xesam:title"] || "Inconnu") : "Aucun lecteur"
     property string artist: active ? (active.metadata["xesam:artist"]?.[0] || "Artiste inconnu") : ""
     property string album: active ? (active.metadata["xesam:album"] || "") : ""
     property string coverArt: active ? (active.metadata["mpris:artUrl"] || "") : ""
+    property string len: active ? formatTime(active.length) : "--:--"
+    property string pos: (active && active.playbackState !== MprisPlaybackState.Stopped) ? formatTime(active.position) : "--:--"
+    property real progress: (active && active.playbackState !== MprisPlaybackState.Stopped) ? (active.position / active.length) : 0.0
+    property bool hasNext: active ? active.canGoNext : false
+    property bool hasPrev: active ? active.canGoPrevious : false
+
+    Timer {
+        running: active && active.playbackState == MprisPlaybackState.Playing
+        interval: 1000
+        repeat: true
+        onTriggered: {
+            if (active && active.playbackState !== MprisPlaybackState.Stopped) {
+                root.pos = formatTime(active.position);
+                root.progress = active.position / active.length;
+            }
+        }
+    }
+
+    Connections {
+        target: active
+        function onPlaybackStateChanged() {
+            if (!active || active.playbackState == MprisPlaybackState.Stopped) {
+                root.pos = "--:--";
+                root.progress = 0.0;
+            }
+        }
+    }
+
+    function formatTime(time: real) {
+        let minutes = Math.floor(time / 60);
+        let seconds = Math.floor(time % 60);
+        return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+    }
 
     function playPause() {
         if (active != null)
@@ -35,5 +65,17 @@ Singleton {
     function stop() {
         if (active != null)
             active.stop();
+    }
+
+    function seek(position: real) {
+        if (active != null) {
+            active.position = position;
+        }
+    }
+
+    function seekRelative(offset: real) {
+        if (active != null) {
+            active.position = Math.max(0, Math.min(active.length, active.position + offset));
+        }
     }
 }

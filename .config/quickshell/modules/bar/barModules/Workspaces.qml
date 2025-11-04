@@ -8,7 +8,7 @@ Rectangle {
     id: workspaces
     color: Colors.lightbg
     implicitWidth: 30
-    implicitHeight: 130
+    implicitHeight: 140
     radius: 30
     ColumnLayout {
         id: workspaceCol

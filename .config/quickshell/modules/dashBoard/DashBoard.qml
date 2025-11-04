@@ -5,15 +5,16 @@ import QtQuick.Layouts
 import "modules"
 import Quickshell.Io
 import QtQuick.Controls
+import Quickshell.Wayland
 
 PanelWindow {
     id: dashboard
 
+    WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
+
     color: "transparent"
-
-    property string child: "./modules/Player.qml"
+    property string child: "./modules/Home.qml"
     visible: false
-
     IpcHandler {
         target: "dashboard"
 
@@ -21,6 +22,8 @@ PanelWindow {
             dashboard.visible = !dashboard.visible;
         }
     }
+    focusable: true
+
     Rectangle {
 
         width: parent.width
@@ -49,6 +52,9 @@ PanelWindow {
                     Button {
                         implicitWidth: (buttonContainer.implicitWidth / 3) - 5
                         implicitHeight: buttonContainer.implicitHeight - 10
+                        onClicked: {
+                            dashboard.child = "./modules/Home.qml";
+                        }
                         background: Rectangle {
 
                             color: Colors.bg
@@ -56,9 +62,6 @@ PanelWindow {
 
                             StyledText {
                                 text: "󰕮  Home"
-                                anchors.centerIn: parent
-                            }
-                            MouseArea {
                                 anchors.centerIn: parent
                             }
                         }
@@ -106,7 +109,10 @@ PanelWindow {
             Loader {
                 id: loader
                 source: dashboard.child
-
+                onSourceChanged: {
+                    opacity: 0;
+                }
+                focus: true
                 onLoaded: {
                     if (!item)
                         return;
@@ -114,8 +120,13 @@ PanelWindow {
                     dashboard.implicitHeight = item.implicitHeight + 80;
                     buttonContainer.implicitWidth = item.implicitWidth;
 
+                    opacity: 1;
+
                     item.implicitWidthChanged.connect(() => dashboard.implicitWidth = item.implicitWidth + 20);
                     item.implicitHeightChanged.connect(() => dashboard.implicitHeight = item.implicitHeight + 80);
+
+                    item.focus = true;
+                    item.forceActiveFocus();
                 }
             }
         }

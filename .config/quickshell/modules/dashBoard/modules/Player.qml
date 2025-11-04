@@ -8,16 +8,15 @@ Rectangle {
     color: Colors.lightbg
     radius: 18
     implicitWidth: 380
-    implicitHeight: 140
+    implicitHeight: 200
 
     RowLayout {
         anchors.fill: parent
         anchors.margins: 16
         spacing: 16
-
         Item {
-            Layout.preferredWidth: 108
-            Layout.preferredHeight: 108
+            Layout.preferredWidth: 120
+            Layout.preferredHeight: 120
             Layout.alignment: Qt.AlignVCenter
 
             Rectangle {
@@ -45,7 +44,6 @@ Rectangle {
                 }
             }
         }
-
         ColumnLayout {
             Layout.fillWidth: true
             Layout.fillHeight: true
@@ -73,6 +71,12 @@ Rectangle {
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignLeft
                 }
+                StyledText {
+                    text: Player.len + "/" + Player.pos
+                    font.pixelSize: 18
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignLeft
+                }
             }
 
             Item {
@@ -91,6 +95,7 @@ Rectangle {
                     radius: 22
                     color: playerPrevMouse.containsMouse ? Qt.rgba(255, 255, 255, 0.1) : "transparent"
 
+                    visible: Player.hasPrev
                     Behavior on color {
                         ColorAnimation {
                             duration: 150
@@ -149,6 +154,7 @@ Rectangle {
                     radius: 22
                     color: playerNextMouse.containsMouse ? Qt.rgba(255, 255, 255, 0.1) : "transparent"
 
+                    visible: Player.hasNext
                     Behavior on color {
                         ColorAnimation {
                             duration: 150

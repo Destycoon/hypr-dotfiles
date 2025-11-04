@@ -44,5 +44,8 @@ return {
 	{
 		"VPavliashvili/json-nvim",
 		ft = "json", -- only load for json filetype
+		config = function()
+			vim.keymap.set("c", "jff", "<cmd>JsonFormatFile<cr>")
+		end,
 	},
 }
