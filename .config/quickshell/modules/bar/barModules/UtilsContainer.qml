@@ -1,23 +1,19 @@
-import Quickshell
 import QtQuick
-import QtQuick.Layouts
-import qs.utils
+import qs.services.matugen
 
 Rectangle {
     id: container
     height: 90
     width: 30
     radius: 30
-    color: Colors.lightbg
+    color: Matugen.darkmode ? Matugen.colors.getcolors(Matugen.colors.surface_bright) : Matugen.colors.getcolors(Matugen.colors.surface_dim)
 
-    ColumnLayout {
-        spacing: 5
-
-        Bluetooth {
-            Layout.alignment: Qt.AlignHCenter
-        }
-        DarkLight {
-            Layout.alignment: Qt.AlignHCenter
-        }
+    Column {
+        anchors.fill: parent
+        spacing: 3
+        anchors.topMargin: 3
+        anchors.bottomMargin: 3
+        Bluetooth {}
+        DarkLight {}
     }
 }

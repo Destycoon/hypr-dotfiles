@@ -2,6 +2,7 @@ import Quickshell
 import QtQuick
 import Quickshell.Bluetooth
 import qs.utils
+import qs.services.matugen
 
 Item {
     id: container
@@ -13,7 +14,7 @@ Item {
     StyledText {
         id: icon
         anchors.centerIn: parent
-        color: adapter?.enabled ? Colors.text : Colors.textMuted
+        color: adapter?.enabled ? Matugen.colors.getcolors(Matugen.colors.on_surface) : Matugen.colors.getcolors(Matugen.colors.on_secondary_container)
         text: adapter?.enabled ? "󰂯" : "󰂲"
         font.pixelSize: 18
     }

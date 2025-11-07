@@ -2,21 +2,20 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import QtQuick.Layouts
-import Quickshell
 import qs.utils
 import QtQuick.Effects
 import qs.services
+import qs.services.matugen
 
 Rectangle {
     id: root
 
-    color: Colors.lightbg
+    color: Matugen.colors.getcolors(Matugen.colors.surface_bright)
     implicitWidth: 800
     implicitHeight: 400
     radius: 18
     focus: true
 
-    // Instance de la logique métier
     property Wallpaper selector: Wallpaper {
         id: wallpaperSelector
         onCurrentIndexChanged: {
@@ -62,10 +61,9 @@ Rectangle {
                 Rectangle {
                     id: mask
                     anchors.fill: parent
-                    anchors.margins: 10
                     color: "#2a2a2a"
                     radius: 18
-                    border.color: pathView.currentIndex === delegateItem.index ? "#4a9eff" : "transparent"
+                    border.color: pathView.currentIndex === delegateItem.index ? Colors.border : "transparent"
                     opacity: pathView.currentIndex === delegateItem.index ? 1 : 0.8
                     border.width: 3
                     layer.enabled: true

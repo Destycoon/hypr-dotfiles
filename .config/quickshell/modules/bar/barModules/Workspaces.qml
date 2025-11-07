@@ -3,10 +3,11 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell.Hyprland
 import qs.utils
+import qs.services.matugen
 
 Rectangle {
     id: workspaces
-    color: Colors.lightbg
+    color: Matugen.darkmode ? Matugen.colors.getcolors(Matugen.colors.surface_bright) : Matugen.colors.getcolors(Matugen.colors.surface_dim)
     implicitWidth: 30
     implicitHeight: 140
     radius: 30
@@ -31,7 +32,7 @@ Rectangle {
                 implicitHeight: modelData.active ? 30 : 18
                 radius: 30
                 Layout.alignment: Qt.AlignHCenter
-                color: modelData.active ? Colors.accent : modelData.urgent ? Colors.accentRed : Colors.text
+                color: modelData.active ? Matugen.colors.getcolors(Matugen.colors.primary) : modelData.urgent ? Matugen.color.getcolors(Matugen.colors.error) : Matugen.colors.getcolors(Matugen.colors.secondary)
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {

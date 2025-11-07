@@ -1,6 +1,7 @@
 import Quickshell
 import QtQuick
 import Quickshell.Services.UPower
+import qs.services.matugen
 import qs.utils
 import QtQuick.Layouts
 
@@ -58,7 +59,7 @@ Item {
                     ctx.font = "20px 'monospace'";
                     ctx.textAlign = "center";
                     ctx.textBaseline = "middle";
-                    ctx.fillStyle = Colors.text;
+                    ctx.fillStyle = Matugen.colors.getcolors(Matugen.colors.on_background);
 
                     var text = "";
                     if (UPower.displayDevice.state === UPowerDeviceState.Charging) {
@@ -80,6 +81,9 @@ Item {
                     canvas.requestPaint();
                 }
                 function onStateChanged() {
+                    canvas.requestPaint();
+                }
+                function onStyleChanged() {
                     canvas.requestPaint();
                 }
             }

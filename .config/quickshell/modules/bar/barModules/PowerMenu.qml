@@ -6,6 +6,7 @@ import QtQuick.Window
 import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
+import qs.services.matugen
 
 PanelWindow {
     id: powerWindow
@@ -35,7 +36,7 @@ PanelWindow {
     }
     Rectangle {
         anchors.fill: parent
-        color: Colors.bg
+        color: Matugen.colors.getcolors(Matugen.colors.background)
         radius: 24
 
         Row {
@@ -47,11 +48,12 @@ PanelWindow {
                 width: 150
                 height: 150
                 background: Rectangle {
-                    color: Colors.lightbg
+                    color: Matugen.colors.getcolors(Matugen.colors.primary)
                     radius: 14
 
                     StyledText {
 
+			    color : Matugen.colors.getcolors(Matugen.colors.on_primary)
                         font.pixelSize: 100
                         text: ""
                         anchors.centerIn: parent
@@ -67,9 +69,12 @@ PanelWindow {
                 width: 150
                 height: 150
                 background: Rectangle {
-                    color: Colors.lightbg
+                    color: Matugen.colors.getcolors(Matugen.colors.primary)
+
                     radius: 14
-                    StyledText {
+		    StyledText {
+
+			    color : Matugen.colors.getcolors(Matugen.colors.on_primary)
                         font.pixelSize: 100
                         text: ""
                         anchors.centerIn: parent
@@ -85,9 +90,12 @@ PanelWindow {
                 width: 150
                 height: 150
                 background: Rectangle {
-                    color: Colors.lightbg
+                    color: Matugen.colors.getcolors(Matugen.colors.primary)
+
                     radius: 14
-                    StyledText {
+		    StyledText {
+			    color : Matugen.colors.getcolors(Matugen.colors.on_primary)
+
                         font.pixelSize: 100
                         text: ""
                         anchors.centerIn: parent

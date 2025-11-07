@@ -4,6 +4,7 @@ import qs.utils
 import QtQuick.Layouts
 import Quickshell.Io
 import QtQuick.Controls
+import qs.services.matugen
 
 PanelWindow {
     id: dashboard
@@ -25,7 +26,7 @@ PanelWindow {
         width: parent.width
         height: parent.height
         radius: 28
-        color: Colors.bg
+        color: Matugen.colors.getcolors(Matugen.colors.background)
 
         ColumnLayout {
             spacing: 10
@@ -37,13 +38,13 @@ PanelWindow {
                 implicitWidth: implicitWidth
                 Layout.alignment: Qt.AlignHCenter
                 radius: 18
-                color: Colors.lightbg
+                color: Matugen.darkmode ? Matugen.colors.getcolors(Matugen.colors.surface_bright) : Matugen.colors.getcolors(Matugen.colors.surface_dim)
+
                 implicitHeight: 50
                 RowLayout {
                     implicitWidth: parent.implicitWidth
                     implicitHeight: parent.implicitWidth
                     spacing: 3
-                    uniformCellSizes: true
                     anchors.centerIn: parent
                     Button {
                         implicitWidth: (buttonContainer.implicitWidth / 3) - 5
@@ -53,11 +54,12 @@ PanelWindow {
                         }
                         background: Rectangle {
 
-                            color: Colors.bg
+                            color: (dashboard.child == "./modules/Home.qml") ? Matugen.colors.getcolors(Matugen.colors.primary) : Matugen.colors.getcolors(Matugen.colors.secondary)
                             radius: 13
 
                             StyledText {
                                 text: "󰕮  Home"
+                                color: (dashboard.child == "./modules/Home.qml") ? Matugen.colors.getcolors(Matugen.colors.on_primary) : Matugen.colors.getcolors(Matugen.colors.on_secondary)
                                 anchors.centerIn: parent
                             }
                         }
@@ -72,11 +74,11 @@ PanelWindow {
                         }
 
                         background: Rectangle {
-
-                            color: Colors.bg
+                            color: (dashboard.child == "./modules/Player.qml") ? Matugen.colors.getcolors(Matugen.colors.primary) : Matugen.colors.getcolors(Matugen.colors.secondary)
                             radius: 13
 
                             StyledText {
+                                color: (dashboard.child == "./modules/Player.qml") ? Matugen.colors.getcolors(Matugen.colors.on_primary) : Matugen.colors.getcolors(Matugen.colors.on_secondary)
                                 text: "󰦚  Player"
                                 anchors.centerIn: parent
                             }
@@ -91,10 +93,11 @@ PanelWindow {
                         }
                         background: Rectangle {
 
-                            color: Colors.bg
+                            color: (dashboard.child == "./modules/WallpaperSelector.qml") ? Matugen.colors.getcolors(Matugen.colors.primary) : Matugen.colors.getcolors(Matugen.colors.secondary)
                             radius: 13
 
                             StyledText {
+                                color: (dashboard.child == "./modules/WallpaperSelector.qml") ? Matugen.colors.getcolors(Matugen.colors.on_primary) : Matugen.colors.getcolors(Matugen.colors.on_secondary)
                                 text: "󰸉  Wallpaper"
                                 anchors.centerIn: parent
                             }

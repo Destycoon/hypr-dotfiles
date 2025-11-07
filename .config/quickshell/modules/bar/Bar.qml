@@ -1,8 +1,8 @@
 import Quickshell
 import QtQuick
-import QtQuick.Layouts
 import qs.modules.bar.barModules
 import qs.utils
+import qs.services.matugen
 
 ShellRoot {
     Variants {
@@ -12,7 +12,6 @@ ShellRoot {
             property var modelData
             screen: modelData
             color: "transparent"
-
             anchors {
                 top: true
                 left: true
@@ -31,42 +30,41 @@ ShellRoot {
                 id: background
                 anchors.fill: parent
                 radius: 12
-                color: Colors.bg
-            }
-
-            ColumnLayout {
-                id: content
-                anchors {
-                    fill: parent
-                    margins: 6
-                }
-                spacing: 20
-
-                Battery {
-                    Layout.alignment: Qt.AlignHCenter
-                }
+                color: Matugen.colors.getcolors(Matugen.colors.background)
 
                 Item {
-                    Layout.fillHeight: true
-                }
+                    anchors.fill: parent
 
-                Workspaces {
-                    Layout.alignment: Qt.AlignHCenter
-                }
+                    Column {
+                        id: top
+                        spacing: 10
+                        anchors.top: parent.top
+                        anchors.topMargin: 10
 
-                Item {
-                    Layout.fillHeight: true
-                }
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        Battery {}
+                    }
 
-                UtilsContainer {
-                    Layout.alignment: Qt.AlignHCenter
-                }
-                Clock {
-                    Layout.alignment: Qt.AlignHCenter
-                }
+                    Column {
+                        id: bottom
+                        spacing: 10
+                        anchors.bottom: parent.bottom
+                        anchors.bottomMargin: 10
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        UtilsContainer {
+                            anchors.horizontalCenter: parent.horizontalCenter
+                        }
 
-                Power {
-                    Layout.alignment: Qt.AlignHCenter
+                        Clock {}
+
+                        Power {}
+                    }
+                    Column {
+                        id: center
+                        spacing: 10
+                        anchors.centerIn: parent
+                        Workspaces {}
+                    }
                 }
             }
         }

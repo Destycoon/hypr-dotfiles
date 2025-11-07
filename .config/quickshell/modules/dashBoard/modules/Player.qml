@@ -3,9 +3,10 @@ import qs.utils
 import qs.services
 import QtQuick.Layouts
 import QtQuick.Effects
+import qs.services.matugen
 
 Rectangle {
-    color: Colors.lightbg
+    color: Matugen.darkmode ? Matugen.colors.getcolors(Matugen.colors.surface_bright) : Matugen.colors.getcolors(Matugen.colors.surface_dim)
     radius: 18
     implicitWidth: 380
     implicitHeight: 200

@@ -20,21 +20,21 @@ Singleton {
     property bool hasPrev: active ? active.canGoPrevious : false
 
     Timer {
-        running: active && active.playbackState == MprisPlaybackState.Playing
+        running: root.active && root.active.playbackState == MprisPlaybackState.Playing
         interval: 1000
         repeat: true
         onTriggered: {
-            if (active && active.playbackState !== MprisPlaybackState.Stopped) {
-                root.pos = formatTime(active.position);
-                root.progress = active.position / active.length;
+            if (root.active && root.active.playbackState !== MprisPlaybackState.Stopped) {
+                root.pos = root.formatTime(root.active.position);
+                root.progress = root.active.position / root.active.length;
             }
         }
     }
 
     Connections {
-        target: active
+        target: root.active
         function onPlaybackStateChanged(): void {
-            if (!active || active.playbackState == MprisPlaybackState.Stopped) {
+            if (!root.active || root.active.playbackState == MprisPlaybackState.Stopped) {
                 root.pos = "--:--";
                 root.progress = 0.0;
             }

@@ -1,11 +1,13 @@
 import QtQuick
 
 Rectangle {
-    implicitWidth: parent.implicitWidth
-    implicitHeight: parent.implicitHeight
+    property var toFill: parent          // instantiation site "can" (optionally) override
+    property color customColor: 'yellow' // instantiation site "can" (optionally) override
+    property int customThickness: 1      // instantiation site "can" (optionally) override
 
-    color: "transparent"
-	z = 200
-    border.width: 3
-    border.color: "FF0000"
+    anchors.fill: toFill
+    z: 200
+    color: 'transparent'
+    border.color: customColor
+    border.width: customThickness
 }
