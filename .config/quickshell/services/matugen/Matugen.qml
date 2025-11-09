@@ -14,7 +14,9 @@ Scope {
         updateColor();
     }
 
-    function updateColor() {
+    function updateColor(img) {
+        root.image = img.toString();
+
         matugen.running = true;
     }
 
@@ -45,6 +47,16 @@ Scope {
         }
     }
 
+    Process {
+        id: getWal
+
+        command: ["sh", "-c", "swww query"]
+        stdout: StdioCollector {
+            onStreamFinished: {
+                root.image = this.text.match(/image:\s*(\/[^\s]+)/);
+            }
+        }
+    }
     property ColorScheme colors: ColorScheme {
         background: ColorObject {
             dark: "#0f1416"

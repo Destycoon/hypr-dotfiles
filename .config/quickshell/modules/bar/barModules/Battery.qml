@@ -83,9 +83,6 @@ Item {
                 function onStateChanged() {
                     canvas.requestPaint();
                 }
-                function onStyleChanged() {
-                    canvas.requestPaint();
-                }
             }
         }
     }

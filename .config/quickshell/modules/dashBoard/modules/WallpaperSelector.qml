@@ -10,7 +10,7 @@ import qs.services.matugen
 Rectangle {
     id: root
 
-    color: Matugen.colors.getcolors(Matugen.colors.surface_bright)
+    color: Matugen.darkmode ? Matugen.colors.getcolors(Matugen.colors.surface_bright) : Matugen.colors.getcolors(Matugen.colors.surface_dim)
     implicitWidth: 800
     implicitHeight: 400
     radius: 18
@@ -63,9 +63,7 @@ Rectangle {
                     anchors.fill: parent
                     color: "#2a2a2a"
                     radius: 18
-                    border.color: pathView.currentIndex === delegateItem.index ? Colors.border : "transparent"
                     opacity: pathView.currentIndex === delegateItem.index ? 1 : 0.8
-                    border.width: 3
                     layer.enabled: true
 
                     MouseArea {
@@ -79,7 +77,6 @@ Rectangle {
 
                 Image {
                     anchors.fill: parent
-                    anchors.margins: 3
                     source: "file://" + delegateItem.modelData
                     fillMode: Image.PreserveAspectCrop
                     asynchronous: true
@@ -143,15 +140,21 @@ Rectangle {
             preferredHighlightEnd: 0.5
 
             Keys.onPressed: event => {
+                var current = pathView.model[pathView.currentIndex];
                 if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
                     wallpaperSelector.applyCurrentWallpaper();
+                    Matugen.updateColor(pathView.model[pathView.currentIndex]);
                     event.accepted = true;
                 }
                 if (event.key === Qt.Key_Right) {
                     incrementCurrentIndex();
+                    wallpaperSelector.applyCurrentWallpaper();
+                    Matugen.updateColor(pathView.model[pathView.currentIndex]);
                 }
                 if (event.key === Qt.Key_Left) {
                     decrementCurrentIndex();
+                    wallpaperSelector.applyCurrentWallpaper();
+                    Matugen.updateColor(pathView.model[pathView.currentIndex]);
                 }
             }
         }
