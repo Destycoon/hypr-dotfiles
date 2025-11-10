@@ -18,6 +18,20 @@ PanelWindow {
         function toggle(): void {
             dashboard.visible = !dashboard.visible;
         }
+        function toggleHome(): void {
+            if (!dashboard.visible || dashboard.child == "./modules/Home.qml" || dashboard.child == "./modules/Player.qml" ) {
+                toggle();
+            }
+
+            dashboard.child = "./modules/Home.qml";
+        }
+
+        function toggleWal(): void {
+            if (!dashboard.visible || dashboard.child == "./modules/WallpaperSelector.qml" || dashboard.child == "./modules/Player.qml") {
+                toggle();
+            }
+            dashboard.child = "./modules/WallpaperSelector.qml";
+        }
     }
     focusable: true
 

@@ -6,6 +6,7 @@ import QtQuick.Effects
 import qs.services.matugen
 
 Rectangle {
+    id: root
     color: Matugen.darkmode ? Matugen.colors.getcolors(Matugen.colors.surface_bright) : Matugen.colors.getcolors(Matugen.colors.surface_dim)
     radius: 18
     implicitWidth: 380
@@ -23,12 +24,22 @@ Rectangle {
             Rectangle {
                 id: mask
                 anchors.fill: parent
-                radius: 12
-                color: Colors.darkbg
+                radius: 70
+                color: Matugen.colors.getcolors(Matugen.colors.surface_dim)
                 layer.enabled: true
                 layer.smooth: true
             }
 
+            Rectangle {
+                id: imageCenter
+                anchors.centerIn: parent
+                implicitWidth: parent.width / 5
+                implicitHeight: parent.width / 5
+                radius: implicitWidth / 2
+                color: root.color
+                layer.enabled: true
+                layer.smooth: true
+            }
             Image {
                 id: cover
                 anchors.fill: parent
@@ -42,7 +53,21 @@ Rectangle {
                     maskSource: mask
                     maskThresholdMin: 0.5
                     maskSpreadAtMin: 1.0
+                    layer.enabled: true
+                    layer.effect: MultiEffect {
+                        maskEnabled: true
+                        maskSource: imageCenter
+                        maskThresholdMin: 0.5
+                        maskSpreadAtMin: 1.0
+                    }
                 }
+            }
+            RotationAnimation on rotation {
+                from: 0
+                to: 360
+                running: Player.running
+                loops: Animation.Infinite
+                duration: 3000
             }
         }
         ColumnLayout {

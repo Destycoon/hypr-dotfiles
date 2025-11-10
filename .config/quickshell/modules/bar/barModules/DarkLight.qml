@@ -17,7 +17,7 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            Matugen.darkmode = !Matugen.darkmode;
+            Matugen.toggleDark();
         }
     }
 }

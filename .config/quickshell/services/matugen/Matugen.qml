@@ -7,22 +7,44 @@ import Quickshell.Io
 Scope {
     id: root
 
-    property bool darkmode: true
-    property string image: ""
+    readonly property bool darkmode: persist.darkmode
+    readonly property string image: persist.image
 
-    onImageChanged: {
-        updateColor();
+    PersistentProperties {
+        id: persist
+
+        reloadableId: "MatugenState"
+
+        property bool darkmode: true
+        property string image: "/home/destycoon/.config/wallpaper/wallhaven-qz8w55.png"
+    }
+
+    Connections {
+        target: persist
+
+        function onImageChanged() {
+            if (persist.image !== "") {
+                updateColor(persist.image);
+            }
+        }
+    }
+    Component.onCompleted: {
+        updateColor(persist.image);
+    }
+
+    function toggleDark() {
+        persist.darkmode = !persist.darkmode;
     }
 
     function updateColor(img) {
-        root.image = img.toString();
-
-        matugen.running = true;
+	persist.image = img;
+	matugen.running = true;
+	
     }
 
     Process {
         id: matugen
-        command: ["sh", "-c", `matugen image --dry-run -j hex ${root.image}`]
+        command: ["sh", "-c", `matugen image --dry-run -j hex ${persist.image}`]
         stdout: StdioCollector {
             onStreamFinished: {
                 var data = JSON.parse(this.text);
@@ -47,16 +69,6 @@ Scope {
         }
     }
 
-    Process {
-        id: getWal
-
-        command: ["sh", "-c", "swww query"]
-        stdout: StdioCollector {
-            onStreamFinished: {
-                root.image = this.text.match(/image:\s*(\/[^\s]+)/);
-            }
-        }
-    }
     property ColorScheme colors: ColorScheme {
         background: ColorObject {
             dark: "#0f1416"

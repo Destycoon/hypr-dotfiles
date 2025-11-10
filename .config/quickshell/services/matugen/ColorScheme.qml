@@ -54,7 +54,6 @@ QtObject {
     property ColorObject tertiary_fixed_dim
 
     function getcolors(colorObj) {
-        console.log(colorObj.dark);
         return Matugen.darkmode ? colorObj.dark : colorObj.light;
     }
 }

@@ -6,6 +6,8 @@ import qs.utils
 import QtQuick.Effects
 import qs.services
 import qs.services.matugen
+import QtQuick.Controls
+import Quickshell.Io
 
 Rectangle {
     id: root
