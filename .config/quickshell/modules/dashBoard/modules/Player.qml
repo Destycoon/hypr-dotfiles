@@ -2,7 +2,6 @@ import QtQuick
 import qs.utils
 import qs.services
 import QtQuick.Layouts
-import QtQuick.Effects
 import qs.services.matugen
 
 Rectangle {
@@ -16,61 +15,9 @@ Rectangle {
         anchors.fill: parent
         anchors.margins: 16
         spacing: 16
-        Item {
-            Layout.preferredWidth: 140
-            Layout.preferredHeight: 140
-            Layout.alignment: Qt.AlignVCenter
-
-            Rectangle {
-                id: mask
-                anchors.fill: parent
-                radius: 70
-                color: Matugen.colors.getcolors(Matugen.colors.surface_dim)
-                layer.enabled: true
-                layer.smooth: true
-            }
-
-            Rectangle {
-                id: imageCenter
-                anchors.centerIn: parent
-                implicitWidth: parent.width / 5
-                implicitHeight: parent.width / 5
-                radius: implicitWidth / 2
-                color: root.color
-                layer.enabled: true
-                layer.smooth: true
-            }
-            Image {
-                id: cover
-                anchors.fill: parent
-                source: Player.coverArt
-                fillMode: Image.PreserveAspectCrop
-                visible: source !== ""
-                smooth: true
-                layer.enabled: true
-                layer.effect: MultiEffect {
-                    maskEnabled: true
-                    maskSource: mask
-                    maskThresholdMin: 0.5
-                    maskSpreadAtMin: 1.0
-                    layer.enabled: true
-                    layer.effect: MultiEffect {
-                        maskEnabled: true
-                        maskSource: imageCenter
-                        maskThresholdMin: 0.5
-                        maskSpreadAtMin: 1.0
-                    }
-                }
-            }
-            RotationAnimation on rotation {
-                from: 0
-                to: 360
-                running: Player.running
-                loops: Animation.Infinite
-                duration: 3000
-            }
-        }
+        PlayerImage {}
         ColumnLayout {
+
             Layout.fillWidth: true
             Layout.fillHeight: true
             spacing: 8

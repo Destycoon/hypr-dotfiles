@@ -14,6 +14,7 @@ Singleton {
     property string album: active ? (active.metadata["xesam:album"] || "") : ""
     property string coverArt: active ? (active.metadata["mpris:artUrl"] || "") : ""
     property string len: active ? formatTime(active.length) : "--:--"
+    property real length: active ? active.length : 0.0
     property string pos: (active && active.playbackState !== MprisPlaybackState.Stopped) ? formatTime(active.position) : "--:--"
     property real progress: (active && active.playbackState !== MprisPlaybackState.Stopped) ? (active.position / active.length) : 0.0
     property bool hasNext: active ? active.canGoNext : false
