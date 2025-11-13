@@ -4,8 +4,7 @@
 	
 
     "source" : "arch2",
-	"padding" : {
-			"left": 1}
+
   },
   "display": {
     "separator": " ",

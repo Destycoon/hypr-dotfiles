@@ -37,9 +37,8 @@ Scope {
     }
 
     function updateColor(img) {
-	persist.image = img;
-	matugen.running = true;
-	
+        persist.image = img;
+        matugen.running = true;
     }
 
     Process {

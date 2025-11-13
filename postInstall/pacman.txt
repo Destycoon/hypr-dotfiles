@@ -5,7 +5,6 @@ hyprlock
 hyprshot
 swaync
 neovim
-waybar
 otf-font-awesome
 pavucontrol
 pulseaudio
@@ -14,15 +13,11 @@ brightnessctl
 blueman
 btop
 fastfetch
-fortune-mod
-cowsay
 libreoffice-fresh
 discord
-lf
 pipewire-pulse
 xdg-desktop-portal
 xdg-desktop-portal-wlr
-zsh
 starship
 prismlauncher
 figlet
@@ -41,3 +36,6 @@ jdk17-openjdkbat
 bat
 pacman-contrib
 geoclue
+quickshell
+ghostty
+fish

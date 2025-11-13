@@ -7,82 +7,201 @@ import QtQuick.Layouts
 
 Item {
     id: container
-    width: 40
-    height: 40
+    implicitWidth: 40
+    implicitHeight: 70
 
     Rectangle {
         id: bat
-        width: 40
-        height: 40
-        color: "transparent"
-        anchors.centerIn: parent
+        anchors.fill: parent
+        radius: 20
+        color: Matugen.darkmode ? Matugen.colors.getcolors(Matugen.colors.surface_bright) : Matugen.colors.getcolors(Matugen.colors.surface_dim)
+
+        property real percent: UPower.displayDevice.percentage
+        property color batteryColor: {
+            if (UPower.displayDevice.state === UPowerDeviceState.Charging) {
+                return Colors.accentGreen;
+            } else if (percent < 0.2) {
+                return Colors.accentRed;
+            } else if (percent < 0.5) {
+                return Colors.accentYellow;
+            } else {
+                return Colors.accent;
+            }
+        }
+
+        Behavior on color {
+            ColorAnimation {
+                duration: 200
+            }
+        }
 
         MouseArea {
+            id: mouseArea
             anchors.fill: parent
+            hoverEnabled: true
+            cursorShape: Qt.PointingHandCursor
             onClicked: powerPopup.visible = !powerPopup.visible
+
+            onEntered: {
+                bat.color = Qt.lighter(bat.color, 1.1);
+            }
+            onExited: {
+                bat.color = Matugen.darkmode ? Matugen.colors.getcolors(Matugen.colors.surface_bright) : Matugen.colors.getcolors(Matugen.colors.surface_dim);
+            }
         }
-        property real percent: UPower.displayDevice.percentage
 
         ColumnLayout {
-            spacing: 2
-            Canvas {
-                id: canvas
-                implicitHeight: 40
-                implicitWidth: 40
+            anchors.centerIn: parent
+            spacing: 6
 
-                Layout.alignment: Qt.AlignHCenter
-                onPaint: {
-                    var ctx = getContext("2d");
-                    ctx.clearRect(0, 0, width, height);
-                    ctx.lineWidth = 3;
-                    ctx.lineCap = "round";
+            Item {
+                implicitWidth: 24
+                implicitHeight: 24
+                Layout.alignment: Qt.AlignVCenter
 
-                    var percent = Math.max(0, Math.min(1, bat.percent));
-                    var radius = Math.min(width, height) / 2 - ctx.lineWidth;
-                    var start = -Math.PI / 2;
-                    var end = start + (2 * Math.PI * percent);
+                Canvas {
+                    id: progressRing
+                    anchors.fill: parent
 
-                    if (UPower.displayDevice.state === UPowerDeviceState.Charging) {
-                        ctx.strokeStyle = Colors.accentGreen;
-                    } else if (percent < 0.2) {
-                        ctx.strokeStyle = Colors.accentRed;
-                    } else if (percent < 0.5) {
-                        ctx.strokeStyle = Colors.accentYellow;
-                    } else {
-                        ctx.strokeStyle = Colors.accent;
+                    onPaint: {
+                        var ctx = getContext("2d");
+                        ctx.clearRect(0, 0, width, height);
+
+                        var centerX = width / 2;
+                        var centerY = height / 2;
+                        var radius = Math.min(width, height) / 2 - 2;
+                        var lineWidth = 2.5;
+
+                        ctx.beginPath();
+                        ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+                        ctx.strokeStyle = Matugen.darkmode ? Qt.rgba(255, 255, 255, 0.15) : Qt.rgba(0, 0, 0, 0.1);
+                        ctx.lineWidth = lineWidth;
+                        ctx.stroke();
+
+                        var percent = Math.max(0, Math.min(1, bat.percent));
+                        var startAngle = -Math.PI / 2;
+                        var endAngle = startAngle + (2 * Math.PI * percent);
+
+                        ctx.beginPath();
+                        ctx.arc(centerX, centerY, radius, startAngle, endAngle, false);
+                        ctx.strokeStyle = bat.batteryColor;
+                        ctx.lineCap = "round";
+                        ctx.lineWidth = lineWidth;
+                        ctx.stroke();
                     }
 
-                    ctx.beginPath();
-                    ctx.arc(width / 2, height / 2, radius, start, end, false);
-                    ctx.stroke();
-
-                    ctx.font = "20px 'monospace'";
-                    ctx.textAlign = "center";
-                    ctx.textBaseline = "middle";
-                    ctx.fillStyle = Matugen.colors.getcolors(Matugen.colors.on_background);
-
-                    var text = "";
-                    if (UPower.displayDevice.state === UPowerDeviceState.Charging) {
-                        text = "󰂄";
-                    } else if (UPower.displayDevice.state === UPowerDeviceState.Discharging) {
-                        text = "󰁹";
-                    } else if (UPower.displayDevice.state === UPowerDeviceState.FullyCharged) {
-                        text = "󰁹";
-                    } else {
-                        text = "󰂃";
+                    Behavior on opacity {
+                        NumberAnimation {
+                            duration: 150
+                        }
                     }
+                }
 
-                    ctx.fillText(text, width / 2 - 0.1, height / 2 + 2);
+                StyledText {
+                    anchors.centerIn: parent
+                    text: {
+                        if (UPower.displayDevice.state === UPowerDeviceState.Charging) {
+                            return "󰂄";
+                        } else if (UPower.displayDevice.state === UPowerDeviceState.FullyCharged) {
+                            return "󰂅";
+                        } else if (bat.percent < 0.1) {
+                            return "󰂎";
+                        } else if (bat.percent < 0.3) {
+                            return "󰁺";
+                        } else if (bat.percent < 0.5) {
+                            return "󰁼";
+                        } else if (bat.percent < 0.7) {
+                            return "󰁾";
+                        } else if (bat.percent < 0.9) {
+                            return "󰂀";
+                        } else {
+                            return "󰁹";
+                        }
+                    }
+                    font.pixelSize: 14
+                    color: bat.batteryColor
+
+                    Behavior on color {
+                        ColorAnimation {
+                            duration: 200
+                        }
+                    }
                 }
             }
-            Connections {
-                target: UPower.displayDevice
-                function onPercentageChanged() {
-                    canvas.requestPaint();
+
+            StyledText {
+                text: Math.round(bat.percent * 100) + "%"
+                font.pixelSize: 13
+                font.bold: true
+                color: Matugen.colors.getcolors(Matugen.colors.on_surface)
+                opacity: 0.9
+                Layout.alignment: Qt.AlignVCenter
+            }
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            radius: parent.radius
+            color: "transparent"
+            border.color: Colors.accentGreen
+            border.width: 2
+            opacity: 0
+            visible: UPower.displayDevice.state === UPowerDeviceState.Charging
+
+            SequentialAnimation on opacity {
+                running: UPower.displayDevice.state === UPowerDeviceState.Charging
+                loops: Animation.Infinite
+
+                NumberAnimation {
+                    from: 0
+                    to: 0.4
+                    duration: 1000
+                    easing.type: Easing.InOutQuad
                 }
-                function onStateChanged() {
-                    canvas.requestPaint();
+                NumberAnimation {
+                    from: 0.4
+                    to: 0
+                    duration: 1000
+                    easing.type: Easing.InOutQuad
                 }
+            }
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            radius: parent.radius
+            color: "transparent"
+            border.color: Colors.accentRed
+            border.width: 2
+            opacity: 0
+            visible: bat.percent < 0.15 && UPower.displayDevice.state === UPowerDeviceState.Discharging
+
+            SequentialAnimation on opacity {
+                running: bat.percent < 0.15 && UPower.displayDevice.state === UPowerDeviceState.Discharging
+                loops: Animation.Infinite
+
+                NumberAnimation {
+                    from: 0
+                    to: 0.6
+                    duration: 800
+                    easing.type: Easing.InOutQuad
+                }
+                NumberAnimation {
+                    from: 0.6
+                    to: 0
+                    duration: 800
+                    easing.type: Easing.InOutQuad
+                }
+            }
+        }
+
+        Connections {
+            target: UPower.displayDevice
+            function onPercentageChanged() {
+                progressRing.requestPaint();
+            }
+            function onStateChanged() {
+                progressRing.requestPaint();
             }
         }
     }

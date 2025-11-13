@@ -27,8 +27,8 @@ for dir in Documents Images Musique Téléchargements Vidéos; do
     mkdir -p "$HOME/$dir"
 done
 
-if command -v zsh >/dev/null 2>&1; then
-    chsh -s "$(which zsh)"
+if command -v fish >/dev/null 2>&1; then
+    chsh -s "$(which fish)"
 fi
 
 if command -v hyprctl >/dev/null 2>&1; then

@@ -1,16 +1,27 @@
-import Quickshell
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Hyprland
-import qs.utils
 import qs.services.matugen
 
 Rectangle {
     id: workspaces
     color: Matugen.darkmode ? Matugen.colors.getcolors(Matugen.colors.surface_bright) : Matugen.colors.getcolors(Matugen.colors.surface_dim)
     implicitWidth: 30
-    implicitHeight: 140
     radius: 30
+
+    property int workspaceCount: Hyprland.workspaces && Hyprland.workspaces.values ? Hyprland.workspaces.values.length : 4
+    property real minWorkspaces: 4
+    property real effectiveCount: Math.max(workspaceCount, minWorkspaces)
+
+    implicitHeight: 10 + (effectiveCount * 24) + ((effectiveCount - 1) * 5)
+
+    Behavior on implicitHeight {
+        NumberAnimation {
+            duration: 200
+            easing.type: Easing.OutQuad
+        }
+    }
+
     ColumnLayout {
         id: workspaceCol
         spacing: 5
@@ -32,7 +43,8 @@ Rectangle {
                 implicitHeight: modelData.active ? 30 : 18
                 radius: 30
                 Layout.alignment: Qt.AlignHCenter
-                color: modelData.active ? Matugen.colors.getcolors(Matugen.colors.primary) : modelData.urgent ? Matugen.color.getcolors(Matugen.colors.error) : Matugen.colors.getcolors(Matugen.colors.secondary)
+                color: modelData.active ? Matugen.colors.getcolors(Matugen.colors.primary) : modelData.urgent ? Matugen.colors.getcolors(Matugen.colors.error) : Matugen.colors.getcolors(Matugen.colors.secondary)
+
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
@@ -43,11 +55,13 @@ Rectangle {
                         }
                     }
                 }
+
                 Behavior on implicitHeight {
                     NumberAnimation {
                         duration: 150
                     }
                 }
+
                 Behavior on color {
                     ColorAnimation {
                         duration: 250
