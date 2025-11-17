@@ -1,4 +1,3 @@
-import Quickshell
 import QtQuick
 import Quickshell.Services.UPower
 import qs.services.matugen
@@ -35,21 +34,6 @@ Item {
             }
         }
 
-        MouseArea {
-            id: mouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            cursorShape: Qt.PointingHandCursor
-            onClicked: powerPopup.visible = !powerPopup.visible
-
-            onEntered: {
-                bat.color = Qt.lighter(bat.color, 1.1);
-            }
-            onExited: {
-                bat.color = Matugen.darkmode ? Matugen.colors.getcolors(Matugen.colors.surface_bright) : Matugen.colors.getcolors(Matugen.colors.surface_dim);
-            }
-        }
-
         ColumnLayout {
             anchors.centerIn: parent
             spacing: 6
@@ -57,7 +41,7 @@ Item {
             Item {
                 implicitWidth: 24
                 implicitHeight: 24
-                Layout.alignment: Qt.AlignVCenter
+                Layout.alignment: Qt.AlignHCenter
 
                 Canvas {
                     id: progressRing

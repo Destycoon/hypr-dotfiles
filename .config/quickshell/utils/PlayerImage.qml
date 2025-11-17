@@ -84,7 +84,7 @@ Item {
                 RotationAnimation {
                     from: cover.rotation
                     to: cover.rotation + 360
-                    duration: 1000
+                    duration: 1700
                     easing.type: Easing.Linear
                     loops: Animation.Infinite
                 }
@@ -96,6 +96,7 @@ Item {
                 to: 0
                 duration: 2500
                 easing.type: Easing.OutQuad
+
                 direction: RotationAnimation.Clockwise
             }
         }
@@ -138,6 +139,7 @@ Item {
         rotation: Player.running ? minRotation + (maxRotation - minRotation) * progress : baseRotation
 
         Behavior on rotation {
+            id: armAnim
             enabled: !Player.running || Math.abs(rotation - (minRotation + (maxRotation - minRotation) * progress)) > 5
             NumberAnimation {
                 duration: 700

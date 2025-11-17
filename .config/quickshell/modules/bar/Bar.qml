@@ -47,7 +47,7 @@ ShellRoot {
 
                     Column {
                         id: bottom
-                        spacing: 10
+                        spacing: 5
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: 10
                         anchors.horizontalCenter: parent.horizontalCenter
@@ -55,7 +55,9 @@ ShellRoot {
                             anchors.horizontalCenter: parent.horizontalCenter
                         }
 
-                        Clock {}
+                        Clock {
+                            anchors.horizontalCenter: parent.horizontalCenter
+                        }
 
                         Power {}
                     }

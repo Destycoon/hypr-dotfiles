@@ -10,8 +10,9 @@ Item {
     StyledText {
         anchors.centerIn: parent
         font.pixelSize: 16
+        font.family: "lucide"
         color: Matugen.colors.getcolors(Matugen.colors.on_surface)
-        text: Matugen.darkmode ? "󰽢" : "󰖨"
+        text: Matugen.darkmode ? Lucide.icon_moon_star : Lucide.icon_sun
     }
 
     MouseArea {

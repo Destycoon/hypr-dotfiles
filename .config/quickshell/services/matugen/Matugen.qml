@@ -43,7 +43,8 @@ Scope {
 
     Process {
         id: matugen
-        command: ["sh", "-c", `matugen image --dry-run -j hex ${persist.image}`]
+        running: true
+        command: ["sh", "-c", `matugen image --dry-run -j hex $(swww query | sed -n 's/.*image:[[:space:]]*\\(\\/[^[:space:]]*\\).*/\\1/p')`]
         stdout: StdioCollector {
             onStreamFinished: {
                 var data = JSON.parse(this.text);

@@ -1,3 +1,4 @@
+import Quickshell
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Hyprland
@@ -36,7 +37,9 @@ Rectangle {
         }
 
         Repeater {
-            model: Hyprland.workspaces
+            model: ScriptModel {
+                values: Hyprland.workspaces.values.filter(ws => ws.id > 0)
+            }
             delegate: Rectangle {
                 id: workspace
                 implicitWidth: 18

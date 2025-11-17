@@ -1,11 +1,10 @@
 import QtQuick
 import qs.utils
-import qs.modules.dashBoard
 import qs.services
 
 Item {
     width: 40
-    height: 40
+    height: 70
 
     StyledText {
         id: root

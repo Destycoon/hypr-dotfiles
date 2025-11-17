@@ -10,7 +10,7 @@ PanelWindow {
     id: dashboard
 
     color: "transparent"
-    property string child: "./modules/Home.qml"
+    property string child: "./modules/AppLauncher.qml"
     visible: false
     IpcHandler {
         target: "dashboard"
@@ -19,7 +19,7 @@ PanelWindow {
             dashboard.visible = !dashboard.visible;
         }
         function toggleHome(): void {
-            if (!dashboard.visible || dashboard.child == "./modules/Home.qml" || dashboard.child == "./modules/Player.qml" ) {
+            if (!dashboard.visible || dashboard.child == "./modules/Home.qml" || dashboard.child == "./modules/Player.qml") {
                 toggle();
             }
 

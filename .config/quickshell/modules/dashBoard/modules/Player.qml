@@ -18,6 +18,7 @@ Rectangle {
         spacing: 20
 
         PlayerImage {
+            id: img
             Layout.preferredWidth: 140
             Layout.preferredHeight: 140
             Layout.alignment: Qt.AlignVCenter
