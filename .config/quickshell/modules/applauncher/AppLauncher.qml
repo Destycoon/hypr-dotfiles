@@ -6,7 +6,7 @@ import Quickshell.Io
 import qs.services.matugen
 import qs.utils
 import QtQuick.Effects
-
+import Quickshell.Wayland
 PanelWindow {
     id: launcher
     width: 450
@@ -15,6 +15,8 @@ PanelWindow {
     visible: false
     Keys.onEscapePressed: launcher.visible = false
     focusable: true
+
+    WlrLayershell.keyboardFocus : WlrKeyboardFocus.Exclusive
 
     IpcHandler {
         target: "launcher"
@@ -236,7 +238,7 @@ PanelWindow {
                                 Image {
                                     anchors.fill: parent
                                     anchors.margins: 4
-                                    source: modelData.icon ? Quickshell.iconPath(modelData.icon) : ""
+                                    source: Quickshell.iconPath(modelData.icon)  
                                     fillMode: Image.PreserveAspectCrop
                                     asynchronous: true
                                     layer.mipmap: true

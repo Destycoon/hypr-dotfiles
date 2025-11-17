@@ -29,6 +29,7 @@ Scope {
         }
     }
     Component.onCompleted: {
+        getWal.running = true;
         updateColor(persist.image);
     }
 
@@ -42,9 +43,19 @@ Scope {
     }
 
     Process {
+        id: getWal
+        running: true
+        command: ["sh", "-c", `swww query | sed -n 's/.*image:[[:space:]]*\\(\\/[^[:space:]]*\\).*/\\1/p'`]
+        stdout: StdioCollector {
+            onStreamFinished: {
+                updateColor(this.text);
+            }
+        }
+    }
+    Process {
         id: matugen
         running: true
-        command: ["sh", "-c", `matugen image --dry-run -j hex $(swww query | sed -n 's/.*image:[[:space:]]*\\(\\/[^[:space:]]*\\).*/\\1/p')`]
+        command: ["sh", "-c", `matugen image --dry-run -j hex ${persist.image}`]
         stdout: StdioCollector {
             onStreamFinished: {
                 var data = JSON.parse(this.text);
