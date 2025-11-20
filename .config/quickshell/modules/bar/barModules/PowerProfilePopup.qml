@@ -5,6 +5,7 @@ import Quickshell
 import Quickshell.Io
 import qs.services.matugen
 import qs.utils
+import Quickshell.Services.UPower
 
 PopupWindow {
     id: powerWindow
@@ -16,29 +17,9 @@ PopupWindow {
     implicitHeight: contentRect.height
 
     anchor {
-        rect.x: screen.width
-        rect.y: (screen.height / 2) - powerWindow.height / 2
+        rect.x: powerWindow.width + 55
+        rect.y: powerWindow.height / 2
         gravity: Edges.Bottom | Edges.Left
-    }
-
-    Process {
-        id: shutdownCmd
-        command: ["shutdown", "now"]
-    }
-    Process {
-        id: rebootCmd
-        command: ["reboot"]
-    }
-    Process {
-        id: lockCmd
-        command: ["hyprlock"]
-    }
-
-    IpcHandler {
-        target: "powerWindow"
-        function toggle() {
-            ShellContext.togglePower();
-        }
     }
 
     Rectangle {
@@ -49,7 +30,7 @@ PopupWindow {
         width: buttonRow.width + 20
         height: buttonRow.height + 20
 
-        Column {
+        Row {
             id: buttonRow
             anchors.centerIn: parent
             spacing: 10
@@ -63,13 +44,12 @@ PopupWindow {
                     StyledText {
                         color: Matugen.colors.getcolors(Matugen.colors.on_primary)
                         font.pixelSize: 22
-                        text: Lucide.icon_power
+                        text: Lucide.icon_leaf
                         anchors.centerIn: parent
                     }
                 }
                 onClicked: {
-                    ShellContext.powerOpen = false;
-                    shutdownCmd.running = true;
+                    PowerProfiles.profile = PowerProfile.PowerSaver;
                 }
             }
 
@@ -82,13 +62,12 @@ PopupWindow {
                     StyledText {
                         color: Matugen.colors.getcolors(Matugen.colors.on_primary)
                         font.pixelSize: 22
-                        text: Lucide.icon_rotate_cw
+                        text: ""
                         anchors.centerIn: parent
                     }
                 }
                 onClicked: {
-                    ShellContext.powerOpen = false;
-                    rebootCmd.running = true;
+                    PowerProfiles.profile = PowerProfile.Balanced;
                 }
             }
 
@@ -101,13 +80,12 @@ PopupWindow {
                     StyledText {
                         color: Matugen.colors.getcolors(Matugen.colors.on_primary)
                         font.pixelSize: 22
-                        text: Lucide.icon_lock
+                        text: Lucide.icon_zap
                         anchors.centerIn: parent
                     }
                 }
                 onClicked: {
-                    ShellContext.powerOpen = false;
-                    lockCmd.running = true;
+                    PowerProfiles.profile = PowerProfile.PowerSaver;
                 }
             }
         }

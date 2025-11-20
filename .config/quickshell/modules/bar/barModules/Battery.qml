@@ -87,7 +87,7 @@ Item {
                         if (UPower.displayDevice.state === UPowerDeviceState.Charging) {
                             return "󰂄";
                         } else if (UPower.displayDevice.state === UPowerDeviceState.FullyCharged) {
-                            return "󰂅";
+                            return "󰁹";
                         } else if (bat.percent < 0.1) {
                             return "󰂎";
                         } else if (bat.percent < 0.3) {
@@ -114,7 +114,12 @@ Item {
             }
 
             StyledText {
-                text: Math.round(bat.percent * 100) + "%"
+                text: {
+                    if (UPower.displayDevice.state === UPowerDeviceState.FullyCharged)
+                        return "full";
+                    else
+                        return Math.round(bat.percent * 100) + "%";
+                }
                 font.pixelSize: 13
                 font.bold: true
                 color: Matugen.colors.getcolors(Matugen.colors.on_surface)

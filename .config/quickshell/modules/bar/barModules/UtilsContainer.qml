@@ -14,6 +14,6 @@ Rectangle {
         anchors.topMargin: 3
         anchors.bottomMargin: 3
         Bluetooth {}
-        DarkLight {}
+        PowerProfile {}
     }
 }

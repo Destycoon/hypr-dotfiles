@@ -1,56 +1,32 @@
 import QtQuick
 import Quickshell.Services.UPower
 import qs.utils
-import QtQuick.Controls
-import QtQuick.Layouts
 
 Rectangle {
     id: powerProfileIcon
 
-    radius: 18
-    implicitWidth: 170
-    implicitHeight: 60
-    color: Colors.bg
+    implicitWidth: 28
+    implicitHeight: 28
+    color: "transparent"
 
-    RowLayout {
-        Button {
-            id: performance
-            text: "󱐋"
-            onClicked: {
-                PowerProfiles.profile = PowerProfiles.Performance;
-            }
-            background: Rectangle {
-                radius: 13
-                implicitWidth: 50
-                implicitHeight: 50
-                color: Colors.lightbg
-            }
-        }
-        Button {
-            id: balance
-            text: ""
-            onClicked: {
-                PowerProfiles.profile = PowerProfiles.Balanced;
-            }
-            background: Rectangle {
-                radius: 13
-                implicitWidth: 50
-                implicitHeight: 50
-                color: Colors.lightbg
+    StyledText {
+        anchors.centerIn: parent
+
+        font.pixelSize: 18
+        text: {
+            if (PowerProfiles.profile == PowerProfile.Performance) {
+                return Lucide.icon_zap;
+            } else if (PowerProfiles.profile == PowerProfile.PowerSaver) {
+                return Lucide.icon_leaf;
+            } else if (PowerProfiles.profile == PowerProfile.Balanced) {
+                return "";
             }
         }
-        Button {
-            id: low
-            text: ""
-            onClicked: {
-                PowerProfiles.profile = PowerProfiles.PowerSaver;
-            }
-            background: Rectangle {
-                radius: 13
-                implicitWidth: 50
-                implicitHeight: 50
-                color: Colors.lightbg
-            }
+    }
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            ShellContext.toggleProfile();
         }
     }
 }

@@ -15,7 +15,7 @@ Item {
         id: icon
         anchors.centerIn: parent
         color: adapter?.enabled ? Matugen.colors.getcolors(Matugen.colors.on_surface) : Matugen.colors.getcolors(Matugen.colors.on_secondary_container)
-        text: adapter?.enabled ? "󰂯" : "󰂲"
+        text: adapter?.enabled ? Lucide.icon_bluetooth : Lucide.icon_bluetooth_off
         font.pixelSize: 18
     }
     MouseArea {

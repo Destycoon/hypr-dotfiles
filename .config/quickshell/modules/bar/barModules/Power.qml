@@ -1,4 +1,3 @@
-import Quickshell
 import QtQuick
 import qs.utils
 
@@ -17,14 +16,7 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            loader.item.visible = !loader.item.visible;
+            ShellContext.togglePower();
         }
-    }
-    Loader {
-        id: loader
-        onLoaded: loader.item.visible = !loader.item.visible
-    }
-    Component.onCompleted: {
-        loader.setSource("PowerMenu.qml");
     }
 }

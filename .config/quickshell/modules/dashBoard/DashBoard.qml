@@ -10,16 +10,17 @@ PanelWindow {
     id: dashboard
 
     color: "transparent"
-    property string child: "./modules/AppLauncher.qml"
-    visible: false
+    property string child: "./modules/Home.qml"
+    visible: ShellContext.dashOpen
+
     IpcHandler {
         target: "dashboard"
 
         function toggle(): void {
-            dashboard.visible = !dashboard.visible;
+            ShellContext.toggleDash();
         }
         function toggleHome(): void {
-            if (!dashboard.visible || dashboard.child == "./modules/Home.qml" || dashboard.child == "./modules/Player.qml") {
+            if (!ShellContext.dashOpen || dashboard.child == "./modules/Home.qml" || dashboard.child == "./modules/Player.qml") {
                 toggle();
             }
 
@@ -27,7 +28,7 @@ PanelWindow {
         }
 
         function toggleWal(): void {
-            if (!dashboard.visible || dashboard.child == "./modules/WallpaperSelector.qml" || dashboard.child == "./modules/Player.qml") {
+            if (!ShellContext.dashOpen || dashboard.child == "./modules/WallpaperSelector.qml" || dashboard.child == "./modules/Player.qml") {
                 toggle();
             }
             dashboard.child = "./modules/WallpaperSelector.qml";

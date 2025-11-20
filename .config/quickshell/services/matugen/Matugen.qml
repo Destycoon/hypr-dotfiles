@@ -8,7 +8,7 @@ Scope {
     id: root
 
     readonly property bool darkmode: persist.darkmode
-    readonly property string image: persist.image
+    property string image: persist.image
 
     PersistentProperties {
         id: persist
@@ -41,6 +41,10 @@ Scope {
         persist.image = img;
         matugen.running = true;
     }
+    function get(): string {
+        getWal.running = true;
+        return image;
+    }
 
     Process {
         id: getWal
@@ -48,7 +52,7 @@ Scope {
         command: ["sh", "-c", `swww query | sed -n 's/.*image:[[:space:]]*\\(\\/[^[:space:]]*\\).*/\\1/p'`]
         stdout: StdioCollector {
             onStreamFinished: {
-                updateColor(this.text);
+                image = this.text;
             }
         }
     }

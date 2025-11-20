@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import Quickshell
 import QtQuick.Layouts
@@ -5,23 +7,19 @@ import QtQuick.Controls
 import Quickshell.Io
 import qs.services.matugen
 import qs.utils
-import QtQuick.Effects
-import Quickshell.Wayland
+
 PanelWindow {
     id: launcher
-    width: 450
-    height: 500
+    implicitWidth: 450
+    implicitHeight: 500
     color: "transparent"
-    visible: false
-    Keys.onEscapePressed: launcher.visible = false
+    visible: ShellContext.launcherOpen
     focusable: true
-
-    WlrLayershell.keyboardFocus : WlrKeyboardFocus.Exclusive
 
     IpcHandler {
         target: "launcher"
         function toggle() {
-            launcher.visible = !launcher.visible;
+            ShellContext.toggleLauncher();
         }
     }
 
@@ -35,7 +33,6 @@ PanelWindow {
             anchors.margins: 20
             spacing: 16
 
-            // En-tête
             RowLayout {
                 Layout.fillWidth: true
                 spacing: 8
@@ -55,7 +52,6 @@ PanelWindow {
                 }
             }
 
-            // Barre de recherche Material You
             Rectangle {
                 Layout.fillWidth: true
                 Layout.preferredHeight: 56
@@ -99,7 +95,10 @@ PanelWindow {
                         focus: true
                         activeFocusOnPress: true
                         color: Matugen.colors.getcolors(Matugen.colors.on_surface)
-
+			
+			Keys.onEscapePressed : {
+				ShellContext.toggleLauncher();
+			}
                         Keys.onDownPressed: {
                             if (appList.count > 0) {
                                 appList.currentIndex = 0;
@@ -111,7 +110,7 @@ PanelWindow {
                             if (appList.count > 0) {
                                 var app = filteredApps[0];
                                 app.execute();
-                                launcher.visible = false;
+                                ShellContext.toggleLauncher();
                                 search.text = "";
                             }
                         }
@@ -190,8 +189,7 @@ PanelWindow {
                         }
                     }
                     Keys.onDownPressed: incrementCurrentIndex()
-                    Keys.onEnterPressed: {
-                        console.log("sex");
+                    Keys.onReturnPressed: {
                         var app = filteredApps[currentIndex];
                         app.execute();
                         launcher.visible = false;
@@ -238,7 +236,12 @@ PanelWindow {
                                 Image {
                                     anchors.fill: parent
                                     anchors.margins: 4
-                                    source: Quickshell.iconPath(modelData.icon)  
+                                    source: {
+                                        if (modelData.runInTerminal == false)
+                                            return Quickshell.iconPath(modelData.icon);
+                                        else
+                                            return "../../utils/Assets/svg/terminal.svg";
+                                    }
                                     fillMode: Image.PreserveAspectCrop
                                     asynchronous: true
                                     layer.mipmap: true

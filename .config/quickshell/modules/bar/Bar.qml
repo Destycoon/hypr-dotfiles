@@ -26,6 +26,10 @@ ShellRoot {
 
             implicitWidth: 50
 
+            PowerProfilePopup {
+                active: ShellContext.showPProfile
+                anchor.window: bar
+            }
             Rectangle {
                 id: background
                 anchors.fill: parent
@@ -42,7 +46,10 @@ ShellRoot {
                         anchors.topMargin: 10
 
                         anchors.horizontalCenter: parent.horizontalCenter
-                        Battery {}
+                        App {}
+                        Workspaces {
+                            anchors.horizontalCenter: parent.horizontalCenter
+                        }
                     }
 
                     Column {
@@ -59,13 +66,17 @@ ShellRoot {
                             anchors.horizontalCenter: parent.horizontalCenter
                         }
 
+                        Battery {}
                         Power {}
+                        PowerMenu {
+                            active: ShellContext.powerOpen
+                            anchor.window: bar
+                        }
                     }
                     Column {
                         id: center
                         spacing: 10
                         anchors.centerIn: parent
-                        Workspaces {}
                     }
                 }
             }
