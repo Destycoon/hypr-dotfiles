@@ -11,6 +11,7 @@ Scope {
     property bool launcherOpen: false
 
     property bool showPProfile: false
+
     function toggleDash() {
         dashOpen = !dashOpen;
         powerOpen = false;
