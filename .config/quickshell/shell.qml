@@ -5,7 +5,6 @@ import qs.modules.applauncher
 import qs.modules.wallaper
 
 Scope {
-    Bar {}
     DashBoard {}
     AppLauncher {}
     Background {}

@@ -5,84 +5,51 @@ import qs.utils
 import qs.services.matugen
 import qs.config
 
-ShellRoot {
-    Variants {
-        model: Quickshell.screens
-        PanelWindow {
-            id: bar
-            property var modelData
-            screen: modelData
-            color: "transparent"
-            anchors {
-                top: true
-                left: true
-                bottom: true
+StyledRect {
+    id: background
+    anchors.fill: parent
+    radius: 12
+    color: Matugen.colors.getcolors(Matugen.colors.background)
+
+    Item {
+        anchors.fill: parent
+
+        Column {
+            id: top
+            spacing: 10
+            anchors.top: parent.top
+            anchors.topMargin: 10
+
+            anchors.horizontalCenter: parent.horizontalCenter
+            App {}
+            Workspaces {
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+        }
+
+        Column {
+            id: bottom
+            spacing: 5
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 10
+            anchors.horizontalCenter: parent.horizontalCenter
+            UtilsContainer {
+                anchors.horizontalCenter: parent.horizontalCenter
             }
 
-            margins {
-                top: 8
-                bottom: 8
-                left: 8
+            Clock {
+                anchors.horizontalCenter: parent.horizontalCenter
             }
 
-            implicitWidth: 50
-
-            PowerProfilePopup {
-                active: ShellContext.showPProfile
-                anchor.window: bar
+            Battery {
+                anchors.horizontalCenter: parent.horizontalCenter
             }
-            StyledRect {
-                id: background
-                anchors.fill: parent
-                radius: 12
-                color: Matugen.colors.getcolors(Matugen.colors.background)
-
-                Item {
-                    anchors.fill: parent
-
-                    Column {
-                        id: top
-                        spacing: 10
-                        anchors.top: parent.top
-                        anchors.topMargin: 10
-
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        App {}
-                        Workspaces {
-                            anchors.horizontalCenter: parent.horizontalCenter
-                        }
-                    }
-
-                    Column {
-                        id: bottom
-                        spacing: 5
-                        anchors.bottom: parent.bottom
-                        anchors.bottomMargin: 10
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        UtilsContainer {
-                            anchors.horizontalCenter: parent.horizontalCenter
-                        }
-
-                        Clock {
-                            anchors.horizontalCenter: parent.horizontalCenter
-                        }
-
-                        Battery {
-                            anchors.horizontalCenter: parent.horizontalCenter
-                        }
-                        Power {}
-                        PowerMenu {
-                            active: ShellContext.powerOpen
-                            anchor.window: bar
-                        }
-                    }
-                    Column {
-                        id: center
-                        spacing: 10
-                        anchors.centerIn: parent
-                    }
-                }
-            }
+            Power {}
+        }
+        Column {
+            id: center
+            spacing: 10
+            anchors.centerIn: parent
         }
     }
 }
