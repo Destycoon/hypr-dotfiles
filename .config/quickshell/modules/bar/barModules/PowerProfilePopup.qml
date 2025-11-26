@@ -5,6 +5,7 @@ import Quickshell
 import Quickshell.Io
 import qs.services.matugen
 import qs.utils
+import qs.config
 import Quickshell.Services.UPower
 
 PopupWindow {
@@ -27,7 +28,7 @@ PopupWindow {
     readonly property color btnBg: Matugen.colors.getcolors(Matugen.colors.primary)
     readonly property color btnFg: Matugen.colors.getcolors(Matugen.colors.on_primary)
 
-    Rectangle {
+    StyledRect {
         id: contentRect
         radius: 18
         color: bg
@@ -40,7 +41,7 @@ PopupWindow {
             anchors.centerIn: parent
 
             StyledText {
-                text: UPower.displayDevice.isPresent ? "Battery :" : "No UPower device"
+                text: UPower.displayDevice.isPresent ? "Battery : " + UPowerDevice.type : "No UPower device"
                 font.pixelSize: 14
             }
             StyledText {
@@ -63,7 +64,7 @@ PopupWindow {
                 Button {
                     width: 50
                     height: 50
-                    background: Rectangle {
+                    background: StyledRect {
                         radius: 10
                         color: btnBg
                         StyledText {
@@ -79,7 +80,7 @@ PopupWindow {
                 Button {
                     width: 50
                     height: 50
-                    background: Rectangle {
+                    background: StyledRect {
                         radius: 10
                         color: btnBg
                         StyledText {
@@ -95,7 +96,7 @@ PopupWindow {
                 Button {
                     width: 50
                     height: 50
-                    background: Rectangle {
+                    background: StyledRect {
                         radius: 10
                         color: btnBg
                         StyledText {

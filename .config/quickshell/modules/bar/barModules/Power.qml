@@ -1,7 +1,7 @@
 import QtQuick
 import qs.utils
 
-Rectangle {
+StyledRect {
     id: powerRoot
     width: 40
     height: 40

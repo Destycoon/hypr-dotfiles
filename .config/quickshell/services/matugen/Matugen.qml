@@ -7,15 +7,14 @@ import Quickshell.Io
 Scope {
     id: root
 
-    readonly property bool darkmode: persist.darkmode
     property string image: persist.image
 
+    property bool darkmode: true
     PersistentProperties {
         id: persist
 
         reloadableId: "MatugenState"
 
-        property bool darkmode: true
         property string image: "/home/destycoon/.config/wallpaper/wallhaven-qz8w55.png"
     }
 
@@ -34,7 +33,7 @@ Scope {
     }
 
     function toggleDark() {
-        persist.darkmode = !persist.darkmode;
+        darkmode = !darkmode;
     }
 
     function updateColor(img) {

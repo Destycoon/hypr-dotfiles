@@ -1,8 +1,9 @@
 import QtQuick
 import Quickshell.Services.UPower
 import qs.utils
+import qs.config
 
-Rectangle {
+StyledRect {
     id: powerProfileIcon
 
     implicitWidth: 28

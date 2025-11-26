@@ -3,8 +3,9 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell.Hyprland
 import qs.services.matugen
+import qs.utils
 
-Rectangle {
+StyledRect {
     id: workspaces
     color: Matugen.darkmode ? Matugen.colors.getcolors(Matugen.colors.surface_bright) : Matugen.colors.getcolors(Matugen.colors.surface_dim)
     implicitWidth: 30
@@ -40,7 +41,7 @@ Rectangle {
             model: ScriptModel {
                 values: Hyprland.workspaces.values.filter(ws => ws.id > 0)
             }
-            delegate: Rectangle {
+            delegate: StyledRect {
                 id: workspace
                 implicitWidth: 18
                 implicitHeight: modelData.active ? 30 : 18

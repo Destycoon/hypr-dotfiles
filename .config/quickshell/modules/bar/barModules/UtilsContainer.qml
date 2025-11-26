@@ -1,7 +1,8 @@
 import QtQuick
 import qs.services.matugen
+import qs.utils
 
-Rectangle {
+StyledRect {
     id: container
     height: 90
     width: 30

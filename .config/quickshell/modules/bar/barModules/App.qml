@@ -3,13 +3,14 @@ import Quickshell
 import QtQuick
 import qs.utils
 import qs.services.matugen
+import qs.config
 
 Item {
     id: root
 
     implicitWidth: 40
     implicitHeight: 40
-    Rectangle {
+    StyledRect {
         anchors.fill: parent
         color: "transparent"
 

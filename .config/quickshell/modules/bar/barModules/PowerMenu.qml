@@ -5,6 +5,7 @@ import Quickshell
 import Quickshell.Io
 import qs.services.matugen
 import qs.utils
+import qs.config
 
 PopupWindow {
     id: powerWindow
@@ -41,7 +42,7 @@ PopupWindow {
         }
     }
 
-    Rectangle {
+    StyledRect {
         id: contentRect
         color: Matugen.colors.getcolors(Matugen.colors.background)
         radius: 18
@@ -57,7 +58,7 @@ PopupWindow {
             Button {
                 width: 50
                 height: 50
-                background: Rectangle {
+                background: StyledRect {
                     color: Matugen.colors.getcolors(Matugen.colors.primary)
                     radius: 8
                     StyledText {
@@ -76,7 +77,7 @@ PopupWindow {
             Button {
                 width: 50
                 height: 50
-                background: Rectangle {
+                background: StyledRect {
                     color: Matugen.colors.getcolors(Matugen.colors.primary)
                     radius: 8
                     StyledText {
@@ -95,7 +96,7 @@ PopupWindow {
             Button {
                 width: 50
                 height: 50
-                background: Rectangle {
+                background: StyledRect {
                     color: Matugen.colors.getcolors(Matugen.colors.primary)
                     radius: 8
                     StyledText {

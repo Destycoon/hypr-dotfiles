@@ -11,7 +11,7 @@ Item {
     Layout.preferredHeight: 180
     Layout.alignment: Qt.AlignVCenter
 
-    Rectangle {
+    StyledRect {
         id: container
         anchors.fill: parent
         radius: 16
@@ -23,7 +23,7 @@ Item {
             layer.smooth: true
             anchors.fill: parent
 
-            Rectangle {
+            StyledRect {
                 implicitWidth: parent.width - 30
                 implicitHeight: parent.height - 30
                 anchors.centerIn: parent
@@ -38,7 +38,7 @@ Item {
             layer.enabled: true
             layer.smooth: true
 
-            Rectangle {
+            StyledRect {
                 anchors.centerIn: parent
                 implicitWidth: parent.width / 4.5
                 implicitHeight: parent.width / 4.5
@@ -100,7 +100,7 @@ Item {
                 direction: RotationAnimation.Clockwise
             }
         }
-        Rectangle {
+        StyledRect {
             anchors.fill: parent
             radius: parent.radius
             gradient: Gradient {
@@ -147,7 +147,7 @@ Item {
             }
         }
 
-        Rectangle {
+        StyledRect {
             id: pivot
             width: 14
             height: 14
@@ -165,7 +165,7 @@ Item {
             }
         }
 
-        Rectangle {
+        StyledRect {
             id: arm
             width: 5
             height: 75
@@ -185,7 +185,7 @@ Item {
             anchors.top: arm.bottom
             anchors.topMargin: -2
 
-            Rectangle {
+            StyledRect {
                 width: 10
                 height: 14
                 radius: 5
@@ -193,7 +193,7 @@ Item {
                 anchors.top: parent.top
             }
 
-            Rectangle {
+            StyledRect {
                 width: 2.5
                 height: 6
                 color: Matugen.colors.getcolors(Matugen.colors.on_primary)

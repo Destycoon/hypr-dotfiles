@@ -9,7 +9,7 @@ import qs.services.matugen
 import QtQuick.Controls
 import Quickshell.Io
 
-Rectangle {
+StyledRect {
     id: root
 
     color: Matugen.darkmode ? Matugen.colors.getcolors(Matugen.colors.surface_bright) : Matugen.colors.getcolors(Matugen.colors.surface_dim)
@@ -44,7 +44,7 @@ Rectangle {
             Layout.fillHeight: true
             clip: true
             model: wallpaperSelector.filteredWallpaperList
-            pathItemCount: 7
+            pathItemCount: 3
             focus: true
 
             onCurrentIndexChanged: {
@@ -55,19 +55,25 @@ Rectangle {
                 id: delegateItem
                 required property var modelData
                 required property int index
-                width: 400
-                height: 300
-                scale: PathView.scale
+
+                width: pathView.currentIndex === delegateItem.index ? 450 : 150
+                height: 350
+
                 z: PathView.z
 
-                Rectangle {
+                Behavior on width {
+                    NumberAnimation {
+                        duration: 300
+                        easing.type: Easing.InOutQuad
+                    }
+                }
+
+                StyledRect {
                     id: mask
                     anchors.fill: parent
                     color: "#2a2a2a"
                     radius: 18
-                    opacity: pathView.currentIndex === delegateItem.index ? 1 : 0.8
                     layer.enabled: true
-
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
@@ -85,7 +91,6 @@ Rectangle {
                     smooth: true
                     mipmap: true
                     layer.enabled: true
-                    opacity: pathView.currentIndex === delegateItem.index ? 1 : 0.8
 
                     layer.effect: MultiEffect {
                         maskEnabled: true
@@ -97,49 +102,51 @@ Rectangle {
             }
 
             path: Path {
-                startX: -100
+                startX: pathView.width * 0.1
                 startY: pathView.height / 2
 
+                PathAttribute {
+                    name: "scale"
+                    value: 0.5
+                }
                 PathAttribute {
                     name: "z"
                     value: 0
                 }
-                PathAttribute {
-                    name: "scale"
-                    value: 0.6
-                }
 
                 PathLine {
-                    x: pathView.width / 2
+                    x: 0
                     y: pathView.height / 2
                 }
 
-                PathAttribute {
-                    name: "z"
-                    value: 10
-                }
                 PathAttribute {
                     name: "scale"
                     value: 1.0
                 }
+                PathAttribute {
+                    name: "z"
+                    value: 10
+                }
 
                 PathLine {
-                    x: pathView.width + 100
+                    x: pathView.width * 1.1
                     y: pathView.height / 2
                 }
 
                 PathAttribute {
-                    name: "z"
-                    value: 0
+                    name: "scale"
+                    value: 0.5
                 }
                 PathAttribute {
-                    name: "scale"
-                    value: 0.6
+                    name: "z"
+                    value: 0
                 }
             }
 
             preferredHighlightBegin: 0.5
             preferredHighlightEnd: 0.5
+            highlightRangeMode: PathView.StrictlyEnforceRange
+            highlightMoveDuration: 300
 
             Keys.onPressed: event => {
                 var current = pathView.model[pathView.currentIndex];

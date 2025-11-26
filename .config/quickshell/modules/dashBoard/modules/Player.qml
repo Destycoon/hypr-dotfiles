@@ -5,7 +5,7 @@ import QtQuick.Layouts
 import qs.services.matugen
 import QtQuick.Controls
 
-Rectangle {
+StyledRect {
     id: root
     color: Matugen.darkmode ? Matugen.colors.getcolors(Matugen.colors.surface_bright) : Matugen.colors.getcolors(Matugen.colors.surface_dim)
     radius: 18
@@ -77,7 +77,7 @@ Rectangle {
                         }
                     }
 
-                    background: Rectangle {
+                    background: StyledRect {
                         x: progressSlider.leftPadding
                         y: progressSlider.topPadding + progressSlider.availableHeight / 2 - height / 2
                         implicitWidth: 200
@@ -87,7 +87,7 @@ Rectangle {
                         radius: 2
                         color: Qt.rgba(255, 255, 255, 0.15)
 
-                        Rectangle {
+                        StyledRect {
                             width: progressSlider.visualPosition * parent.width
                             height: parent.height
                             color: Colors.text
@@ -95,7 +95,7 @@ Rectangle {
                         }
                     }
 
-                    handle: Rectangle {
+                    handle: StyledRect {
                         x: progressSlider.leftPadding + progressSlider.visualPosition * (progressSlider.availableWidth - width)
                         y: progressSlider.topPadding + progressSlider.availableHeight / 2 - height / 2
                         implicitWidth: 14
@@ -136,19 +136,13 @@ Rectangle {
                 Layout.topMargin: 4
                 spacing: 12
 
-                Rectangle {
+                StyledRect {
                     id: prevButton
                     implicitWidth: 40
                     implicitHeight: 40
                     radius: 20
                     color: playerPrevMouse.containsMouse ? Qt.rgba(255, 255, 255, 0.12) : "transparent"
                     visible: Player.hasPrev
-
-                    Behavior on color {
-                        ColorAnimation {
-                            duration: 150
-                        }
-                    }
 
                     StyledText {
                         anchors.centerIn: parent
@@ -166,18 +160,12 @@ Rectangle {
                     }
                 }
 
-                Rectangle {
+                StyledRect {
                     id: playButton
                     implicitWidth: 50
                     implicitHeight: 50
                     radius: 25
                     color: playerPlayMouse.containsMouse ? Qt.rgba(255, 255, 255, 0.22) : Qt.rgba(255, 255, 255, 0.15)
-
-                    Behavior on color {
-                        ColorAnimation {
-                            duration: 150
-                        }
-                    }
 
                     Behavior on scale {
                         NumberAnimation {
@@ -203,19 +191,13 @@ Rectangle {
                     }
                 }
 
-                Rectangle {
+                StyledRect {
                     id: nextButton
                     implicitWidth: 40
                     implicitHeight: 40
                     radius: 20
                     color: playerNextMouse.containsMouse ? Qt.rgba(255, 255, 255, 0.12) : "transparent"
                     visible: Player.hasNext
-
-                    Behavior on color {
-                        ColorAnimation {
-                            duration: 150
-                        }
-                    }
 
                     StyledText {
                         anchors.centerIn: parent

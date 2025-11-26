@@ -3,6 +3,7 @@ import QtQuick
 import qs.modules.bar.barModules
 import qs.utils
 import qs.services.matugen
+import qs.config
 
 ShellRoot {
     Variants {
@@ -30,7 +31,7 @@ ShellRoot {
                 active: ShellContext.showPProfile
                 anchor.window: bar
             }
-            Rectangle {
+            StyledRect {
                 id: background
                 anchors.fill: parent
                 radius: 12
@@ -66,7 +67,9 @@ ShellRoot {
                             anchors.horizontalCenter: parent.horizontalCenter
                         }
 
-                        Battery {}
+                        Battery {
+                            anchors.horizontalCenter: parent.horizontalCenter
+                        }
                         Power {}
                         PowerMenu {
                             active: ShellContext.powerOpen

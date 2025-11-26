@@ -1,6 +1,7 @@
 import Quickshell
 import QtQuick
 import qs.utils
+import qs.config
 import QtQuick.Layouts
 import Quickshell.Io
 import QtQuick.Controls
@@ -36,7 +37,7 @@ PanelWindow {
     }
     focusable: true
 
-    Rectangle {
+    StyledRect {
 
         width: parent.width
         height: parent.height
@@ -48,7 +49,7 @@ PanelWindow {
             anchors.fill: parent
             anchors.margins: 10
 
-            Rectangle {
+            StyledRect {
                 id: buttonContainer
                 implicitWidth: implicitWidth
                 Layout.alignment: Qt.AlignHCenter
@@ -67,7 +68,7 @@ PanelWindow {
                         onClicked: {
                             dashboard.child = "./modules/Home.qml";
                         }
-                        background: Rectangle {
+                        background: StyledRect {
 
                             color: (dashboard.child == "./modules/Home.qml") ? Matugen.colors.getcolors(Matugen.colors.primary) : Matugen.colors.getcolors(Matugen.colors.secondary)
                             radius: 13
@@ -88,7 +89,7 @@ PanelWindow {
                             dashboard.child = "./modules/Player.qml";
                         }
 
-                        background: Rectangle {
+                        background: StyledRect {
                             color: (dashboard.child == "./modules/Player.qml") ? Matugen.colors.getcolors(Matugen.colors.primary) : Matugen.colors.getcolors(Matugen.colors.secondary)
                             radius: 13
 
@@ -106,7 +107,7 @@ PanelWindow {
                         onClicked: {
                             dashboard.child = "./modules/WallpaperSelector.qml";
                         }
-                        background: Rectangle {
+                        background: StyledRect {
 
                             color: (dashboard.child == "./modules/WallpaperSelector.qml") ? Matugen.colors.getcolors(Matugen.colors.primary) : Matugen.colors.getcolors(Matugen.colors.secondary)
                             radius: 13

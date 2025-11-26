@@ -6,10 +6,10 @@ import QtQuick.Layouts
 
 Item {
     id: container
-    implicitWidth: 40
-    implicitHeight: 70
+    implicitWidth: 30
+    implicitHeight: 30
 
-    Rectangle {
+    StyledRect {
         id: bat
         anchors.fill: parent
         radius: 20
@@ -25,12 +25,6 @@ Item {
                 return Colors.accentYellow;
             } else {
                 return Colors.accent;
-            }
-        }
-
-        Behavior on color {
-            ColorAnimation {
-                duration: 200
             }
         }
 
@@ -104,31 +98,11 @@ Item {
                     }
                     font.pixelSize: 14
                     color: bat.batteryColor
-
-                    Behavior on color {
-                        ColorAnimation {
-                            duration: 200
-                        }
-                    }
                 }
-            }
-
-            StyledText {
-                text: {
-                    if (UPower.displayDevice.state === UPowerDeviceState.FullyCharged)
-                        return "full";
-                    else
-                        return Math.round(bat.percent * 100) + "%";
-                }
-                font.pixelSize: 13
-                font.bold: true
-                color: Matugen.colors.getcolors(Matugen.colors.on_surface)
-                opacity: 0.9
-                Layout.alignment: Qt.AlignVCenter
             }
         }
 
-        Rectangle {
+        StyledRect {
             anchors.fill: parent
             radius: parent.radius
             color: "transparent"
@@ -156,7 +130,7 @@ Item {
             }
         }
 
-        Rectangle {
+        StyledRect {
             anchors.fill: parent
             radius: parent.radius
             color: "transparent"

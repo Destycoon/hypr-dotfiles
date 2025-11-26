@@ -7,6 +7,7 @@ import QtQuick.Controls
 import Quickshell.Io
 import qs.services.matugen
 import qs.utils
+import qs.config
 
 PanelWindow {
     id: launcher
@@ -16,6 +17,9 @@ PanelWindow {
     visible: ShellContext.launcherOpen
     focusable: true
 
+    mask: Region {
+        item: app
+    }
     IpcHandler {
         target: "launcher"
         function toggle() {
@@ -23,7 +27,8 @@ PanelWindow {
         }
     }
 
-    Rectangle {
+    StyledRect {
+        id: app
         anchors.fill: parent
         radius: 28
         color: Matugen.colors.getcolors(Matugen.colors.surface_container)
@@ -52,7 +57,7 @@ PanelWindow {
                 }
             }
 
-            Rectangle {
+            StyledRect {
                 Layout.fillWidth: true
                 Layout.preferredHeight: 56
                 color: Matugen.colors.getcolors(Matugen.colors.surface_container_high)
@@ -95,10 +100,10 @@ PanelWindow {
                         focus: true
                         activeFocusOnPress: true
                         color: Matugen.colors.getcolors(Matugen.colors.on_surface)
-			
-			Keys.onEscapePressed : {
-				ShellContext.toggleLauncher();
-			}
+
+                        Keys.onEscapePressed: {
+                            ShellContext.toggleLauncher();
+                        }
                         Keys.onDownPressed: {
                             if (appList.count > 0) {
                                 appList.currentIndex = 0;
@@ -122,7 +127,7 @@ PanelWindow {
                         visible: search.text.length > 0
                         cursorShape: Qt.PointingHandCursor
 
-                        Rectangle {
+                        StyledRect {
                             anchors.fill: parent
                             radius: 12
                             color: parent.containsMouse ? Matugen.colors.getcolors(Matugen.colors.surface_container_highest) : "transparent"
@@ -155,7 +160,7 @@ PanelWindow {
                 Layout.leftMargin: 4
             }
 
-            Rectangle {
+            StyledRect {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 color: Matugen.colors.getcolors(Matugen.colors.surface_container_low)
@@ -199,7 +204,7 @@ PanelWindow {
                         launcher.visible = false;
                     }
 
-                    delegate: Rectangle {
+                    delegate: StyledRect {
                         id: appItem
                         required property DesktopEntry modelData
                         required property int index
@@ -300,7 +305,7 @@ PanelWindow {
                         policy: ScrollBar.AsNeeded
                         width: 8
 
-                        contentItem: Rectangle {
+                        contentItem: StyledRect {
                             radius: 4
                             color: parent.pressed ? Matugen.colors.getcolors(Matugen.colors.on_surface) : Matugen.colors.getcolors(Matugen.colors.on_surface_variant)
                             opacity: parent.pressed ? 0.8 : 0.6
