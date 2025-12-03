@@ -7,29 +7,19 @@ import Quickshell.Io
 Scope {
     id: root
 
-    property string image: persist.image
+    property string image: "/home/destycoon/.config/wallpaper/wallhaven-qz8w55.png"
 
     property bool darkmode: true
-    PersistentProperties {
-        id: persist
 
-        reloadableId: "MatugenState"
-
-        property string image: "/home/destycoon/.config/wallpaper/wallhaven-qz8w55.png"
-    }
-
-    Connections {
-        target: persist
-
-        function onImageChanged() {
-            if (persist.image !== "") {
-                updateColor(persist.image);
-            }
+    function onImageChanged() {
+        if (image !== "") {
+            updateColor(image);
         }
     }
     Component.onCompleted: {
-        getWal.running = true;
-        updateColor(persist.image);
+        get();
+        console.log(image);
+        updateColor(image);
     }
 
     function toggleDark() {
@@ -37,7 +27,7 @@ Scope {
     }
 
     function updateColor(img) {
-        persist.image = img;
+        image = img;
         matugen.running = true;
     }
     function get(): string {
@@ -51,14 +41,14 @@ Scope {
         command: ["sh", "-c", `swww query | sed -n 's/.*image:[[:space:]]*\\(\\/[^[:space:]]*\\).*/\\1/p'`]
         stdout: StdioCollector {
             onStreamFinished: {
-                image = this.text;
+                root.image = this.text;
             }
         }
     }
     Process {
         id: matugen
         running: true
-        command: ["sh", "-c", `matugen image --dry-run -j hex ${persist.image}`]
+        command: ["sh", "-c", `matugen image --dry-run -j hex ${image}`]
         stdout: StdioCollector {
             onStreamFinished: {
                 var data = JSON.parse(this.text);

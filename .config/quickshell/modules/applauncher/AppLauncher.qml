@@ -17,6 +17,16 @@ PanelWindow {
     visible: ShellContext.launcherOpen
     focusable: true
 
+    property var filteredApps: {
+        var searchText = search.text.toLowerCase();
+        if (searchText === "") {
+            return DesktopEntries.applications.values;
+        }
+        return DesktopEntries.applications.values.filter(function (app) {
+            return app.name.toLowerCase().includes(searchText);
+        });
+    }
+
     mask: Region {
         item: app
     }
@@ -113,7 +123,7 @@ PanelWindow {
 
                         Keys.onReturnPressed: {
                             if (appList.count > 0) {
-                                var app = filteredApps[0];
+                                var app = launcher.filteredApps[0];
                                 app.execute();
                                 ShellContext.toggleLauncher();
                                 search.text = "";
@@ -197,11 +207,11 @@ PanelWindow {
                     Keys.onReturnPressed: {
                         var app = filteredApps[currentIndex];
                         app.execute();
-                        launcher.visible = false;
+                        ShellContext.toggleLauncher();
                         search.text = "";
                     }
                     Keys.onEscapePressed: {
-                        launcher.visible = false;
+                        ShellContext.toggleLauncher();
                     }
 
                     delegate: StyledRect {
@@ -285,7 +295,7 @@ PanelWindow {
 
                             onClicked: {
                                 modelData.execute();
-                                launcher.visible = false;
+                                ShellContext.toggleLauncher();
                                 search.text = "";
                             }
 

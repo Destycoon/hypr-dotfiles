@@ -11,33 +11,13 @@ import qs.modules.bar
 import qs.modules.bar.barModules
 
 import qs.services.matugen
-import qs.services
 
-PanelWindow {
-    id: win
-    PowerProfilePopup {
-        active: ShellContext.showPProfile
-        anchor.window: win
-    }
-    PowerMenu {
-        active: ShellContext.powerOpen
-        anchor.window: win
-    }
-
-    property color barColor: Matugen.colors.getcolors(Matugen.colors.background)
+item {
 
     color: "transparent"
-    exclusionMode: ExclusionMode.Ignore
     mask: Region {
         item: cornersArea
         intersection: Intersection.Subtract
-    }
-
-    anchors {
-        left: true
-        top: true
-        right: true
-        bottom: true
     }
 
     component Corner: WrapperItem {
@@ -135,7 +115,6 @@ PanelWindow {
         implicitHeight: QsWindow.window?.height ?? 0
         color: win.barColor
         anchors.left: parent.left
-        Bar {}
     }
     StyledRect {
         id: topBar
