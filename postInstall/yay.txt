@@ -1,13 +1,12 @@
 parsec-bin
 zen-browser-bin
-eww
 clock-rs-git
 pywall
 swww
 cbonsai
-nordic-theme
 mirage
 oracle-sqldeveloper
 python-eduvpn-client
 visual-paradigm
 vencord
+numbat

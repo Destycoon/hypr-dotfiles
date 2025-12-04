@@ -15,6 +15,10 @@ if status is-interactive
 
 	zoxide init fish | source
 	alias cd='z'
+
+	fish_vi_key_bindings
+	
+	alias nya='figlet -f big "Nya~" | lolcat --spread 3 -a --freq 0.1'
 end
 
 

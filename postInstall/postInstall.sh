@@ -10,17 +10,6 @@ bash "$SCRIPT_DIR/pkgInstall.sh"
 # Deploy configs
 bash "$SCRIPT_DIR/../.config/scripts/deploy.sh"
 
-read -p  "Install grub theme ? (y/n): " answer
-
-answer=${answer,,}
-
-if [[ "$answer" == "y" || "$answer" == "yes" ]]; then
-    echo "installing grub theme..."
-    sudo pacman -S grub
-    bash "$SCRIPT_DIR/grubInstall.sh"
-else 
-    echo "continue without grub"
-fi
 
 # Create default folders
 for dir in Documents Images Musique Téléchargements Vidéos; do
