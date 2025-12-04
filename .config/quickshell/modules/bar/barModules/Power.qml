@@ -1,5 +1,6 @@
 import QtQuick
 import qs.utils
+import qs.config
 
 StyledRect {
     id: powerRoot

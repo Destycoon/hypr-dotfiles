@@ -19,10 +19,7 @@ PanelWindow {
         active: ShellContext.showPProfile
         anchor.window: win
     }
-    PowerMenu {
-        active: ShellContext.powerOpen
-        anchor.window: win
-    }
+    PowerMenu {}
 
     property color barColor: Matugen.colors.getcolors(Matugen.colors.background)
 
@@ -44,7 +41,7 @@ PanelWindow {
         id: root
 
         property int corner
-        property real radius: 30
+        property real radius: 18
         property color color
 
         Component.onCompleted: {

@@ -40,7 +40,7 @@ PanelWindow {
     StyledRect {
         id: app
         anchors.fill: parent
-        radius: 28
+        radius: 30
         color: Matugen.colors.getcolors(Matugen.colors.surface_container)
 
         ColumnLayout {
