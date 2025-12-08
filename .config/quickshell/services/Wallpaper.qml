@@ -24,7 +24,7 @@ Item {
 
     function setWallpaper(path) {
         Quickshell.execDetached({
-            command: ["sh", "-c", `swww img ${path} --transition-type=fade --transition-fps=60 --transition-step=255 --transition-duration=0.5`]
+            command: ["sh", "-c", `matugen image ${path} `]
         });
         wallpaperChanged(path);
     }

@@ -7,7 +7,7 @@ import Quickshell.Io
 Scope {
     id: root
 
-    property string image: "/home/destycoon/.config/wallpaper/wallhaven-qz8w55.png"
+    property string image: "/home/destycoon/.config/wallpaper/pixelTree.png"
 
     property bool darkmode: true
 
@@ -48,7 +48,7 @@ Scope {
     Process {
         id: matugen
         running: true
-        command: ["sh", "-c", `matugen image --dry-run -j hex ${image}`]
+        command: ["sh", "-c", `matugen image ${image} -j hex --dry-run  `]
         stdout: StdioCollector {
             onStreamFinished: {
                 var data = JSON.parse(this.text);

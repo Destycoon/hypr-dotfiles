@@ -19,15 +19,14 @@ PanelWindow {
         active: ShellContext.showPProfile
         anchor.window: win
     }
-    PowerMenu {}
 
     property color barColor: Matugen.colors.getcolors(Matugen.colors.background)
 
     color: "transparent"
     exclusionMode: ExclusionMode.Ignore
     mask: Region {
-        item: cornersArea
-        intersection: Intersection.Subtract
+      item : cornersArea
+       intersection: Intersection.Subtract
     }
 
     anchors {
@@ -143,12 +142,22 @@ PanelWindow {
     }
     StyledRect {
         id: rightBar
-        implicitWidth: 10
+        implicitWidth: 10  
         implicitHeight: QsWindow.window?.height ?? 0
         color: win.barColor
-        anchors.right: parent.right
+	anchors.right: parent.right
+	MouseArea {
+		width : parent.implicitWidth
+		height: powerMenu.implicitHeight
+		anchors.verticalCenter : parent.verticalCenter
+		onClicked: {
+			ShellContext.togglePower();
+		}
+	}
+        PowerMenu { id: powerMenu }
     }
     StyledRect {
+        
         id: bottomBar
         implicitWidth: QsWindow.window?.width ?? 0
         implicitHeight: 10

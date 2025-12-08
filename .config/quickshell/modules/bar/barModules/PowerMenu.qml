@@ -11,7 +11,6 @@ import qs.utils.anim
 
 Item {
     id: powerWindow
-
     visible: ShellContext.powerOpen || hideAnim.running
     implicitWidth: contentRect.width
     implicitHeight: contentRect.height
@@ -44,9 +43,6 @@ Item {
             target: powerWindow
             property: "slideOffset"
             to: 0
-            duration: GraphicConfig.anim.durations.normal
-            easing.type: Easing.BezierSpline
-            easing.bezierCurve: GraphicConfig.anim.curves.standard
         }
     }
 
@@ -57,9 +53,6 @@ Item {
             target: powerWindow
             property: "slideOffset"
             to: contentRect.width + 20
-            duration: GraphicConfig.anim.durations.normal
-            easing.type: Easing.BezierSpline
-            easing.bezierCurve: GraphicConfig.anim.curves.standard
         }
     }
 
@@ -102,13 +95,11 @@ Item {
             startX: contentRect.radius
             startY: 0
 
-            // Bord haut jusqu'à l'encoche
             PathLine {
                 x: contentRect.width - contentRect.radius
                 y: 0
             }
 
-            // Encoche haut: monte vers l'extérieur (dépasse en haut)
             PathArc {
                 x: contentRect.width
                 y: -contentRect.radius
@@ -117,7 +108,6 @@ Item {
                 direction: PathArc.Counterclockwise
             }
 
-            // Pointe haute: redescend vers le bord haut du menu
             PathArc {
                 x: contentRect.width + contentRect.radius
                 y: 0
@@ -126,13 +116,11 @@ Item {
                 direction: PathArc.Counterclockwise
             }
 
-            // Bord droit vertical (plat)
             PathLine {
                 x: contentRect.width + contentRect.radius
                 y: contentRect.height
             }
 
-            // Pointe basse: descend vers l'extérieur (dépasse en bas)
             PathArc {
                 x: contentRect.width
                 y: contentRect.height + contentRect.radius
@@ -141,7 +129,6 @@ Item {
                 direction: PathArc.Counterclockwise
             }
 
-            // Encoche bas: remonte vers le bord bas du menu
             PathArc {
                 x: contentRect.width - contentRect.radius
                 y: contentRect.height
@@ -150,13 +137,11 @@ Item {
                 direction: PathArc.Counterclockwise
             }
 
-            // Bord bas jusqu'au coin arrondi en bas à gauche
             PathLine {
                 x: contentRect.radius
                 y: contentRect.height
             }
 
-            // Coin bas-gauche arrondi (convexe)
             PathArc {
                 x: 0
                 y: contentRect.height - contentRect.radius
@@ -165,13 +150,11 @@ Item {
                 direction: PathArc.Clockwise
             }
 
-            // Bord gauche vertical
             PathLine {
                 x: 0
                 y: contentRect.radius
             }
 
-            // Coin haut-gauche arrondi (convexe)
             PathArc {
                 x: contentRect.radius
                 y: 0
@@ -183,6 +166,7 @@ Item {
 
         Column {
             id: buttonRow
+
             anchors.centerIn: parent
             spacing: 10
 
@@ -192,6 +176,7 @@ Item {
                 background: StyledRect {
                     color: Matugen.colors.getcolors(Matugen.colors.primary)
                     radius: 8
+
                     StyledText {
                         color: Matugen.colors.getcolors(Matugen.colors.on_primary)
                         font.pixelSize: 22
@@ -238,6 +223,7 @@ Item {
                     }
                 }
                 onClicked: {
+                    console.log("Locking screen");
                     ShellContext.togglePower();
                     lockCmd.running = true;
                 }
