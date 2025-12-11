@@ -114,7 +114,6 @@ Item {
                         opacity: 0.7
                     }
 
-                    // Champ de saisie du mot de passe
                     TextInput {
                         id: passwordInput
                         Layout.fillWidth: true
@@ -138,9 +137,7 @@ Item {
                             passwordInput.text = "";
                         }
 
-                        // Synchronisation avec le contexte pour multi-écrans
                        
-                        // Placeholder text
                         Text {
                             anchors.fill: parent
                             verticalAlignment: Text.AlignVCenter
