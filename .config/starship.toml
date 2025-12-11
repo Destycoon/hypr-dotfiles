@@ -20,15 +20,15 @@ $time\
 palette = "colors"
 
 [palettes.colors]
-color1 = '#f2be6e'
-color2 = '#442c00'
-color3 = '#d2c4b4'
-color4 = '#241f17'
-color5 = '#442c00'
-color6 = '#18130b'
-color7 = '#18130b'
-color8 = '#f2be6e'
-color9 = '#b7cea2'
+color1 = '#e7c26c'
+color2 = '#3e2e00'
+color3 = '#d0c5b4'
+color4 = '#231f17'
+color5 = '#3e2e00'
+color6 = '#17130b'
+color7 = '#17130b'
+color8 = '#e7c26c'
+color9 = '#afcfab'
 
 # -------------------------------------------------
 # DIRECTORY

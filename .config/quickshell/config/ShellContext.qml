@@ -12,13 +12,11 @@ Scope {
 
     property bool showPProfile: false
 
-    property alias wal: wal.currentWall
+    property bool isLocked: false
 
-    PersistentProperties {
-        id: wal
-        reloadableId: "Wallpaper"
-        property string currentWall: "/home/destycoon/.config/wallpaper/pixelTree.png"
-    }
+    function toggleLock() {
+        isLocked = !isLocked;
+    } 
 
     function toggleDash() {
         dashOpen = !dashOpen;
