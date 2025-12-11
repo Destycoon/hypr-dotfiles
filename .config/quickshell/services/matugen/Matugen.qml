@@ -7,7 +7,7 @@ import Quickshell.Io
 Scope {
     id: root
 
-    property string image: "/home/destycoon/.config/wallpaper/pixelTree.png"
+    property string image: "/home/destycoon/.config/wallpaper/wallhaven-qz8w55.png"
 
     property bool darkmode: true
 

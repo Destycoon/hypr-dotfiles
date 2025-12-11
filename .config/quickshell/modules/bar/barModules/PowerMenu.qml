@@ -14,7 +14,7 @@ Item {
     visible: ShellContext.powerOpen || hideAnim.running
     implicitWidth: contentRect.width
     implicitHeight: contentRect.height
-
+    z: -1
     anchors.right: parent.right
     anchors.rightMargin: 10
     anchors.verticalCenter: parent.verticalCenter

@@ -1,6 +1,7 @@
 import Quickshell
 import QtQuick
 import qs.modules.bar.barModules
+import qs.modules.bar.barModules.profiles
 import qs.utils
 import qs.services.matugen
 import qs.config

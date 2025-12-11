@@ -8,6 +8,7 @@ import Quickshell.Wayland
 import qs.utils
 import qs.config
 import qs.modules.bar
+import qs.modules.bar.barModules.profiles
 import qs.modules.bar.barModules
 
 import qs.services.matugen
@@ -15,10 +16,7 @@ import qs.services
 
 PanelWindow {
     id: win
-    PowerProfilePopup {
-        active: ShellContext.showPProfile
-        anchor.window: win
-    }
+    
 
     property color barColor: Matugen.colors.getcolors(Matugen.colors.background)
 
@@ -132,6 +130,7 @@ PanelWindow {
         color: win.barColor
         anchors.left: parent.left
         Bar {}
+        PowerProfilePopup {}
     }
     StyledRect {
         id: topBar

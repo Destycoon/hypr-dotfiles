@@ -234,7 +234,8 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
--- [[ Configure and install plugins ]]
+-- Additionally call this function once on startup to query for matugen's theme
+-- or set a default
 --
 --  To check the current status of your plugins, run
 --    :Lazy
