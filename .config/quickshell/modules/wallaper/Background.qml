@@ -10,7 +10,6 @@ import qs.config
 import qs.modules.bar
 import qs.modules.bar.barModules.profiles
 import qs.modules.bar.barModules
-
 import qs.services.matugen
 import qs.services
 
@@ -33,7 +32,6 @@ PanelWindow {
         right: true
         bottom: true
     }
-
     component Corner: WrapperItem {
         id: root
 

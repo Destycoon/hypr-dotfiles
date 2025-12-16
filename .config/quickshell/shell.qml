@@ -8,6 +8,6 @@ import qs.modules.lockScreen
 Scope {
     LockScreen {}
     DashBoard {}
-    AppLauncher {}
     Background {}
+    AppLauncher {}
 }
