@@ -1,12 +1,38 @@
-parsec-bin
+# Navigateurs
 zen-browser-bin
-clock-rs-git
-pywall
-swww
-cbonsai
+
+# Applications AUR
+parsec-bin
+visual-studio-code-bin
+vencord
 mirage
 oracle-sqldeveloper
 python-eduvpn-client
-visual-paradigm
-vencord
 numbat
+
+# Outils système
+clock-rs-git
+python-pywal16
+sddm-silent-theme
+
+# Gaming
+gameconqueror
+steam
+
+# Virtualisation
+virtualbox
+ventoy
+
+# Dev
+intellij-idea-community-edition
+gaphor
+figma-linux
+drawio-desktop
+luajit-tiktoken-bin
+
+# Autres
+eww
+dunst
+awww-git
+misfortune
+octave

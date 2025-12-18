@@ -1,40 +1,162 @@
-﻿code
-git
+﻿# Système de base
+base
+base-devel
+linux
+linux-firmware
+grub
+efibootmgr
+networkmanager
+network-manager-applet
+iwd
+wireless_tools
+intel-ucode
+mkinitcpio-firmware
+sof-firmware
+
+# Gestionnaires d'affichage
+sddm
+polkit-kde-agent
+
+# Environnement Hyprland
+hyprland
 hypridle
 hyprlock
 hyprshot
-swaync
-neovim
-otf-font-awesome
-pavucontrol
-pulseaudio
-cava
-brightnessctl
-blueman
-btop
-fastfetch
-libreoffice-fresh
-pipewire-pulse
-xdg-desktop-portal
+xdg-desktop-portal-hyprland
 xdg-desktop-portal-wlr
+xdg-utils
+quickshell
+swaync
+uwsm
+
+# Wayland et graphiques
+qt5-wayland
+qt6-wayland
+qt5ct
+qt6ct
+gtk-engine-murrine
+kvantum
+kvantum-qt5
+
+# Pilotes graphiques
+intel-media-driver
+libva-intel-driver
+intel-ucode
+vulkan-intel
+vulkan-radeon
+vulkan-nouveau
+xf86-video-amdgpu
+xf86-video-ati
+xf86-video-nouveau
+
+# Audio
+pipewire
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
+libpulse
+gst-plugin-pipewire
+wireplumber
+pavucontrol
+
+# Bluetooth
+bluez-utils
+blueman
+
+# Terminal et shell
+ghostty
+fish
 starship
-prismlauncher
+zoxide
+bat
+eza
+lf
+
+# Outils système
+brightnessctl
+power-profiles-daemon
+geoclue
+btop
+htop
+fastfetch
+neovim
+git
+rsync
+wget
+unzip
+zip
+fd
+man-db
+nano
+vim
+
+# Gestionnaire de fichiers
+thunar
+
+# Capture d'écran et graphiques
+grim
+slurp
+swww
+matugen
+cava
+
+# Polices
+otf-font-awesome
+woff2-font-awesome
+noto-fonts-emoji
+ttf-jetbrains-mono-nerd
+ttf-nerd-fonts-symbols
+ttf-bigblueterminal-nerd
+cozette-otb
+
+# Thèmes et apparence
+papirus-icon-theme
+nordic-theme
+nwg-look
+lxappearance
+
+# Outils de développement
+code
+nodejs
+go
+gradle
+kotlin
+php
+python-ipykernel
+python-matplotlib
+python-networkx
+gcc-fortran
+
+# Outils fun/terminal
 figlet
 cmatrix
 dysk
 mpc
 mdp
-noto-fonts-emoji
 flatpak
-papirus-icon-theme
-nwg-look
-power-profiles-daemon
-wireshark-qt
-fd
-jdk17-openjdkbat
-bat
 pacman-contrib
-geoclue
-quickshell
-ghostty
-fish
+wireshark-qt
+lolcat
+fortune-mod
+cowsay
+cbonsai
+sl
+
+# Applications
+libreoffice-fresh
+prismlauncher
+mpv
+obs-studio
+
+# Conteneurs
+docker
+podman
+podman-compose
+
+# Montage
+davfs2
+ntfs-3g
+
+# Système
+smartmontools
+nmap
