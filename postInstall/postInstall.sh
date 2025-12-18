@@ -45,22 +45,31 @@ bash "$SCRIPT_DIR/pkgInstall.sh"
 print_success "Paquets installés"
 
 # 2. Configuration de GRUB (optionnel)
-print_info "Étape 2/6: Configuration de GRUB..."
+print_info "Étape 2/7: Configuration de GRUB..."
 if [ -f "$SCRIPT_DIR/grubInstall.sh" ]; then
     bash "$SCRIPT_DIR/grubInstall.sh"
 else
     print_warning "grubInstall.sh non trouvé, passage à l'étape suivante"
 fi
 
-# 3. Créer les dossiers utilisateur
-print_info "Étape 3/6: Création des dossiers utilisateur..."
+# 3. Configuration de SDDM
+print_info "Étape 3/7: Configuration de SDDM pour résolution automatique..."
+if [ -f "$SCRIPT_DIR/sddmConfig.sh" ]; then
+    bash "$SCRIPT_DIR/sddmConfig.sh"
+    print_success "SDDM configuré"
+else
+    print_warning "sddmConfig.sh non trouvé, passage à l'étape suivante"
+fi
+
+# 4. Créer les dossiers utilisateur
+print_info "Étape 4/7: Création des dossiers utilisateur..."
 for dir in Documents Images Musique Téléchargements Vidéos; do
     mkdir -p "$HOME/$dir"
 done
 print_success "Dossiers créés"
 
-# 4. Déploiement des configurations
-print_info "Étape 4/6: Déploiement des configurations..."
+# 5. Déploiement des configurations
+print_info "Étape 5/7: Déploiement des configurations..."
 if [ -f "$REPO_DIR/.config/scripts/deploy.sh" ]; then
     bash "$REPO_DIR/.config/scripts/deploy.sh"
     print_success "Configurations déployées"
@@ -69,8 +78,8 @@ else
     exit 1
 fi
 
-# 5. Configuration du shell par défaut
-print_info "Étape 5/6: Configuration de Fish comme shell par défaut..."
+# 6. Configuration du shell par défaut
+print_info "Étape 6/7: Configuration de Fish comme shell par défaut..."
 if command -v fish >/dev/null 2>&1; then
     if [ "$SHELL" != "$(which fish)" ]; then
         print_info "Changement du shell par défaut vers Fish..."
@@ -83,8 +92,8 @@ else
     print_warning "Fish n'est pas installé, shell non modifié"
 fi
 
-# 6. Configuration supplémentaire
-print_info "Étape 6/6: Configurations finales..."
+# 7. Configuration supplémentaire
+print_info "Étape 7/7: Configurations finales..."
 
 # Activer zram si le générateur est présent
 if [ -f /usr/lib/systemd/system-generators/zram-generator ]; then
