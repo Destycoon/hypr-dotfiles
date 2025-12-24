@@ -30,6 +30,7 @@ print_error() {
 
 print_info "==================================="
 print_info "Post-Installation Hyprland Dotfiles"
+print_info "Configuration Multi-Environnement"
 print_info "==================================="
 
 # Vérifier si on est dans le bon répertoire
@@ -39,8 +40,13 @@ if [ ! -d "$REPO_DIR/.config" ]; then
     exit 1
 fi
 
-# 1. Installation des paquets
-print_info "Étape 1/6: Installation des paquets..."
+# 1. Mise à jour du système
+print_info "Étape 1/7: Mise à jour du système..."
+sudo pacman -Syu --noconfirm
+print_success "Système mis à jour"
+
+# 2. Installation des paquets avec détection matérielle
+print_info "Étape 2/7: Installation des paquets..."
 bash "$SCRIPT_DIR/pkgInstall.sh"
 print_success "Paquets installés"
 

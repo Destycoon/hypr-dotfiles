@@ -1,0 +1,26 @@
+# Fichiers de sauvegarde et temporaires
+*.backup.*
+*.bak
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+/tmp/
+
+# Fichiers de configuration personnelle (à ne pas partager)
+github.pub
+id_rsa*
+
+# Cache
+.cache/
+__pycache__/
+*.pyc
+
+# Fichiers de build
+*.o
+*.so
+build/
+dist/

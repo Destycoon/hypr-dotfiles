@@ -1,16 +1,11 @@
 # Navigateurs
 zen-browser-bin
 
-# Applications AUR
-parsec-bin
 visual-studio-code-bin
 vencord
 mirage
-oracle-sqldeveloper
-python-eduvpn-client
-numbat
 
-# Outils système
+# Outils système et apparence
 clock-rs-git
 python-pywal16
 sddm-silent-theme
@@ -23,16 +18,24 @@ steam
 virtualbox
 ventoy
 
-# Dev
+# Dev et bases de données
 intellij-idea-community-edition
+oracle-sqldeveloper
 gaphor
 figma-linux
 drawio-desktop
 luajit-tiktoken-bin
 
-# Autres
+# Réseau et VPN
+python-eduvpn-client
+parsec-bin
+
+# Outils mathématiques et terminaux
+numbat
+octave
+misfortune
+
+# Wayland/Hyprland extras (optionnel)
 eww
 dunst
 awww-git
-misfortune
-octave

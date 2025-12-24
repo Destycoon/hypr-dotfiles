@@ -1,19 +1,4 @@
-﻿# Système de base
-base
-base-devel
-linux
-linux-firmware
-grub
-efibootmgr
-networkmanager
-network-manager-applet
-iwd
-wireless_tools
-intel-ucode
-mkinitcpio-firmware
-sof-firmware
-
-# Gestionnaires d'affichage
+﻿# Gestionnaires d'affichage
 sddm
 polkit-kde-agent
 
@@ -37,17 +22,6 @@ qt6ct
 gtk-engine-murrine
 kvantum
 kvantum-qt5
-
-# Pilotes graphiques
-intel-media-driver
-libva-intel-driver
-intel-ucode
-vulkan-intel
-vulkan-radeon
-vulkan-nouveau
-xf86-video-amdgpu
-xf86-video-ati
-xf86-video-nouveau
 
 # Audio
 pipewire
