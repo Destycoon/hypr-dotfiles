@@ -1,5 +1,4 @@
-﻿polkit-kde-agent
-
+﻿
 hyprland
 hypridle
 hyprlock
