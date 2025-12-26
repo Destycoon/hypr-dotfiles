@@ -1,8 +1,6 @@
-﻿# Gestionnaires d'affichage
-sddm
+﻿sddm
 polkit-kde-agent
 
-# Environnement Hyprland
 hyprland
 hypridle
 hyprlock
@@ -14,7 +12,6 @@ quickshell
 swaync
 uwsm
 
-# Wayland et graphiques
 qt5-wayland
 qt6-wayland
 qt5ct
@@ -23,7 +20,6 @@ gtk-engine-murrine
 kvantum
 kvantum-qt5
 
-# Audio
 pipewire
 pipewire-alsa
 pipewire-jack
@@ -33,11 +29,9 @@ gst-plugin-pipewire
 wireplumber
 pavucontrol
 
-# Bluetooth
 bluez-utils
 blueman
 
-# Terminal et shell
 ghostty
 fish
 starship
@@ -46,7 +40,6 @@ bat
 eza
 lf
 
-# Outils système
 brightnessctl
 power-profiles-daemon
 geoclue
@@ -64,31 +57,24 @@ man-db
 nano
 vim
 
-# Gestionnaire de fichiers
 thunar
 
-# Capture d'écran et graphiques
 grim
 slurp
 matugen
 cava
 
-# Polices
 otf-font-awesome
 woff2-font-awesome
 noto-fonts-emoji
 ttf-jetbrains-mono-nerd
 ttf-nerd-fonts-symbols
 ttf-bigblueterminal-nerd
-cozette-otb
 
-# Thèmes et apparence
 papirus-icon-theme
-nordic-theme
 nwg-look
 lxappearance
 
-# Outils de développement
 code
 nodejs
 go
@@ -100,7 +86,6 @@ python-matplotlib
 python-networkx
 gcc-fortran
 
-# Outils fun/terminal
 figlet
 cmatrix
 dysk
@@ -112,24 +97,19 @@ wireshark-qt
 lolcat
 fortune-mod
 cowsay
-cbonsai
 sl
 
-# Applications
 libreoffice-fresh
 prismlauncher
 mpv
 obs-studio
 
-# Conteneurs
 docker
 podman
 podman-compose
 
-# Montage
 davfs2
 ntfs-3g
 
-# Système
 smartmontools
 nmap

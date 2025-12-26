@@ -37,3 +37,7 @@ misfortune
 # Wayland/Hyprland extras (optionnel)
 dunst
 awww-git
+
+cozette-otb
+nordic-theme
+cbonsai
