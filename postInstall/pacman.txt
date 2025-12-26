@@ -1,5 +1,4 @@
-﻿sddm
-polkit-kde-agent
+﻿polkit-kde-agent
 
 hyprland
 hypridle
@@ -16,7 +15,6 @@ qt5-wayland
 qt6-wayland
 qt5ct
 qt6ct
-gtk-engine-murrine
 kvantum
 kvantum-qt5
 
