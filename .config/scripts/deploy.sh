@@ -1,14 +1,12 @@
 #!/bin/bash
 
-# Script de déploiement robuste pour la configuration Hyprland
+# Script de déploiement de la configuration Hyprland
 # Crée des liens symboliques depuis le repo vers ~/.config
 
 set -e
 
-# Déterminer le chemin du repo de manière robuste
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
-SRC_CONFIG="$REPO_DIR"
 DEST_CONFIG="$HOME/.config"
 
 # Couleurs
@@ -30,14 +28,15 @@ print_warning() {
     echo -e "${YELLOW}[WARNING]${NC} $1"
 }
 
-print_info "Déploiement depuis: $SRC_CONFIG"
-print_info "Vers: $DEST_CONFIG"
+print_info "Déploiement de la configuration..."
+print_info "Source: $REPO_DIR"
+print_info "Destination: $DEST_CONFIG"
 
-# Créer le répertoire .config s'il n'existe pas
+# Créer .config si nécessaire
 mkdir -p "$DEST_CONFIG"
 
 # Créer des liens symboliques pour chaque élément
-for item in "$SRC_CONFIG"/*; do
+for item in "$REPO_DIR"/*; do
   name=$(basename "$item")
   target="$DEST_CONFIG/$name"
   
@@ -46,14 +45,15 @@ for item in "$SRC_CONFIG"/*; do
     continue
   fi
 
-  # Supprimer le lien/fichier existant s'il est présent
+  # Si le lien existe déjà et pointe vers le bon endroit
+  if [ -L "$target" ] && [ "$(readlink -f "$target")" == "$(realpath "$item")" ]; then
+    print_success "✓ $name déjà lié"
+    continue
+  fi
+  
+  # Supprimer l'ancien fichier/lien s'il existe
   if [ -e "$target" ] || [ -L "$target" ]; then
-    if [ -L "$target" ] && [ "$(readlink -f "$target")" == "$(realpath "$item")" ]; then
-      print_success "✓ $name déjà lié correctement"
-      continue
-    fi
-    
-    print_warning "Suppression de l'ancienne configuration: $name"
+    print_warning "Suppression de: $name"
     rm -rf "$target"
   fi
 
@@ -63,9 +63,3 @@ for item in "$SRC_CONFIG"/*; do
 done
 
 print_success "Déploiement terminé!"
-
-# Optionally reload config if needed
-if [ -f "$HOME/.config/scripts/reload.sh" ]; then
-  print_info "Rechargement de la configuration..."
-  bash "$HOME/.config/scripts/reload.sh" &
-fi

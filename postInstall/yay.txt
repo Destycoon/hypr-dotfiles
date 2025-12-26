@@ -16,7 +16,6 @@ steam
 
 # Virtualisation
 virtualbox
-ventoy
 
 # Dev et bases de données
 intellij-idea-community-edition
@@ -36,6 +35,5 @@ octave
 misfortune
 
 # Wayland/Hyprland extras (optionnel)
-eww
 dunst
 awww-git

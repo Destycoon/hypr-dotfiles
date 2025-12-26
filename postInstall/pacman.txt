@@ -70,7 +70,6 @@ thunar
 # Capture d'écran et graphiques
 grim
 slurp
-swww
 matugen
 cava
 
