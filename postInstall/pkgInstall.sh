@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 PACMAN_FILE="$SCRIPT_DIR/pacman.txt"
 YAY_FILE="$SCRIPT_DIR/yay.txt"
@@ -23,6 +21,10 @@ print_success() {
 
 print_error() {
     echo -e "${RED}[ERROR]${NC} $1"
+}
+
+print_warning() {
+    echo -e "${YELLOW}[WARNING]${NC} $1"
 }
 
 # Extraire les paquets du fichier (ignorer commentaires et lignes vides)
@@ -50,16 +52,26 @@ fi
 print_info "Installation des paquets Pacman..."
 packages=$(extract_packages "$PACMAN_FILE")
 if [ -n "$packages" ]; then
-    sudo pacman -S --noconfirm --needed $packages
-    print_success "Paquets Pacman installés"
+    if sudo pacman -S --noconfirm --needed $packages; then
+        print_success "Paquets Pacman installés"
+    else
+        print_warning "Certains paquets Pacman n'ont pas pu être installés (on continue)"
+    fi
+else
+    print_warning "Aucun paquet Pacman à installer"
 fi
 
 # 3. Installer les paquets AUR
 print_info "Installation des paquets AUR..."
 packages=$(extract_packages "$YAY_FILE")
 if [ -n "$packages" ]; then
-    yay -S --noconfirm --needed $packages
-    print_success "Paquets AUR installés"
+    if yay -S --noconfirm --needed $packages; then
+        print_success "Paquets AUR installés"
+    else
+        print_warning "Certains paquets AUR n'ont pas pu être installés"
+    fi
+else
+    print_warning "Aucun paquet AUR à installer"
 fi
 
 print_success "Installation des paquets terminée!"

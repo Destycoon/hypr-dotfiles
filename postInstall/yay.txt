@@ -1,43 +1,20 @@
-# Navigateurs
 zen-browser-bin
-
 visual-studio-code-bin
 vencord
 mirage
-
-# Outils système et apparence
 clock-rs-git
 python-pywal16
 sddm-silent-theme
-
-# Gaming
-gameconqueror
-steam
-
-# Virtualisation
-virtualbox
-
-# Dev et bases de données
-intellij-idea-community-edition
-oracle-sqldeveloper
-gaphor
 figma-linux
-drawio-desktop
+oracle-sqldeveloper
 luajit-tiktoken-bin
-
-# Réseau et VPN
 python-eduvpn-client
 parsec-bin
-
-# Outils mathématiques et terminaux
 numbat
-octave
-misfortune
-
-# Wayland/Hyprland extras (optionnel)
-dunst
 awww-git
-
+dunst
 cozette-otb
 nordic-theme
+gtk-engine-murrine
 cbonsai
+vesktop
