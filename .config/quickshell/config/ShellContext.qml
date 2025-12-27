@@ -2,6 +2,7 @@ pragma Singleton
 
 import QtQuick
 import Quickshell
+import Quickshell.Services.UPower
 
 Scope {
     id: root
@@ -11,6 +12,8 @@ Scope {
     property bool launcherOpen: false
 
     property bool showPProfile: false
+    property bool showBattery: UPower.displayDevice.isLaptopBattery
+    property bool showPowerProfile: UPower.displayDevice.isLaptopBattery
 
     property bool isLocked: false
 

@@ -38,7 +38,7 @@ Scope {
     Process {
         id: getWal
         running: true
-        command: ["sh", "-c", `swww query | sed -n 's/.*image:[[:space:]]*\\(\\/[^[:space:]]*\\).*/\\1/p'`]
+        command: ["sh", "-c", `awww query | sed -n 's/.*image:[[:space:]]*\\(\\/[^[:space:]]*\\).*/\\1/p'`]
         stdout: StdioCollector {
             onStreamFinished: {
                 root.image = this.text.trim();

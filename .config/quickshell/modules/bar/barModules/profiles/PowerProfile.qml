@@ -9,6 +9,7 @@ StyledRect {
     implicitWidth: 28
     implicitHeight: 28
     color: "transparent"
+    visible: ShellContext.showPowerProfile
 
     StyledText {
         anchors.centerIn: parent

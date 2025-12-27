@@ -2,12 +2,14 @@ import QtQuick
 import Quickshell.Services.UPower
 import qs.services.matugen
 import qs.utils
+import qs.config
 import QtQuick.Layouts
 
 Item {
     id: container
     implicitWidth: 30
     implicitHeight: 30
+    visible: ShellContext.showBattery
 
     StyledRect {
         id: bat
