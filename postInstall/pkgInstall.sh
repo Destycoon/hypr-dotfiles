@@ -27,12 +27,6 @@ print_warning() {
     echo -e "${YELLOW}[WARNING]${NC} $1"
 }
 
-# Extraire les paquets du fichier (ignorer commentaires et lignes vides)
-extract_packages() {
-    local file="$1"
-    grep -v '^[[:space:]]*#' "$file" | grep -v '^[[:space:]]*$' | tr '\n' ' '
-}
-
 # 1. Installer yay si nécessaire
 print_info "Vérification de yay..."
 if ! command -v yay &>/dev/null; then
@@ -50,28 +44,48 @@ fi
 
 # 2. Installer les paquets Pacman
 print_info "Installation des paquets Pacman..."
-packages=$(extract_packages "$PACMAN_FILE")
-if [ -n "$packages" ]; then
-    if sudo pacman -S --noconfirm --needed $packages; then
-        print_success "Paquets Pacman installés"
+failed_packages=()
+while IFS= read -r pkg; do
+    # Ignorer les commentaires et lignes vides
+    [[ "${pkg:0:1}" == "#" ]] && continue
+    [[ -z "$pkg" ]] && continue
+    
+    print_info "Installation de $pkg..."
+    if sudo pacman -S --noconfirm --needed "$pkg"; then
+        print_success "$pkg installé"
     else
-        print_warning "Certains paquets Pacman n'ont pas pu être installés (on continue)"
+        print_error "Échec de l'installation de $pkg"
+        failed_packages+=("$pkg")
     fi
+done < "$PACMAN_FILE"
+
+if [ ${#failed_packages[@]} -eq 0 ]; then
+    print_success "Tous les paquets Pacman installés avec succès"
 else
-    print_warning "Aucun paquet Pacman à installer"
+    print_warning "Paquets Pacman en échec: ${failed_packages[*]}"
 fi
 
 # 3. Installer les paquets AUR
 print_info "Installation des paquets AUR..."
-packages=$(extract_packages "$YAY_FILE")
-if [ -n "$packages" ]; then
-    if yay -S --noconfirm --needed $packages; then
-        print_success "Paquets AUR installés"
+failed_packages=()
+while IFS= read -r pkg; do
+    # Ignorer les commentaires et lignes vides
+    [[ "${pkg:0:1}" == "#" ]] && continue
+    [[ -z "$pkg" ]] && continue
+    
+    print_info "Installation de $pkg..."
+    if yay -S --noconfirm --needed "$pkg"; then
+        print_success "$pkg installé"
     else
-        print_warning "Certains paquets AUR n'ont pas pu être installés"
+        print_error "Échec de l'installation de $pkg"
+        failed_packages+=("$pkg")
     fi
+done < "$YAY_FILE"
+
+if [ ${#failed_packages[@]} -eq 0 ]; then
+    print_success "Tous les paquets AUR installés avec succès"
 else
-    print_warning "Aucun paquet AUR à installer"
+    print_warning "Paquets AUR en échec: ${failed_packages[*]}"
 fi
 
 print_success "Installation des paquets terminée!"
